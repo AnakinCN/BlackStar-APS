@@ -10,6 +10,7 @@ namespace HelloBlackStar
         {
             Console.WriteLine("Hello BlackStar-APS!");
             EnvModel.InitializeEnvModel();
+            Console.WriteLine(LicensingOP.LicenseInfo);
         }
     }
 }
