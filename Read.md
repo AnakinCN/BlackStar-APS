@@ -13,8 +13,6 @@ Contact <a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a> for l
 
 WIKI:<a href="https://github.com/AnakinCN/BlackStar-APS/wiki">https://github.com/AnakinCN/BlackStar-APS/wiki</a>
 
-anakincn add
-
 <img src="./Read/shot1.png"/>
 <img src="./Read/shot2.png"/>
 <img src="./Read/shot3.png"/>
