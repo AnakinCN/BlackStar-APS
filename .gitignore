@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/Samples/HelloBlackStar/.vs/HelloBlackStar
+/Samples/HelloBlackStar/HelloBlackStar/bin/Debug/netcoreapp3.1
+/Samples/HelloBlackStar/HelloBlackStar/obj
