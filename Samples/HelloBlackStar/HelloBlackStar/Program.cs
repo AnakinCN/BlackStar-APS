@@ -2,6 +2,7 @@
 using System.Linq;
 using BlackStar;
 using BlackStar.Model;
+using BlackStar.Algorithms;
 
 namespace HelloBlackStar
 {
@@ -13,9 +14,31 @@ namespace HelloBlackStar
             EnvModel.InitializeEnvModel();
             Console.WriteLine(LicensingOP.LicenseInfo);
             CreateResources();      //创建资源
-            CreateSampleCase();     //创建算例
+            DataSetBlackStar.dtSampleCaseRow samplcase = CreateSampleCase();     //创建算例
             CreateAvailability();   //创建可用性
             CreateAction();         //创建动作需求
+            Solve(samplcase);
+        }
+
+        private static void Solve(DataSetBlackStar.dtSampleCaseRow samplcase)
+        {
+            bool result = AlgorithmOP.ArrangeActionSimple(
+                samplcase,
+                "dilivery",
+                new DateTime(2020, 1, 20, 7, 0, 0),
+                 AlgorithmOP.PostponeOption.后移,
+                 TimeSpan.FromDays(1),
+                 false,
+                 Guid.Empty,
+                 true,
+                 "",
+                 ""
+                );
+            Console.WriteLine("安排成功" + result.ToString());
+            foreach(DataSetSampleCase.dtEventRow eventrow in samplcase.dsSampleCase.dtEvent.Rows)
+            {
+                Console.WriteLine($"{eventrow.事件名称} {eventrow.事件代号} {eventrow.开始.ToString()}");
+            }
         }
 
         private static void CreateAction()
@@ -25,6 +48,11 @@ namespace HelloBlackStar
             category.终结动作 = true;
             category.动作类别 = "默认动作类别";
             EnvModel.dsBlackStar.dtActionCategory.AdddtActionCategoryRow(category);
+
+            DataSetBlackStar.dtActionCategoryUnityRow unity = EnvModel.dsBlackStar.dtActionCategoryUnity.NewdtActionCategoryUnityRow();
+            unity.公共元素表达式 = "t ：consume carry 300sec";
+            EnvModel.dsBlackStar.dtActionCategoryUnity.AdddtActionCategoryUnityRow(unity);
+
             //创建一个动作
             DataSetBlackStar.dtActionRow action = EnvModel.dsBlackStar.dtAction.NewdtActionRow();
             action.动作类别= "默认动作类别";
@@ -39,15 +67,15 @@ namespace HelloBlackStar
             EnvModel.dsBlackStar.dtActionElement.AdddtActionElementRow(element);
         }
 
-        private static void CreateSampleCase()  //创建算例
+        private static DataSetBlackStar.dtSampleCaseRow CreateSampleCase()  //创建算例
         {
             DataSetBlackStar.dtSampleCaseRow sample = EnvModel.dsBlackStar.dtSampleCase.NewdtSampleCaseRow();
             sample.主算例 = true;
             sample.算例 = "算例1";
             sample.InitilizeSampleCase();
             EnvModel.dsBlackStar.dtSampleCase.AdddtSampleCaseRow(sample);
-
             DataSetSampleCase dsSample = new DataSetSampleCase(sample);
+            return sample;
         }
 
         private static void CreateResources()
@@ -69,8 +97,6 @@ namespace HelloBlackStar
             resource2.资源类别 = "车辆";
             EnvModel.dsBlackStar.dtResource.AdddtResourceRow(resource1);
             EnvModel.dsBlackStar.dtResource.AdddtResourceRow(resource2);
-            
-
         }
 
         private static void CreateAvailability()    //创建可用性

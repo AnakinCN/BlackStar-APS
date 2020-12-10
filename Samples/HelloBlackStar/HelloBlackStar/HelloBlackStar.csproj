@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlackStar.Algorithms" Version="1.0.6" />
     <PackageReference Include="BlackStar.Model" Version="1.0.6" />
   </ItemGroup>
 
