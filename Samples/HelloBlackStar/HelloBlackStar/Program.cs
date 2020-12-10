@@ -15,6 +15,28 @@ namespace HelloBlackStar
             CreateResources();      //创建资源
             CreateSampleCase();     //创建算例
             CreateAvailability();   //创建可用性
+            CreateAction();         //创建动作需求
+        }
+
+        private static void CreateAction()
+        {
+            //创建一个动作类别
+            DataSetBlackStar.dtActionCategoryRow category = EnvModel.dsBlackStar.dtActionCategory.NewdtActionCategoryRow();
+            category.终结动作 = true;
+            category.动作类别 = "默认动作类别";
+            EnvModel.dsBlackStar.dtActionCategory.AdddtActionCategoryRow(category);
+            //创建一个动作
+            DataSetBlackStar.dtActionRow action = EnvModel.dsBlackStar.dtAction.NewdtActionRow();
+            action.动作类别= "默认动作类别";
+            action.动作名称 = "运送";
+            action.动作代号 = "dilivery";
+            EnvModel.dsBlackStar.dtAction.AdddtActionRow(action);
+            //创建动作的具体步骤
+            DataSetBlackStar.dtActionElementRow element = EnvModel.dsBlackStar.dtActionElement.NewdtActionElementRow();
+            element.动作代号= "dilivery";
+            element.顺序 = 1;
+            element.约束 = "t";
+            EnvModel.dsBlackStar.dtActionElement.AdddtActionElementRow(element);
         }
 
         private static void CreateSampleCase()  //创建算例

@@ -16,3 +16,20 @@ WIKI:<a href="https://github.com/AnakinCN/BlackStar-APS/wiki">https://github.com
 <img src="./Read/shot1.png"/>
 <img src="./Read/shot2.png"/>
 <img src="./Read/shot3.png"/>
+
+<p><font size=2>注，如果看不见github上的图片，请增加如下内容至C:\Windows\System32\drivers\etc\hosts文件：<br>
+192.30.255.113    github.com<br>
+151.101.184.133    assets-cdn.github.com<br>
+151.101.184.133    raw.githubusercontent.com<br>
+151.101.184.133    gist.githubusercontent.com<br>
+151.101.184.133    cloud.githubusercontent.com<br>
+151.101.184.133    camo.githubusercontent.com<br>
+151.101.184.133    avatars0.githubusercontent.com<br>
+151.101.184.133    avatars1.githubusercontent.com<br>
+151.101.184.133    avatars2.githubusercontent.com<br>
+151.101.184.133    avatars3.githubusercontent.com<br>
+151.101.184.133    avatars4.githubusercontent.com<br>
+151.101.184.133    avatars5.githubusercontent.com<br>
+151.101.184.133    avatars6.githubusercontent.com<br>
+151.101.184.133    avatars7.githubusercontent.com<br>
+151.101.184.133    avatars8.githubusercontent.com<br></font>
