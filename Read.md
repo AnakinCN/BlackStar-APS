@@ -10,8 +10,8 @@ Contact <a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a> for l
 <font color=#0099ff>BlackStar</font>是一个通用的先进计划排程APS模型和算法解决方案，支持航天任务、无人系统、车队调度等诸多行业。BlackStar使用连续时间模型处理事件的精确时间，支持统一规划语言USL、规则以及甘特图下的拖拽，以简化行业应用。
 
 请联系<a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a>申请证书，之前需要检查机器的UID，请使用UID检查工具，并将显示的UID序列号在申请邮件内发送过来：<br>
-<a href="./UID Checker Linux/UID Checker Linux.rar">UID Checker Linux</a> (运行命令为 dotnet BlackStar.UIDCheckCore.dll，需要dotnet core运行时3.1环境) <br>
-<a href="./UID Checker Win/UID Checker Win.rar">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要dotnet core运行时3.1环境）
+<a href="./UID Checker Linux">UID Checker Linux</a> (运行命令为 dotnet BlackStar.UIDCheckCore.dll，需要dotnet core运行时3.1环境) <br>
+<a href="./UID Checker Win">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要dotnet core运行时3.1环境）
 
 WIKI:<a href="https://github.com/AnakinCN/BlackStar-APS/wiki">https://github.com/AnakinCN/BlackStar-APS/wiki</a>
 
