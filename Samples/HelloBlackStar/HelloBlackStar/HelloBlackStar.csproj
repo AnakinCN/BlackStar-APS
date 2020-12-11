@@ -3,11 +3,18 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>HelloBlackStar.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStar.Algorithms" Version="1.0.6" />
-    <PackageReference Include="BlackStar.Model" Version="1.0.6" />
+    <PackageReference Include="BlackStar.Algorithms" Version="1.0.8" />
+    <PackageReference Include="BlackStar.Model" Version="1.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="default.usl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
