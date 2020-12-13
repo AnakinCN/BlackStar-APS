@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\BlackStar-APS\\Samples\\HelloBlackStar\\HelloBlackStar.csproj": {}
+  },
+  "projects": {
+    "D:\\BlackStar-APS\\Samples\\HelloBlackStar\\HelloBlackStar.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\BlackStar-APS\\Samples\\HelloBlackStar\\HelloBlackStar.csproj",
+        "projectName": "HelloBlackStar",
+        "projectPath": "D:\\BlackStar-APS\\Samples\\HelloBlackStar\\HelloBlackStar.csproj",
+        "packagesPath": "C:\\Users\\Vader\\.nuget\\packages\\",
+        "outputPath": "D:\\BlackStar-APS\\Samples\\HelloBlackStar\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Vader\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "BlackStar.Algorithms": {
+              "target": "Package",
+              "version": "[1.0.9, )"
+            },
+            "BlackStar.Model": {
+              "target": "Package",
+              "version": "[1.0.9, )"
+            },
+            "BlackStar.USL": {
+              "target": "Package",
+              "version": "[1.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20601.7\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

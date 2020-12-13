@@ -23,10 +23,10 @@ namespace HelloBlackStar
 
             CreateModel();  //创建默认型号
             CreateResourcesServices();      //创建资源服务原型
-            DataSetBlackStar.dtSampleCaseRow samplcase = CreateSampleCase();     //创建算例
+            DataSetBlackStar.dtSampleCaseRow sampleCase = CreateSampleCase();     //创建算例
             CreateAvailability();   //创建可用性
             CreateAction();         //创建动作需求
-            Solve(samplcase);       //求解安排动作
+            Solve(sampleCase);       //求解安排动作
         }
 
         private static void CreateModel()

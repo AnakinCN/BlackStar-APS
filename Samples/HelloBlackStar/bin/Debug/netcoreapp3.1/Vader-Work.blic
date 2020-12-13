@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Id>66e11ef0-0a87-483a-a2f7-accc76ddbce7</Id>
+  <Type>Standard</Type>
+  <Expiration>Mon, 31 Dec 2029 16:00:00 GMT</Expiration>
+  <Quantity>5000</Quantity>
+  <ProductFeatures>
+    <Feature name="Machine">UFIOF8-1OIJ63Z-4K8NF0-126DE91</Feature>
+  </ProductFeatures>
+  <Customer>
+    <Name>Vader-Work</Name>
+    <Email></Email>
+  </Customer>
+  <Signature>MEQCID3lzX+ESicGENJ3EfqSSwndSGakGYz1YCOliKyFl1UPAiBdcnA7T1F0xifojPEvllq/Qa789GZmHd8Dyjj7Xzj3TA==</Signature>
+</License>
