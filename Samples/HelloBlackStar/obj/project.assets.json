@@ -2,13 +2,13 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "BlackStar.Algorithms/1.0.9": {
+      "BlackStar.Algorithms/1.1.0": {
         "type": "package",
         "dependencies": {
-          "BlackStar.EventAggregators": "1.0.9",
-          "BlackStar.Functions": "1.0.9",
-          "BlackStar.Model": "1.0.9",
-          "BlackStar.USL": "1.0.9"
+          "BlackStar.EventAggregators": "1.1.0",
+          "BlackStar.Functions": "1.1.0",
+          "BlackStar.Model": "1.1.0",
+          "BlackStar.USL": "1.1.0"
         },
         "compile": {
           "lib/netstandard2.0/BlackStar.Algorithms.dll": {}
@@ -17,7 +17,7 @@
           "lib/netstandard2.0/BlackStar.Algorithms.dll": {}
         }
       },
-      "BlackStar.EventAggregators/1.0.9": {
+      "BlackStar.EventAggregators/1.1.0": {
         "type": "package",
         "dependencies": {
           "Prism.Core": "8.0.0.1909"
@@ -29,7 +29,7 @@
           "lib/netstandard2.0/BlackStar.EventAggregators.dll": {}
         }
       },
-      "BlackStar.Functions/1.0.9": {
+      "BlackStar.Functions/1.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/BlackStar.Functions.dll": {}
@@ -38,11 +38,31 @@
           "lib/netstandard2.0/BlackStar.Functions.dll": {}
         }
       },
-      "BlackStar.Model/1.0.9": {
+      "BlackStar.IO/1.1.0": {
         "type": "package",
         "dependencies": {
-          "BlackStar.EventAggregators": "1.0.9",
-          "BlackStar.Functions": "1.0.9",
+          "BlackStar.Algorithms": "1.1.0",
+          "BlackStar.EventAggregators": "1.1.0",
+          "BlackStar.Functions": "1.1.0",
+          "BlackStar.Model": "1.1.0",
+          "ExcelDataReader.DataSet": "3.6.0",
+          "SharpZipLib": "1.3.1",
+          "System.Memory": "4.5.4",
+          "System.Runtime": "4.3.1",
+          "System.Text.Encoding": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/BlackStar.IO.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BlackStar.IO.dll": {}
+        }
+      },
+      "BlackStar.Model/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "BlackStar.EventAggregators": "1.1.0",
+          "BlackStar.Functions": "1.1.0",
           "GuerrillaNtp": "1.4.2",
           "Prism.Core": "8.0.0.1909",
           "Standard.Licensing": "1.1.5",
@@ -57,16 +77,37 @@
           "lib/netstandard2.0/BlackStar.Model.dll": {}
         }
       },
-      "BlackStar.USL/1.0.9": {
+      "BlackStar.USL/1.1.0": {
         "type": "package",
         "dependencies": {
-          "BlackStar.Model": "1.0.9"
+          "BlackStar.Model": "1.1.0"
         },
         "compile": {
           "lib/netstandard2.0/BlackStar.USL.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/BlackStar.USL.dll": {}
+        }
+      },
+      "ExcelDataReader/3.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ExcelDataReader.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ExcelDataReader.dll": {}
+        }
+      },
+      "ExcelDataReader.DataSet/3.6.0": {
+        "type": "package",
+        "dependencies": {
+          "ExcelDataReader": "3.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/ExcelDataReader.DataSet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ExcelDataReader.DataSet.dll": {}
         }
       },
       "GuerrillaNtp/1.4.2": {
@@ -87,7 +128,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Targets/1.1.0": {
+      "Microsoft.NETCore.Targets/1.1.3": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -122,6 +163,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Prism.dll": {}
+        }
+      },
+      "SharpZipLib/1.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
         }
       },
       "Standard.Licensing/1.1.5": {
@@ -171,11 +221,20 @@
           }
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "System.Runtime/4.3.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "Microsoft.NETCore.Targets": "1.1.0"
+          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Targets": "1.1.3"
         },
         "compile": {
           "ref/netstandard1.5/System.Runtime.dll": {}
@@ -219,6 +278,17 @@
           }
         }
       },
+      "System.Text.Encoding/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Text.Encoding.dll": {}
+        }
+      },
       "System.Threading/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -246,65 +316,120 @@
     }
   },
   "libraries": {
-    "BlackStar.Algorithms/1.0.9": {
-      "sha512": "OXcRX7tGxCkPNcZH6mm6R9sjrPJJEVjC9Lv/jQ9Iaul68A8wlGINXLZzWnA/td7NVyyuUeDjSiAsvXQ0O91FhQ==",
+    "BlackStar.Algorithms/1.1.0": {
+      "sha512": "y5zCvizxqMjL1kYl/PGMm3qbj375y1zP/SiR7g18aB7kUwhN4eZPAnTS7u8Wg9A23iV8BeYjfsEZjG7/gYhSFw==",
       "type": "package",
-      "path": "blackstar.algorithms/1.0.9",
+      "path": "blackstar.algorithms/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "blackstar.algorithms.1.0.9.nupkg.sha512",
+        "blackstar.algorithms.1.1.0.nupkg.sha512",
         "blackstar.algorithms.nuspec",
         "lib/netstandard2.0/BlackStar.Algorithms.dll"
       ]
     },
-    "BlackStar.EventAggregators/1.0.9": {
-      "sha512": "EvRbokCUuHO9djRl+309dmnTRl8ubG6qbbXpBdxZzSQQXWBBb+pDXnVP9EvC81GZ7LohPRtu/rqVhJFtKWVh2Q==",
+    "BlackStar.EventAggregators/1.1.0": {
+      "sha512": "DhzWcle4uPQCEQkwu7Erjwsj01AJwF085Bjnz01jCLdeuueJL8fwum6wxDUKVpRUaO0BLSOo4fizeLeCYYYQqA==",
       "type": "package",
-      "path": "blackstar.eventaggregators/1.0.9",
+      "path": "blackstar.eventaggregators/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "blackstar.eventaggregators.1.0.9.nupkg.sha512",
+        "blackstar.eventaggregators.1.1.0.nupkg.sha512",
         "blackstar.eventaggregators.nuspec",
         "lib/netstandard2.0/BlackStar.EventAggregators.dll"
       ]
     },
-    "BlackStar.Functions/1.0.9": {
-      "sha512": "Vpef4vg9QBCE1O/KgpEH3a2eJ5Tss9BNKwm4RQdRFwQ1tcZD/6v26yhESQ6iaFCWoneU1hxJdy1rnXjxlHjZBw==",
+    "BlackStar.Functions/1.1.0": {
+      "sha512": "zT/up/2Dcx3QcI5tB6Ppb7QOmDrsUnGcXd71BeLxuX0rz9GoUeZo5LojPV9FIe+psTw6UVPFm97w3XGdVXI6AQ==",
       "type": "package",
-      "path": "blackstar.functions/1.0.9",
+      "path": "blackstar.functions/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "License.txt",
-        "blackstar.functions.1.0.9.nupkg.sha512",
+        "blackstar.functions.1.1.0.nupkg.sha512",
         "blackstar.functions.nuspec",
         "lib/netstandard2.0/BlackStar.Functions.dll"
       ]
     },
-    "BlackStar.Model/1.0.9": {
-      "sha512": "tia2LcoSIcjIG1K6aW6zSJBHMv7hVMBecYav+NlFBWafeB87KKANsBtqi06JCwHtpdnbOEj2R2yf+YoqdE5izg==",
+    "BlackStar.IO/1.1.0": {
+      "sha512": "VaDtiaNjOVtoM50gqCHvVr7zJxPqqK6Vc5PExmw7tJcLgMUp8zK0qv3ONJSQkQDfsqA+rKaam5KBSPLRBhKxHA==",
       "type": "package",
-      "path": "blackstar.model/1.0.9",
+      "path": "blackstar.io/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "blackstar.model.1.0.9.nupkg.sha512",
+        "blackstar.io.1.1.0.nupkg.sha512",
+        "blackstar.io.nuspec",
+        "lib/netstandard2.0/BlackStar.IO.dll"
+      ]
+    },
+    "BlackStar.Model/1.1.0": {
+      "sha512": "0JccVyVY4wW8OlaQEXvpAQ/I/UtAiiwLwHaq7DnoDKRz1DglWR6Fi8Q0lntij4GliixDsYGTxuG6D4KEhwKVxA==",
+      "type": "package",
+      "path": "blackstar.model/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blackstar.model.1.1.0.nupkg.sha512",
         "blackstar.model.nuspec",
         "lib/netstandard2.0/BlackStar.Model.dll"
       ]
     },
-    "BlackStar.USL/1.0.9": {
-      "sha512": "vwNqlM3AlbPSeetxZFyfiAIAXuBeJS9DJ8D2QuTp8cU1S+Y2Vedu/tAxEt40Gb+cMkvJlJbvBrbi+1fu4mHX1w==",
+    "BlackStar.USL/1.1.0": {
+      "sha512": "dxJKDbs2sAZ5I8qwwsvQP1rOnox+SRYwIFZUrUZ2rKQbgnFIjBFdUo7Vm+jWeoZyIh56SRASb0WWEhz5TKDKwQ==",
       "type": "package",
-      "path": "blackstar.usl/1.0.9",
+      "path": "blackstar.usl/1.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "blackstar.usl.1.0.9.nupkg.sha512",
+        "blackstar.usl.1.1.0.nupkg.sha512",
         "blackstar.usl.nuspec",
         "lib/netstandard2.0/BlackStar.USL.dll"
+      ]
+    },
+    "ExcelDataReader/3.6.0": {
+      "sha512": "eXyxTwG7EEWpgQX3juZ2KcndqTqm/ydx9GXS2lUiMJU54U4h5eXdygRtVgINv0t60ezPWEb+lL7uM7Q+wm5BBA==",
+      "type": "package",
+      "path": "exceldatareader/3.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "exceldatareader.3.6.0.nupkg.sha512",
+        "exceldatareader.nuspec",
+        "lib/net20/ExcelDataReader.dll",
+        "lib/net20/ExcelDataReader.pdb",
+        "lib/net20/ExcelDataReader.xml",
+        "lib/net45/ExcelDataReader.dll",
+        "lib/net45/ExcelDataReader.pdb",
+        "lib/net45/ExcelDataReader.xml",
+        "lib/netstandard1.3/ExcelDataReader.dll",
+        "lib/netstandard1.3/ExcelDataReader.pdb",
+        "lib/netstandard1.3/ExcelDataReader.xml",
+        "lib/netstandard2.0/ExcelDataReader.dll",
+        "lib/netstandard2.0/ExcelDataReader.pdb",
+        "lib/netstandard2.0/ExcelDataReader.xml"
+      ]
+    },
+    "ExcelDataReader.DataSet/3.6.0": {
+      "sha512": "miW3sWmPXnLM38YadRIfnhL4W4QZajpS6Q/OqsOpFJU5ct8h+M/fMpbGMm5INtsMP0Y1k0WK0stIfSW3RP31Xg==",
+      "type": "package",
+      "path": "exceldatareader.dataset/3.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "exceldatareader.dataset.3.6.0.nupkg.sha512",
+        "exceldatareader.dataset.nuspec",
+        "lib/net20/ExcelDataReader.DataSet.dll",
+        "lib/net20/ExcelDataReader.DataSet.pdb",
+        "lib/net20/ExcelDataReader.DataSet.xml",
+        "lib/net35/ExcelDataReader.DataSet.dll",
+        "lib/net35/ExcelDataReader.DataSet.pdb",
+        "lib/net35/ExcelDataReader.DataSet.xml",
+        "lib/netstandard2.0/ExcelDataReader.DataSet.dll",
+        "lib/netstandard2.0/ExcelDataReader.DataSet.pdb",
+        "lib/netstandard2.0/ExcelDataReader.DataSet.xml"
       ]
     },
     "GuerrillaNtp/1.4.2": {
@@ -340,17 +465,17 @@
         "version.txt"
       ]
     },
-    "Microsoft.NETCore.Targets/1.1.0": {
-      "sha512": "aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+    "Microsoft.NETCore.Targets/1.1.3": {
+      "sha512": "3Wrmi0kJDzClwAC+iBdUBpEKmEle8FQNsCs77fkiOIw/9oYA07bL1EZNX0kQ2OMN3xpwvl0vAtOCYY3ndDNlhQ==",
       "type": "package",
-      "path": "microsoft.netcore.targets/1.1.0",
+      "path": "microsoft.netcore.targets/1.1.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.targets.1.1.0.nupkg.sha512",
+        "microsoft.netcore.targets.1.1.3.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
       ]
@@ -419,6 +544,24 @@
         "prism-logo.png",
         "prism.core.8.0.0.1909.nupkg.sha512",
         "prism.core.nuspec"
+      ]
+    },
+    "SharpZipLib/1.3.1": {
+      "sha512": "/iMph6bLdKzDhwM/vkAo4BU8z5QQnyodlkZon3XRMtRmVuWv5Rph1kaDmd9XjrQxjPJPuLquTSrkEoSPq/flVw==",
+      "type": "package",
+      "path": "sharpziplib/1.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/sharpziplib-nuget-256x256.png",
+        "lib/net45/ICSharpCode.SharpZipLib.dll",
+        "lib/net45/ICSharpCode.SharpZipLib.pdb",
+        "lib/net45/ICSharpCode.SharpZipLib.xml",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.pdb",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.xml",
+        "sharpziplib.1.3.1.nupkg.sha512",
+        "sharpziplib.nuspec"
       ]
     },
     "Standard.Licensing/1.1.5": {
@@ -507,10 +650,33 @@
         "version.txt"
       ]
     },
-    "System.Runtime/4.3.0": {
-      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+    "System.Memory/4.5.4": {
+      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
       "type": "package",
-      "path": "system.runtime/4.3.0",
+      "path": "system.memory/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime/4.3.1": {
+      "sha512": "abhfv1dTK6NXOmu4bgHIONxHyEqFjW8HwXPmpY9gmll+ix9UNo4XDcmzJn6oLooftxNssVHdJC1pGT9jkSynQg==",
+      "type": "package",
+      "path": "system.runtime/4.3.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -595,7 +761,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.runtime.4.3.0.nupkg.sha512",
+        "system.runtime.4.3.1.nupkg.sha512",
         "system.runtime.nuspec"
       ]
     },
@@ -699,6 +865,74 @@
         "system.security.principal.windows.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.Text.Encoding/4.3.0": {
+      "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
+      "type": "package",
+      "path": "system.text.encoding/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Text.Encoding.dll",
+        "ref/netcore50/System.Text.Encoding.xml",
+        "ref/netcore50/de/System.Text.Encoding.xml",
+        "ref/netcore50/es/System.Text.Encoding.xml",
+        "ref/netcore50/fr/System.Text.Encoding.xml",
+        "ref/netcore50/it/System.Text.Encoding.xml",
+        "ref/netcore50/ja/System.Text.Encoding.xml",
+        "ref/netcore50/ko/System.Text.Encoding.xml",
+        "ref/netcore50/ru/System.Text.Encoding.xml",
+        "ref/netcore50/zh-hans/System.Text.Encoding.xml",
+        "ref/netcore50/zh-hant/System.Text.Encoding.xml",
+        "ref/netstandard1.0/System.Text.Encoding.dll",
+        "ref/netstandard1.0/System.Text.Encoding.xml",
+        "ref/netstandard1.0/de/System.Text.Encoding.xml",
+        "ref/netstandard1.0/es/System.Text.Encoding.xml",
+        "ref/netstandard1.0/fr/System.Text.Encoding.xml",
+        "ref/netstandard1.0/it/System.Text.Encoding.xml",
+        "ref/netstandard1.0/ja/System.Text.Encoding.xml",
+        "ref/netstandard1.0/ko/System.Text.Encoding.xml",
+        "ref/netstandard1.0/ru/System.Text.Encoding.xml",
+        "ref/netstandard1.0/zh-hans/System.Text.Encoding.xml",
+        "ref/netstandard1.0/zh-hant/System.Text.Encoding.xml",
+        "ref/netstandard1.3/System.Text.Encoding.dll",
+        "ref/netstandard1.3/System.Text.Encoding.xml",
+        "ref/netstandard1.3/de/System.Text.Encoding.xml",
+        "ref/netstandard1.3/es/System.Text.Encoding.xml",
+        "ref/netstandard1.3/fr/System.Text.Encoding.xml",
+        "ref/netstandard1.3/it/System.Text.Encoding.xml",
+        "ref/netstandard1.3/ja/System.Text.Encoding.xml",
+        "ref/netstandard1.3/ko/System.Text.Encoding.xml",
+        "ref/netstandard1.3/ru/System.Text.Encoding.xml",
+        "ref/netstandard1.3/zh-hans/System.Text.Encoding.xml",
+        "ref/netstandard1.3/zh-hant/System.Text.Encoding.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.text.encoding.4.3.0.nupkg.sha512",
+        "system.text.encoding.nuspec"
       ]
     },
     "System.Threading/4.3.0": {
@@ -843,14 +1077,15 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "BlackStar.Algorithms >= 1.0.9",
-      "BlackStar.Model >= 1.0.9",
-      "BlackStar.USL >= 1.0.9"
+      "BlackStar.Algorithms >= 1.1.0",
+      "BlackStar.Functions >= 1.1.0",
+      "BlackStar.IO >= 1.1.0",
+      "BlackStar.Model >= 1.1.0",
+      "BlackStar.USL >= 1.1.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Vader\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Vader\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -861,9 +1096,6 @@
       "packagesPath": "C:\\Users\\Vader\\.nuget\\packages\\",
       "outputPath": "D:\\BlackStar-APS\\Samples\\HelloBlackStar\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\Vader\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -872,7 +1104,8 @@
         "netcoreapp3.1"
       ],
       "sources": {
-        "https://www.nuget.org/api/v2/": {}
+        "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
@@ -892,15 +1125,23 @@
         "dependencies": {
           "BlackStar.Algorithms": {
             "target": "Package",
-            "version": "[1.0.9, )"
+            "version": "[1.1.0, )"
+          },
+          "BlackStar.Functions": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "BlackStar.IO": {
+            "target": "Package",
+            "version": "[1.1.0, )"
           },
           "BlackStar.Model": {
             "target": "Package",
-            "version": "[1.0.9, )"
+            "version": "[1.1.0, )"
           },
           "BlackStar.USL": {
             "target": "Package",
-            "version": "[1.0.9, )"
+            "version": "[1.1.0, )"
           }
         },
         "imports": [

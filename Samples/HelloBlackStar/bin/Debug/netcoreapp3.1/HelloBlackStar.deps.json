@@ -8,51 +8,72 @@
     ".NETCoreApp,Version=v3.1": {
       "HelloBlackStar/1.0.0": {
         "dependencies": {
-          "BlackStar.Algorithms": "1.0.9",
-          "BlackStar.Model": "1.0.9",
-          "BlackStar.USL": "1.0.9"
+          "BlackStar.Algorithms": "1.1.0",
+          "BlackStar.Functions": "1.1.0",
+          "BlackStar.IO": "1.1.0",
+          "BlackStar.Model": "1.1.0",
+          "BlackStar.USL": "1.1.0"
         },
         "runtime": {
           "HelloBlackStar.dll": {}
         }
       },
-      "BlackStar.Algorithms/1.0.9": {
+      "BlackStar.Algorithms/1.1.0": {
         "dependencies": {
-          "BlackStar.EventAggregators": "1.0.9",
-          "BlackStar.Functions": "1.0.9",
-          "BlackStar.Model": "1.0.9",
-          "BlackStar.USL": "1.0.9"
+          "BlackStar.EventAggregators": "1.1.0",
+          "BlackStar.Functions": "1.1.0",
+          "BlackStar.Model": "1.1.0",
+          "BlackStar.USL": "1.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/BlackStar.Algorithms.dll": {
-            "assemblyVersion": "1.0.9.0",
-            "fileVersion": "1.0.9.0"
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
-      "BlackStar.EventAggregators/1.0.9": {
+      "BlackStar.EventAggregators/1.1.0": {
         "dependencies": {
           "Prism.Core": "8.0.0.1909"
         },
         "runtime": {
           "lib/netstandard2.0/BlackStar.EventAggregators.dll": {
-            "assemblyVersion": "1.0.9.0",
-            "fileVersion": "1.0.9.0"
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
-      "BlackStar.Functions/1.0.9": {
+      "BlackStar.Functions/1.1.0": {
         "runtime": {
           "lib/netstandard2.0/BlackStar.Functions.dll": {
-            "assemblyVersion": "1.0.9.0",
-            "fileVersion": "1.0.9.0"
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
-      "BlackStar.Model/1.0.9": {
+      "BlackStar.IO/1.1.0": {
         "dependencies": {
-          "BlackStar.EventAggregators": "1.0.9",
-          "BlackStar.Functions": "1.0.9",
+          "BlackStar.Algorithms": "1.1.0",
+          "BlackStar.EventAggregators": "1.1.0",
+          "BlackStar.Functions": "1.1.0",
+          "BlackStar.Model": "1.1.0",
+          "ExcelDataReader.DataSet": "3.6.0",
+          "SharpZipLib": "1.3.1",
+          "System.Memory": "4.5.4",
+          "System.Runtime": "4.3.1",
+          "System.Text.Encoding": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/BlackStar.IO.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "BlackStar.Model/1.1.0": {
+        "dependencies": {
+          "BlackStar.EventAggregators": "1.1.0",
+          "BlackStar.Functions": "1.1.0",
           "GuerrillaNtp": "1.4.2",
           "Prism.Core": "8.0.0.1909",
           "Standard.Licensing": "1.1.5",
@@ -62,19 +83,38 @@
         },
         "runtime": {
           "lib/netstandard2.0/BlackStar.Model.dll": {
-            "assemblyVersion": "1.0.9.0",
-            "fileVersion": "1.0.9.0"
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
-      "BlackStar.USL/1.0.9": {
+      "BlackStar.USL/1.1.0": {
         "dependencies": {
-          "BlackStar.Model": "1.0.9"
+          "BlackStar.Model": "1.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/BlackStar.USL.dll": {
-            "assemblyVersion": "1.0.9.0",
-            "fileVersion": "1.0.9.0"
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "ExcelDataReader/3.6.0": {
+        "runtime": {
+          "lib/netstandard2.0/ExcelDataReader.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.0"
+          }
+        }
+      },
+      "ExcelDataReader.DataSet/3.6.0": {
+        "dependencies": {
+          "ExcelDataReader": "3.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/ExcelDataReader.DataSet.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.0"
           }
         }
       },
@@ -87,7 +127,7 @@
         }
       },
       "Microsoft.NETCore.Platforms/5.0.0": {},
-      "Microsoft.NETCore.Targets/1.1.0": {},
+      "Microsoft.NETCore.Targets/1.1.3": {},
       "Microsoft.Win32.Registry/5.0.0": {
         "dependencies": {
           "System.Security.AccessControl": "5.0.0",
@@ -113,6 +153,14 @@
           "lib/netstandard2.0/Prism.dll": {
             "assemblyVersion": "8.0.0.1909",
             "fileVersion": "8.0.0.1909"
+          }
+        }
+      },
+      "SharpZipLib/1.3.1": {
+        "runtime": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {
+            "assemblyVersion": "1.3.1.9",
+            "fileVersion": "1.3.1.9"
           }
         }
       },
@@ -154,10 +202,11 @@
           }
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Memory/4.5.4": {},
+      "System.Runtime/4.3.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
-          "Microsoft.NETCore.Targets": "1.1.0"
+          "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
       "System.Security.AccessControl/5.0.0": {
@@ -202,17 +251,24 @@
           }
         }
       },
+      "System.Text.Encoding/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0",
+          "Microsoft.NETCore.Targets": "1.1.3",
+          "System.Runtime": "4.3.1"
+        }
+      },
       "System.Threading/4.3.0": {
         "dependencies": {
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading.Tasks": "4.3.0"
         }
       },
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
-          "Microsoft.NETCore.Targets": "1.1.0",
-          "System.Runtime": "4.3.0"
+          "Microsoft.NETCore.Targets": "1.1.3",
+          "System.Runtime": "4.3.1"
         }
       }
     }
@@ -223,40 +279,61 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BlackStar.Algorithms/1.0.9": {
+    "BlackStar.Algorithms/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OXcRX7tGxCkPNcZH6mm6R9sjrPJJEVjC9Lv/jQ9Iaul68A8wlGINXLZzWnA/td7NVyyuUeDjSiAsvXQ0O91FhQ==",
-      "path": "blackstar.algorithms/1.0.9",
-      "hashPath": "blackstar.algorithms.1.0.9.nupkg.sha512"
+      "sha512": "sha512-y5zCvizxqMjL1kYl/PGMm3qbj375y1zP/SiR7g18aB7kUwhN4eZPAnTS7u8Wg9A23iV8BeYjfsEZjG7/gYhSFw==",
+      "path": "blackstar.algorithms/1.1.0",
+      "hashPath": "blackstar.algorithms.1.1.0.nupkg.sha512"
     },
-    "BlackStar.EventAggregators/1.0.9": {
+    "BlackStar.EventAggregators/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EvRbokCUuHO9djRl+309dmnTRl8ubG6qbbXpBdxZzSQQXWBBb+pDXnVP9EvC81GZ7LohPRtu/rqVhJFtKWVh2Q==",
-      "path": "blackstar.eventaggregators/1.0.9",
-      "hashPath": "blackstar.eventaggregators.1.0.9.nupkg.sha512"
+      "sha512": "sha512-DhzWcle4uPQCEQkwu7Erjwsj01AJwF085Bjnz01jCLdeuueJL8fwum6wxDUKVpRUaO0BLSOo4fizeLeCYYYQqA==",
+      "path": "blackstar.eventaggregators/1.1.0",
+      "hashPath": "blackstar.eventaggregators.1.1.0.nupkg.sha512"
     },
-    "BlackStar.Functions/1.0.9": {
+    "BlackStar.Functions/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Vpef4vg9QBCE1O/KgpEH3a2eJ5Tss9BNKwm4RQdRFwQ1tcZD/6v26yhESQ6iaFCWoneU1hxJdy1rnXjxlHjZBw==",
-      "path": "blackstar.functions/1.0.9",
-      "hashPath": "blackstar.functions.1.0.9.nupkg.sha512"
+      "sha512": "sha512-zT/up/2Dcx3QcI5tB6Ppb7QOmDrsUnGcXd71BeLxuX0rz9GoUeZo5LojPV9FIe+psTw6UVPFm97w3XGdVXI6AQ==",
+      "path": "blackstar.functions/1.1.0",
+      "hashPath": "blackstar.functions.1.1.0.nupkg.sha512"
     },
-    "BlackStar.Model/1.0.9": {
+    "BlackStar.IO/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tia2LcoSIcjIG1K6aW6zSJBHMv7hVMBecYav+NlFBWafeB87KKANsBtqi06JCwHtpdnbOEj2R2yf+YoqdE5izg==",
-      "path": "blackstar.model/1.0.9",
-      "hashPath": "blackstar.model.1.0.9.nupkg.sha512"
+      "sha512": "sha512-VaDtiaNjOVtoM50gqCHvVr7zJxPqqK6Vc5PExmw7tJcLgMUp8zK0qv3ONJSQkQDfsqA+rKaam5KBSPLRBhKxHA==",
+      "path": "blackstar.io/1.1.0",
+      "hashPath": "blackstar.io.1.1.0.nupkg.sha512"
     },
-    "BlackStar.USL/1.0.9": {
+    "BlackStar.Model/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vwNqlM3AlbPSeetxZFyfiAIAXuBeJS9DJ8D2QuTp8cU1S+Y2Vedu/tAxEt40Gb+cMkvJlJbvBrbi+1fu4mHX1w==",
-      "path": "blackstar.usl/1.0.9",
-      "hashPath": "blackstar.usl.1.0.9.nupkg.sha512"
+      "sha512": "sha512-0JccVyVY4wW8OlaQEXvpAQ/I/UtAiiwLwHaq7DnoDKRz1DglWR6Fi8Q0lntij4GliixDsYGTxuG6D4KEhwKVxA==",
+      "path": "blackstar.model/1.1.0",
+      "hashPath": "blackstar.model.1.1.0.nupkg.sha512"
+    },
+    "BlackStar.USL/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dxJKDbs2sAZ5I8qwwsvQP1rOnox+SRYwIFZUrUZ2rKQbgnFIjBFdUo7Vm+jWeoZyIh56SRASb0WWEhz5TKDKwQ==",
+      "path": "blackstar.usl/1.1.0",
+      "hashPath": "blackstar.usl.1.1.0.nupkg.sha512"
+    },
+    "ExcelDataReader/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eXyxTwG7EEWpgQX3juZ2KcndqTqm/ydx9GXS2lUiMJU54U4h5eXdygRtVgINv0t60ezPWEb+lL7uM7Q+wm5BBA==",
+      "path": "exceldatareader/3.6.0",
+      "hashPath": "exceldatareader.3.6.0.nupkg.sha512"
+    },
+    "ExcelDataReader.DataSet/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-miW3sWmPXnLM38YadRIfnhL4W4QZajpS6Q/OqsOpFJU5ct8h+M/fMpbGMm5INtsMP0Y1k0WK0stIfSW3RP31Xg==",
+      "path": "exceldatareader.dataset/3.6.0",
+      "hashPath": "exceldatareader.dataset.3.6.0.nupkg.sha512"
     },
     "GuerrillaNtp/1.4.2": {
       "type": "package",
@@ -272,12 +349,12 @@
       "path": "microsoft.netcore.platforms/5.0.0",
       "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
     },
-    "Microsoft.NETCore.Targets/1.1.0": {
+    "Microsoft.NETCore.Targets/1.1.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
-      "path": "microsoft.netcore.targets/1.1.0",
-      "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+      "sha512": "sha512-3Wrmi0kJDzClwAC+iBdUBpEKmEle8FQNsCs77fkiOIw/9oYA07bL1EZNX0kQ2OMN3xpwvl0vAtOCYY3ndDNlhQ==",
+      "path": "microsoft.netcore.targets/1.1.3",
+      "hashPath": "microsoft.netcore.targets.1.1.3.nupkg.sha512"
     },
     "Microsoft.Win32.Registry/5.0.0": {
       "type": "package",
@@ -292,6 +369,13 @@
       "sha512": "sha512-Ri+iSFvJiSKYdui7qtxi3uH9NImSZ8Jl/nOosxScSJseFwAc8Lz63JLXoqSAQglcX13DzZcAMzpKNuA9rCFiJg==",
       "path": "prism.core/8.0.0.1909",
       "hashPath": "prism.core.8.0.0.1909.nupkg.sha512"
+    },
+    "SharpZipLib/1.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iMph6bLdKzDhwM/vkAo4BU8z5QQnyodlkZon3XRMtRmVuWv5Rph1kaDmd9XjrQxjPJPuLquTSrkEoSPq/flVw==",
+      "path": "sharpziplib/1.3.1",
+      "hashPath": "sharpziplib.1.3.1.nupkg.sha512"
     },
     "Standard.Licensing/1.1.5": {
       "type": "package",
@@ -321,12 +405,19 @@
       "path": "system.management/5.0.0",
       "hashPath": "system.management.5.0.0.nupkg.sha512"
     },
-    "System.Runtime/4.3.0": {
+    "System.Memory/4.5.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
-      "path": "system.runtime/4.3.0",
-      "hashPath": "system.runtime.4.3.0.nupkg.sha512"
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+    },
+    "System.Runtime/4.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-abhfv1dTK6NXOmu4bgHIONxHyEqFjW8HwXPmpY9gmll+ix9UNo4XDcmzJn6oLooftxNssVHdJC1pGT9jkSynQg==",
+      "path": "system.runtime/4.3.1",
+      "hashPath": "system.runtime.4.3.1.nupkg.sha512"
     },
     "System.Security.AccessControl/5.0.0": {
       "type": "package",
@@ -341,6 +432,13 @@
       "sha512": "sha512-t0MGLukB5WAVU9bO3MGzvlGnyJPgUlcwerXn1kzBRjwLKixT96XV0Uza41W49gVd8zEMFu9vQEFlv0IOrytICA==",
       "path": "system.security.principal.windows/5.0.0",
       "hashPath": "system.security.principal.windows.5.0.0.nupkg.sha512"
+    },
+    "System.Text.Encoding/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
+      "path": "system.text.encoding/4.3.0",
+      "hashPath": "system.text.encoding.4.3.0.nupkg.sha512"
     },
     "System.Threading/4.3.0": {
       "type": "package",

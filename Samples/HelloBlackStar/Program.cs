@@ -23,10 +23,10 @@ namespace HelloBlackStar
 
             CreateModel();  //创建默认型号
             CreateResourcesServices();      //创建资源服务原型
-            DataSetBlackStar.dtSampleCaseRow sampleCase = CreateSampleCase();     //创建算例
+            DataSetBlackStar.dtSampleCaseRow samplcase = CreateSampleCase();     //创建算例
             CreateAvailability();   //创建可用性
             CreateAction();         //创建动作需求
-            Solve(sampleCase);       //求解安排动作
+            Solve(samplcase);       //求解安排动作
         }
 
         private static void CreateModel()
@@ -51,7 +51,7 @@ namespace HelloBlackStar
                 samplcase,
                 "delivery",
                 new DateTime(2020, 1, 1, 0, 0, 0),
-                 AlgorithmOP.PostponeOption.后移,
+                 PostponeOption.后移,
                  TimeSpan.FromDays(1),
                  false,
                  Guid.Empty,
@@ -60,6 +60,7 @@ namespace HelloBlackStar
                  ""
                 );
             Console.WriteLine("安排成功：" + result.ToString());
+            Console.WriteLine("事件：");
             foreach (DataSetSampleCase.dtEventRow eventrow in samplcase.dsSampleCase.dtEvent.Rows)
             {
                 Console.WriteLine($"{eventrow.事件名称} {eventrow.事件代号} {eventrow.开始} {eventrow.结束}");

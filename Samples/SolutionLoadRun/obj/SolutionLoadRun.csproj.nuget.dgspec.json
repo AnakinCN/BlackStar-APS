@@ -13,9 +13,6 @@
         "packagesPath": "C:\\Users\\Vader\\.nuget\\packages\\",
         "outputPath": "D:\\BlackStar-APS\\Samples\\SolutionLoadRun\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Vader\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -24,7 +21,8 @@
           "netcoreapp3.1"
         ],
         "sources": {
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -41,28 +39,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "dependencies": {
-            "BlackStar.IO": {
-              "target": "Package",
-              "version": "[1.0.9, )"
-            },
-            "BlackStar.Model": {
-              "target": "Package",
-              "version": "[1.0.9, )"
-            },
-            "BlackStar.Rules": {
-              "target": "Package",
-              "version": "[1.0.9.1, )"
-            },
-            "BlackStar.USL": {
-              "target": "Package",
-              "version": "[1.0.9, )"
-            },
-            "IronPython": {
-              "target": "Package",
-              "version": "[2.7.11, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

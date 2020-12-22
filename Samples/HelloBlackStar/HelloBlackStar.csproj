@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStar.Algorithms" Version="1.0.9" />
-    <PackageReference Include="BlackStar.Model" Version="1.0.9" />
-    <PackageReference Include="BlackStar.USL" Version="1.0.9" />
+    <PackageReference Include="BlackStar.Algorithms" Version="1.1.0" />
+    <PackageReference Include="BlackStar.Functions" Version="1.1.0" />
+    <PackageReference Include="BlackStar.IO" Version="1.1.0" />
+    <PackageReference Include="BlackStar.Model" Version="1.1.0" />
+    <PackageReference Include="BlackStar.USL" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
