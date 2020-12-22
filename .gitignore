@@ -2,9 +2,3 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-*/.vs
-/Samples/HelloBlackStar/bin/Debug/netcoreapp3.1
-/Samples/HelloBlackStar/obj
-/Samples/SolutionLoadRun/bin
-/Samples/SolutionLoadRun/obj
-/.vs
