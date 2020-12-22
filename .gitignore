@@ -8,3 +8,5 @@
 /Samples/SolutionLoadRun/obj
 /Samples/.vs/Samples/v16
 /Samples/HelloBlackStar/bin/Debug/netcoreapp3.1
+/Samples/.vs/Samples/DesignTimeBuild
+/Samples/SolutionLoadRun/bin/Debug/netcoreapp3.1

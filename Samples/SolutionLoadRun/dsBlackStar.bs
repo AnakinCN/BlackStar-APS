@@ -1,0 +1,97 @@
+<?xml version="1.0" standalone="yes"?>
+<DataSetBlackStar xmlns="http://BlackStar/DataSetBlackStar.xsd">
+  <dtModel>
+    <型号族>车队</型号族>
+    <启用>true</启用>
+    <dtModelConfig>
+      <型号族>车队</型号族>
+      <参数名>特征点正则表达式</参数名>
+      <参数值>T[a-z_]*\d*</参数值>
+    </dtModelConfig>
+  </dtModel>
+  <dtResourceCategory>
+    <资源类别>车辆</资源类别>
+    <dtResource>
+      <资源类别>车辆</资源类别>
+      <资源名称>大型车1</资源名称>
+      <资源代号>large1</资源代号>
+      <资源备用代号 />
+      <资源颜色>#FFFFFFFF</资源颜色>
+    </dtResource>
+    <dtResource>
+      <资源类别>车辆</资源类别>
+      <资源名称>小型车1</资源名称>
+      <资源代号>small1</资源代号>
+      <资源备用代号 />
+      <资源颜色>#FFFFFFFF</资源颜色>
+    </dtResource>
+  </dtResourceCategory>
+  <dtTrace>
+    <时间>2020-12-22T21:09:36.9040677+08:00</时间>
+    <消息>规则加载：未加载当前型号库</消息>
+    <追踪 />
+    <追踪2 />
+    <种类 />
+    <目标 />
+    <前景颜色>Red</前景颜色>
+    <背景颜色>#FFFFFFFF</背景颜色>
+  </dtTrace>
+  <dtTrace>
+    <时间>2020-12-22T21:09:36.942196+08:00</时间>
+    <消息>规则加载：未加载当前型号库</消息>
+    <追踪 />
+    <追踪2 />
+    <种类 />
+    <目标 />
+    <前景颜色>Red</前景颜色>
+    <背景颜色>#FFFFFFFF</背景颜色>
+  </dtTrace>
+  <dtActionCategory>
+    <动作类别>默认动作类别</动作类别>
+    <动作类别参数表 />
+    <动作类别颜色>#FFFFFFFF</动作类别颜色>
+    <终结动作>true</终结动作>
+    <动作代号模式>\S+</动作代号模式>
+    <dtActionCategoryUnity>
+      <动作类别>默认动作类别</动作类别>
+      <公共元素表达式>t ：consume carry 20sec</公共元素表达式>
+    </dtActionCategoryUnity>
+    <dtAction>
+      <动作代号>delivery</动作代号>
+      <动作名称>运送</动作名称>
+      <动作参数表 />
+      <动作类别>默认动作类别</动作类别>
+      <dtActionElement>
+        <动作代号>delivery</动作代号>
+        <顺序>1</顺序>
+        <段 />
+        <约束>t</约束>
+        <元素代号>delivery</元素代号>
+        <元素名称 />
+        <元素类型 />
+        <元素颜色>#FFFFFFFF</元素颜色>
+        <元素参数赋值 />
+        <次数 />
+        <条件 />
+        <持续>20s</持续>
+        <间隔 />
+        <元素表达式 />
+      </dtActionElement>
+    </dtAction>
+  </dtActionCategory>
+  <dtServiceCategory>
+    <服务类别>默认服务类别</服务类别>
+    <dtService>
+      <服务类别>默认服务类别</服务类别>
+      <服务名称>运载</服务名称>
+      <服务颜色>#FFFFFFFF</服务颜色>
+      <服务代号>carry</服务代号>
+    </dtService>
+  </dtServiceCategory>
+  <dtSampleCase>
+    <算例>算例1</算例>
+    <进度 />
+    <生成>true</生成>
+    <主算例>true</主算例>
+  </dtSampleCase>
+</DataSetBlackStar>
