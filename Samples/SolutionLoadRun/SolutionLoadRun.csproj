@@ -6,18 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStar.Algorithms" Version="1.1.0" />
-    <PackageReference Include="BlackStar.EventAggregators" Version="1.1.0" />
-    <PackageReference Include="BlackStar.Functions" Version="1.1.0" />
-    <PackageReference Include="BlackStar.IO" Version="1.1.0" />
-    <PackageReference Include="BlackStar.Model" Version="1.1.0" />
-    <PackageReference Include="BlackStar.Rules" Version="1.1.0" />
-    <PackageReference Include="BlackStar.USL" Version="1.1.0" />
+    <PackageReference Include="BlackStar.Rules" Version="1.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="default.usl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="dsBlackStar.bs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

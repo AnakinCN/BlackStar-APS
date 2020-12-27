@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Linq;
-using BlackStar;
 using BlackStar.Model;
 using BlackStar.Algorithms;
 using BlackStar.USL;
-using System.Xml.Schema;
+using BlackStar.Rules;
+using BlackStar.EventAggregators;
 
 namespace HelloBlackStar
 {
@@ -17,16 +16,55 @@ namespace HelloBlackStar
             //Console.ReadLine();
             EnvModel.InitializeEnvModel();
             Console.WriteLine(LicensingOP.LicenseInfo);
-
             USLManagerOP.InitializeUSLOP();
-            USLManagerOP.dsUSL.ReadXml("default.usl");
-
+            USLManagerOP.dsUSL.ReadXml("default.usl");  //读入USL基本配置
             CreateModel();  //创建默认型号
             CreateResourcesServices();      //创建资源服务原型
-            DataSetBlackStar.dtSampleCaseRow samplcase = CreateSampleCase();     //创建算例
-            CreateAvailability();   //创建可用性
+            DataSetBlackStar.dtSampleCaseRow samplecase = CreateSampleCase();     //创建算例
+
+            RuleOP.InitilizeRuleOP();   //初始化RuleOP
+
             CreateAction();         //创建动作需求
-            Solve(samplcase);       //求解安排动作
+            CreateAvailability();   //创建可用性
+            CreateDemand();           //创建规则
+            EnvModel.dsBlackStar.WriteXml("dsBlackStar.bs");
+
+            BlackStar.EventAggregators.EventOP.OverAllNotifyEventAggregator.GetEvent<NotifyEvent>().Subscribe(NotifyEventHandler, true);    //监听规则执行完毕事件
+            RuleOP.Execute("算例");   //开始执行规则
+            while (true)
+                Console.ReadLine();
+
+            //samplecase.dsSampleCase.WriteXml("dsSampleCase.bs");
+        }
+
+        private static void NotifyEventHandler(string NotifyMessage)
+        {
+            switch (NotifyMessage)
+            {
+                case "RuleExecuteComplete":
+                    PrintResult();
+                    break;
+            }
+        }
+
+        private static void CreateDemand()
+        {
+
+            //规则
+            Guid id = Guid.NewGuid();
+            DataSetBlackStar.dtRuleRow rule = EnvModel.dsBlackStar.dtRule.NewdtRuleRow();
+            rule.规则ID = id;
+            rule.分组 = "默认";
+            rule.规则 = "通用：用简单约束安排动作";
+            rule.默认参数 = "安排表达式";
+            rule.取值 = "2020-1-1 0:0:0 ：delivery";
+            rule.有效 = true;
+            //rule.组内顺序 = 1;
+            EnvModel.dsBlackStar.dtRule.AdddtRuleRow(rule);
+
+            rule.SetPara("顺延选项", "后移");
+            rule.SetPara("最大顺延", "1d");
+            rule.SetPara("允许更换资源", "False");
         }
 
         private static void CreateModel()
@@ -61,6 +99,12 @@ namespace HelloBlackStar
                 );
             Console.WriteLine("安排成功：" + result.ToString());
             Console.WriteLine("事件：");
+        }
+
+        private static void PrintResult()
+        {
+            DataSetBlackStar.dtSampleCaseRow samplcase = EnvModel.dsBlackStar.dtSampleCase.Rows[0] as DataSetBlackStar.dtSampleCaseRow;
+            Console.WriteLine("事件结果：");
             foreach (DataSetSampleCase.dtEventRow eventrow in samplcase.dsSampleCase.dtEvent.Rows)
             {
                 Console.WriteLine($"{eventrow.事件名称} {eventrow.事件代号} {eventrow.开始} {eventrow.结束}");
@@ -106,7 +150,6 @@ namespace HelloBlackStar
             sample.算例 = "算例1";
             sample.InitilizeSampleCase();
             EnvModel.dsBlackStar.dtSampleCase.AdddtSampleCaseRow(sample);
-            DataSetSampleCase dsSample = new DataSetSampleCase(sample);
             return sample;
         }
 
@@ -141,48 +184,43 @@ namespace HelloBlackStar
             service.服务代号 = "carry";
             service.服务名称 = "运载";
             EnvModel.dsBlackStar.dtService.AdddtServiceRow(service);
+
+            foreach (DataSetBlackStar.dtRuleRow rule in EnvModel.dsBlackStar.dtRule.Rows)
+            {
+                Console.WriteLine($"{rule.组内顺序}   {rule.取值}");
+            }
         }
 
         private static void CreateAvailability()    //创建可用性
         {
+            //规则分组
+            DataSetBlackStar.dtRuleGroupRow group = EnvModel.dsBlackStar.dtRuleGroup.NewdtRuleGroupRow();
+            group.分组 = "默认";
+            group.分组顺序 = 1;
+            EnvModel.dsBlackStar.dtRuleGroup.AdddtRuleGroupRow(group);
+
             //创建算例可用性
-            DataSetBlackStar.dtSampleCaseRow sample = EnvModel.dsBlackStar.dtSampleCase.Rows.Cast<DataSetBlackStar.dtSampleCaseRow>().FirstOrDefault();
 
             for (int i = 0; i < 8; i++)
             {
-                DataSetSampleCase.dtAvailabilityRow avail = sample.dsSampleCase.dtAvailability.NewdtAvailabilityRow();
-                avail.可用性ID = Guid.NewGuid();
-                avail.资源代号 = "large1";
-                avail.服务代号 = "carry";
-                avail.可用性描述 = "large1 carry 1";
-                avail.可用性类型 = "常值";
-                avail.启用 = true;
-                avail.开始 = new DateTime(2020, 1, 1, 8 + i, 0, 0); //每隔1小时
-                avail.结束 = new DateTime(2020, 1, 1, 8 + i, 10, 0); //服务10分钟
-                sample.dsSampleCase.dtAvailability.AdddtAvailabilityRow(avail);
-                sample.dsSampleCase.dtRemain.CreateInitialRemain(avail);
-                sample.dsSampleCase.dtResourceAvailability.CreateResource(avail);
+                DataSetBlackStar.dtRuleRow rule = EnvModel.dsBlackStar.dtRule.NewdtRuleRow();
+                rule.分组 = "默认";
+                rule.规则ID = Guid.NewGuid();
+                rule.规则 = "通用：创建资源服务";
+                rule.默认参数 = "可用性表达式";
+                rule.取值 = $"{new DateTime(2020, 1, 1, 8 + i, 0, 0)} ~ {new DateTime(2020, 1, 1, 8 + i, 10, 0)} ：large1 carry 1";
+                EnvModel.dsBlackStar.dtRule.AdddtRuleRow(rule);
             }
 
             for (int i = 0; i < 16; i++)
             {
-                DataSetSampleCase.dtAvailabilityRow avail = sample.dsSampleCase.dtAvailability.NewdtAvailabilityRow();
-                avail.可用性ID = Guid.NewGuid();
-                avail.资源代号 = "small1";
-                avail.服务代号 = "carry";
-                avail.可用性描述 = "small1 carry 1";
-                avail.可用性类型 = "常值";
-                avail.启用 = true;
-                avail.开始 = new DateTime(2020, 1, 1, 8 + i, 0, 0); //每隔1小时
-                avail.结束 = new DateTime(2020, 1, 1, 8 + i, 10, 0); //服务10分钟
-                sample.dsSampleCase.dtAvailability.AdddtAvailabilityRow(avail);
-                sample.dsSampleCase.dtRemain.CreateInitialRemain(avail);
-                sample.dsSampleCase.dtResourceAvailability.CreateResource(avail);
-            }
-
-            foreach (DataSetSampleCase.dtAvailabilityRow avail in sample.dsSampleCase.dtAvailability.Rows)
-            {
-                Console.WriteLine($"{avail.资源代号} {avail.服务代号} {avail.开始.ToString("yyyy-MM-dd HH:mm")} {avail.结束.ToString("yyyy-MM-dd HH:mm")}");
+                DataSetBlackStar.dtRuleRow rule = EnvModel.dsBlackStar.dtRule.NewdtRuleRow();
+                rule.分组 = "默认";
+                rule.规则ID = Guid.NewGuid();
+                rule.规则 = "通用：创建资源服务";
+                rule.默认参数 = "可用性表达式";
+                rule.取值 = $"{new DateTime(2020, 1, 1, 8 + i, 0, 0)} ~ {new DateTime(2020, 1, 1, 8 + i, 10, 0)} ：small1 carry 1";
+                EnvModel.dsBlackStar.dtRule.AdddtRuleRow(rule);
             }
         }
     }

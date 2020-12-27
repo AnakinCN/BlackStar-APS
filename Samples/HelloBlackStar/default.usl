@@ -489,6 +489,13 @@
       <符号代号>PARAS</符号代号>
       <参数 />
     </dtSymbolPattern>
+    <dtSymbolPattern>
+      <模式>[RES][SRV][NUM]</模式>
+      <优先级>0</优先级>
+      <函数 />
+      <符号代号>PARAS</符号代号>
+      <参数 />
+    </dtSymbolPattern>
   </dtSymbol>
   <dtSymbol>
     <符号代号>EQUAL</符号代号>

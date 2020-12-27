@@ -4,6 +4,7 @@ using BlackStar;
 using BlackStar.Model;
 using BlackStar.Algorithms;
 using BlackStar.USL;
+using BlackStar.Rules;
 
 namespace SolutionLoadRun
 {
@@ -18,21 +19,11 @@ namespace SolutionLoadRun
             USLManagerOP.InitializeUSLOP();
             USLManagerOP.dsUSL.ReadXml("default.usl");
             EnvModel.dsBlackStar.ReadXml("dsBlackStar.bs");
+            RuleOP.Execute("算例");
 
-            DataSetBlackStar.dtSampleCaseRow samplcase = CreateSampleCase();     //创建算例
-
+            Console.ReadLine();
             
         }
 
-        private static DataSetBlackStar.dtSampleCaseRow CreateSampleCase()  //创建算例
-        {
-            DataSetBlackStar.dtSampleCaseRow sample = EnvModel.dsBlackStar.dtSampleCase.NewdtSampleCaseRow();
-            sample.主算例 = true;
-            sample.算例 = "算例1";
-            sample.InitilizeSampleCase();
-            EnvModel.dsBlackStar.dtSampleCase.AdddtSampleCaseRow(sample);
-            DataSetSampleCase dsSample = new DataSetSampleCase(sample);
-            return sample;
-        }
     }
 }
