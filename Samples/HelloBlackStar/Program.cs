@@ -1,6 +1,5 @@
 ﻿using System;
 using BlackStar.Model;
-using BlackStar.Algorithms;
 using BlackStar.USL;
 using BlackStar.Rules;
 using BlackStar.EventAggregators;
@@ -13,35 +12,32 @@ namespace HelloBlackStar
         {
             Console.WriteLine("Hello BlackStar-APS!");
 
-            //Console.ReadLine();
             EnvModel.InitializeEnvModel();
             Console.WriteLine(LicensingOP.LicenseInfo);
-            USLManagerOP.InitializeUSLOP();
+
+            USLManagerOP.InitializeUSLOP();             //初始化USL引擎
             USLManagerOP.dsUSL.ReadXml("default.usl");  //读入USL基本配置
-            CreateModel();  //创建默认型号
-            CreateResourcesServices();      //创建资源服务原型
-            DataSetBlackStar.dtSampleCaseRow samplecase = CreateSampleCase();     //创建算例
+            CreateModel();                              //创建默认型号
+            CreateResourcesServices();                  //创建资源服务原型
+            CreateSampleCase();                         //创建算例
+            RuleOP.InitilizeRuleOP();                   //初始化规则引擎
 
-            RuleOP.InitilizeRuleOP();   //初始化RuleOP
-
-            CreateAction();         //创建动作需求
+            CreateAction();         //创建动作原型
             CreateAvailability();   //创建可用性
-            CreateDemand();           //创建规则
-            EnvModel.dsBlackStar.WriteXml("dsBlackStar.bs");
+            CreateDemand();         //创建调度需求
+            EnvModel.dsBlackStar.WriteXml("dsBlackStar.bs");    
 
             BlackStar.EventAggregators.EventOP.OverAllNotifyEventAggregator.GetEvent<NotifyEvent>().Subscribe(NotifyEventHandler, true);    //监听规则执行完毕事件
             RuleOP.Execute("算例");   //开始执行规则
             while (true)
                 Console.ReadLine();
-
-            //samplecase.dsSampleCase.WriteXml("dsSampleCase.bs");
         }
 
         private static void NotifyEventHandler(string NotifyMessage)
         {
             switch (NotifyMessage)
             {
-                case "RuleExecuteComplete":
+                case "RuleExecuteComplete":     //当规则执行完毕会发出该消息
                     PrintResult();
                     break;
             }
@@ -49,7 +45,6 @@ namespace HelloBlackStar
 
         private static void CreateDemand()
         {
-
             //规则
             Guid id = Guid.NewGuid();
             DataSetBlackStar.dtRuleRow rule = EnvModel.dsBlackStar.dtRule.NewdtRuleRow();
@@ -59,15 +54,15 @@ namespace HelloBlackStar
             rule.默认参数 = "安排表达式";
             rule.取值 = "2020-1-1 0:0:0 ：delivery";
             rule.有效 = true;
-            //rule.组内顺序 = 1;
             EnvModel.dsBlackStar.dtRule.AdddtRuleRow(rule);
 
+            //规则参数
             rule.SetPara("顺延选项", "后移");
             rule.SetPara("最大顺延", "1d");
             rule.SetPara("允许更换资源", "False");
         }
 
-        private static void CreateModel()
+        private static void CreateModel()   //创建默认型号
         {
             DataSetBlackStar.dtModelRow model = EnvModel.dsBlackStar.dtModel.NewdtModelRow();
             model.型号族 = "车队";
@@ -83,25 +78,7 @@ namespace HelloBlackStar
             EnvModel.CurrentModel = "车队";
         }
 
-        private static void Solve(DataSetBlackStar.dtSampleCaseRow samplcase)
-        {
-            bool result = AlgorithmOP.ArrangeActionSimple(
-                samplcase,
-                "delivery",
-                new DateTime(2020, 1, 1, 0, 0, 0),
-                 PostponeOption.后移,
-                 TimeSpan.FromDays(1),
-                 false,
-                 Guid.Empty,
-                 true,
-                 "",
-                 ""
-                );
-            Console.WriteLine("安排成功：" + result.ToString());
-            Console.WriteLine("事件：");
-        }
-
-        private static void PrintResult()
+        private static void PrintResult()   //输出结果
         {
             DataSetBlackStar.dtSampleCaseRow samplcase = EnvModel.dsBlackStar.dtSampleCase.Rows[0] as DataSetBlackStar.dtSampleCaseRow;
             Console.WriteLine("事件结果：");
@@ -111,7 +88,7 @@ namespace HelloBlackStar
             }
         }
 
-        private static void CreateAction()
+        private static void CreateAction()  //创建动作原型
         {
             //创建一个动作类别
             DataSetBlackStar.dtActionCategoryRow category = EnvModel.dsBlackStar.dtActionCategory.NewdtActionCategoryRow();
@@ -153,9 +130,8 @@ namespace HelloBlackStar
             return sample;
         }
 
-        private static void CreateResourcesServices()
+        private static void CreateResourcesServices()   //创建资源原型
         {
-
             //创建车辆资源类别
             DataSetBlackStar.dtResourceCategoryRow category = EnvModel.dsBlackStar.dtResourceCategory.NewdtResourceCategoryRow();
             category.资源类别 = "车辆";
@@ -199,8 +175,7 @@ namespace HelloBlackStar
             group.分组顺序 = 1;
             EnvModel.dsBlackStar.dtRuleGroup.AdddtRuleGroupRow(group);
 
-            //创建算例可用性
-
+            //创建可用性
             for (int i = 0; i < 8; i++)
             {
                 DataSetBlackStar.dtRuleRow rule = EnvModel.dsBlackStar.dtRule.NewdtRuleRow();
