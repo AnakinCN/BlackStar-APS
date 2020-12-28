@@ -11,15 +11,15 @@ namespace SolutionLoadRun
         static void Main(string[] args)
         {
             Console.WriteLine("Load a BlackStar solution and solve");
-            EnvModel.InitializeEnvModel();
-            Console.WriteLine(LicensingOP.LicenseInfo);
+            EnvModel.InitializeEnvModel();                              //第1行，初始化型号
+            Console.WriteLine(LicensingOP.LicenseInfo);                 
 
-            USLManagerOP.InitializeUSLOP();
-            USLManagerOP.dsUSL.ReadXml("default.usl");
-            EnvModel.dsBlackStar.ReadXml("dsBlackStar.bs");
-            BlackStar.EventAggregators.EventOP.OverAllNotifyEventAggregator.GetEvent<NotifyEvent>().Subscribe(NotifyEventHandler, true);    //监听规则执行完毕事件
-            RuleOP.Execute("算例");
-            while(true)
+            USLManagerOP.InitializeUSLOP();                             //第2行，初始化USL引擎
+            USLManagerOP.dsUSL.ReadXml("default.usl");                  //第3行，读取USL基本配置
+            EnvModel.dsBlackStar.ReadXml("dsBlackStar.bs");             //第4行，读取规划方案
+            BlackStar.EventAggregators.EventOP.OverAllNotifyEventAggregator.GetEvent<NotifyEvent>().Subscribe(NotifyEventHandler, true);    //第5行，监听规则执行完毕事件
+            RuleOP.Execute("算例");                                     //第6行，执行规则
+            while (true)
                 Console.ReadLine();
         }
 
