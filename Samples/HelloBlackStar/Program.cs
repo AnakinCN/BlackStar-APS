@@ -125,8 +125,8 @@ namespace HelloBlackStar
             DataSetBlackStar.dtSampleCaseRow sample = EnvModel.dsBlackStar.dtSampleCase.NewdtSampleCaseRow();
             sample.主算例 = true;
             sample.算例 = "算例1";
-            sample.InitilizeSampleCase();
             EnvModel.dsBlackStar.dtSampleCase.AdddtSampleCaseRow(sample);
+            sample.InitilizeSampleCase();
             return sample;
         }
 
