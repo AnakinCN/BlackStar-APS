@@ -16,7 +16,7 @@ namespace HelloBlackStar
             Console.WriteLine(LicensingOP.LicenseInfo);
 
             USLManagerOP.InitializeUSLOP();             //初始化USL引擎
-            USLManagerOP.dsUSL.ReadXml("default.usl");  //读入USL基本配置
+            USLManagerOP.dsUSL.ReadXml("dsBlackStar.usl");  //读入USL基本配置
             CreateModel();                              //创建默认型号
             CreateResourcesServices();                  //创建资源服务原型
             CreateSampleCase();                         //创建算例
