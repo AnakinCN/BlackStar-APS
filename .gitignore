@@ -10,3 +10,7 @@
 /Samples/HelloBlackStar/bin/Debug/netcoreapp3.1
 /Samples/.vs/Samples/DesignTimeBuild
 /Samples/SolutionLoadRun/bin/Debug/netcoreapp3.1
+/Samples/RuleInjectionCall/bin
+/Samples/RuleInjectionCall/obj
+/Samples/RuleInjectionRule/obj
+/Samples/RuleInjectionRule/bin
