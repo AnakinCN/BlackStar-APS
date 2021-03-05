@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlackStar.Algorithms;
-using BlackStar.Functions;
-using BlackStar.Model;
 using BlackStar.Rules.ListAttributes;
-using BlackStar.USL;
 
 namespace RuleInjection
 {
