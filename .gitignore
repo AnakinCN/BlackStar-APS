@@ -14,3 +14,5 @@
 /Samples/RuleInjectionCall/obj
 /Samples/RuleInjectionRule/obj
 /Samples/RuleInjectionRule/bin
+/Samples/HelloBlackStar/bin/Release/net5.0
+/Samples/SolutionLoadRun/bin/Release/net5.0
