@@ -16,3 +16,8 @@
 /Samples/RuleInjectionRule/bin
 /Samples/HelloBlackStar/bin/Release/net5.0
 /Samples/SolutionLoadRun/bin/Release/net5.0
+/Samples/HelloBlackStar/bin/Debug/net5.0
+/Samples/SolutionLoadRun/bin/Debug/net5.0
+/Samples/MaxUserate/bin/Debug/net5.0
+/Samples/MaxUserate/bin/Release/net5.0
+/Samples/MaxUserate/obj

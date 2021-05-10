@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuleInjection.RuleLibMyLib"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuleInjectionCall", "RuleInjectionCall\RuleInjectionCall.csproj", "{3F95870D-DF57-446C-B058-BCF8FA53B66C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxUserate", "MaxUserate\MaxUserate.csproj", "{7F226C77-4C9A-4F11-BF44-F13045F53495}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3F95870D-DF57-446C-B058-BCF8FA53B66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F95870D-DF57-446C-B058-BCF8FA53B66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F95870D-DF57-446C-B058-BCF8FA53B66C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F226C77-4C9A-4F11-BF44-F13045F53495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F226C77-4C9A-4F11-BF44-F13045F53495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F226C77-4C9A-4F11-BF44-F13045F53495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F226C77-4C9A-4F11-BF44-F13045F53495}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
