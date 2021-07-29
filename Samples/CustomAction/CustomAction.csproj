@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>ActionLibMyActionLib</AssemblyName>
+    <BaseOutputPath></BaseOutputPath>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlackStar.Algorithms" Version="1.2.5" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.6.0-preview3.19128.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /y &quot;$(TargetDir)$(TargetName).*&quot; &quot;D:\BlackStar\测试方案\ApplicationDebug\&quot;&#xD;&#xA;" />
+  </Target>
+
+</Project>

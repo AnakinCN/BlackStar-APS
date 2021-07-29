@@ -7,7 +7,8 @@ namespace RuleInjection
     {
        
         [RuleComments("我的规则")]
-        public void RuleMyRule([IsDefaultParameter][ParaComments("显示消息")][ParaDefaultValue("要显示的消息")] string para显示消息,
+        public void RuleMyRule(
+            [IsDefaultParameter][ParaComments("显示消息")][ParaDefaultValue("要显示的消息")] string para显示消息,
             Guid ruleID)
         {
             var newRow = this.SampleCase.dsSampleCase.dtEvent.NewdtEventRow();

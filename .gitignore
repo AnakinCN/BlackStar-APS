@@ -21,3 +21,8 @@
 /Samples/MaxUserate/bin/Debug/net5.0
 /Samples/MaxUserate/bin/Release/net5.0
 /Samples/MaxUserate/obj
+/Samples/CustomAction/bin/Debug/netstandard2.0
+/Samples/CustomAction/obj
+/Samples/.vs/Samples/v17
+/Samples/CustomActionCallingRule/bin/Debug/netstandard2.0
+/Samples/CustomActionCallingRule/obj
