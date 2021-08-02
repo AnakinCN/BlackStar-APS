@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStar.Rules" Version="1.2.5" />
+    <PackageReference Include="BlackStar.Rules" Version="1.2.6" />
   </ItemGroup>
 
   <ItemGroup>

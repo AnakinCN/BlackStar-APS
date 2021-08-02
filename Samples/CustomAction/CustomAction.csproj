@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStar.Algorithms" Version="1.2.5" />
+    <PackageReference Include="BlackStar.Algorithms" Version="1.2.6" />
     <PackageReference Include="morelinq" Version="3.3.2" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.6.0-preview3.19128.7" />
   </ItemGroup>

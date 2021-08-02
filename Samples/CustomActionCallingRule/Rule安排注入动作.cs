@@ -235,6 +235,10 @@ namespace CustomActionCallingRule
                     this.SampleCase.dsSampleCase.dtRemain.CreateInitialRemain(avail);
                     this.SampleCase.dsSampleCase.dtResourceAvailability.CreateResource(avail);
                     dt+= TimeSpan.FromMinutes(station.Item4 + station.Item5);
+
+                    //另外需要将站的变量改写为适当的值，用以标记站的状态，请使用：
+                    //this.SampleCase.dsSampleCase.dtFact.GetVariable(...);
+                    //this.SampleCase.dsSampleCase.dtFact.SetVariable(...);
                 }
             }
             #endregion
@@ -263,6 +267,10 @@ namespace CustomActionCallingRule
                 this.SampleCase.dsSampleCase.dtAvailability.AdddtAvailabilityRow(avail);
                 this.SampleCase.dsSampleCase.dtRemain.CreateInitialRemain(avail);
                 this.SampleCase.dsSampleCase.dtResourceAvailability.CreateResource(avail);
+
+                //另外需要将站的变量改写为适当的值，用以标记站的状态，请使用：
+                //this.SampleCase.dsSampleCase.dtFact.GetVariable(...);
+                //this.SampleCase.dsSampleCase.dtFact.SetVariable(...);
             }
             #endregion
         }

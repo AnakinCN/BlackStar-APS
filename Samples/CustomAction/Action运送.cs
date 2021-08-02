@@ -302,7 +302,9 @@ namespace ActionLibMyActionLib
                 }
                 else
                 {
-                    //待优化：先用随机选站，还应加上按装料种类（Variables["矿料种类"]）选站
+                    //待优化：先用随机选站，还应加上按装料种类（Variables["矿料种类"]）选站，读取兵改写相关变量，请使用：
+                    //_dsSampleCase.dtFact.GetVariable(...);
+                    //_dsSampleCase.dtFact.SetVariable(...);
                     return nextLocations.RandomSubset(1).FirstOrDefault().Item2;
                 }
             }
@@ -320,7 +322,9 @@ namespace ActionLibMyActionLib
                 }
                 else
                 {
-                    //待优化：先用随机选站，还应加上按装料种类（Variables["矿料种类"]）选站
+                    //待优化：先用随机选站，还应加上按装料种类（Variables["矿料种类"]）选站，读取兵改写相关变量，请使用：
+                    //_dsSampleCase.dtFact.GetVariable(...);
+                    //_dsSampleCase.dtFact.SetVariable(...);
                     return nextLocations.RandomSubset(1).FirstOrDefault().Item1;
                 }
             }
@@ -355,7 +359,8 @@ namespace ActionLibMyActionLib
 
         private int GetQueueLength(string resource, DateTime dt)
         {
-            string stringResult =_dsSampleCase.dtFact.GetVariable(resource, "排队长度" , dt);
+            Tuple<string,DateTime> variable = _dsSampleCase.dtFact.GetVariable(resource, "排队长度", dt);
+            string stringResult = variable.Item1;
             if (stringResult == "")
                 return int.MaxValue;
             int intResult = 0;
