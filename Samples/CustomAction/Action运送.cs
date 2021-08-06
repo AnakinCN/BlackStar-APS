@@ -49,22 +49,22 @@ namespace ActionLibMyActionLib
 
 
         /// <summary>
-        /// 每个站信息： id，站代号，站工作成本，是折返点，是完成卸载点，上行服务，下行服务
+        /// 每个站信息： id，站代号，站工作成本，是折返点，是完成卸载点，上行服务，下行服务，消耗容量
         /// </summary>
-        private List<Tuple<int, string, int, bool, bool, string, string>> _stations
-            = new List<Tuple<int, string, int, bool, bool, string, string>>()
+        private List<Tuple<int, string, int, bool, bool, string, string, Tuple<float>>> _stations
+            = new List<Tuple<int, string, int, bool, bool, string, string, Tuple<float>>>()
         {
-            new Tuple<int, string, int, bool, bool, string, string>(1,"s1",5, true, false, "LoadHigh", "LoadHigh"),
-            new Tuple<int, string, int, bool, bool, string, string>(2,"s2",6, true, false, "LoadMix", "LoadMix" ),
-            new Tuple<int, string, int, bool, bool, string, string>(3,"s3",7, true, false, "LoadLow", "LoadLow"),
-            new Tuple<int, string, int, bool, bool, string, string>(4,"Cross4",3, false, false, "PassUp", "PassDown"),
-            new Tuple<int, string, int, bool, bool, string, string>(5,"n5",4, false, false, "Store", "Store"),
-            new Tuple<int, string, int, bool, bool, string, string>(6,"n6",5, false, false, "Store", "Store"),
-            new Tuple<int, string, int, bool, bool, string, string>(7,"n7",4, false, false, "Store", "Store"),
-            new Tuple<int, string, int, bool, bool, string, string>(8,"Cross8",3, false, false, "PassUp", "PassDown"),
-            new Tuple<int, string, int, bool, bool, string, string>(9,"b9",3, true, true, "UnloadHigh", "UnloadHigh"),
-            new Tuple<int, string, int, bool, bool, string, string>(10,"b10",2, true, true, "UnloadMix", "UnloadMix"),
-            new Tuple<int, string, int, bool, bool, string, string>(11,"b11",3, true, true,"UnloadLow", "UnloadLow"),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(1,"s1",5, true, false, "LoadHigh", "LoadHigh", new Tuple<float>(1)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(2,"s2",6, true, false, "LoadMix", "LoadMix", new Tuple<float>(1)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(3,"s3",7, true, false, "LoadLow", "LoadLow", new Tuple<float>(1)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(4,"Cross4",3, false, false, "PassUp", "PassDown", new Tuple<float>(0.01f)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(5,"n5",4, false, false, "Store", "Store", new Tuple<float>(0.01f)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(6,"n6",5, false, false, "Store", "Store", new Tuple<float>(0.01f)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(7,"n7",4, false, false, "Store", "Store", new Tuple<float>(0.01f)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(8,"Cross8",3, false, false, "PassUp", "PassDown", new Tuple<float>(0.01f)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(9,"b9",3, true, true, "UnloadHigh", "UnloadHigh", new Tuple<float>(1)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(10,"b10",2, true, true, "UnloadMix", "UnloadMix", new Tuple<float>(1)),
+            new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(11,"b11",3, true, true,"UnloadLow", "UnloadLow", new Tuple<float>(1)),
         };
 
         /// <summary>
@@ -83,7 +83,6 @@ namespace ActionLibMyActionLib
             new Tuple<string,string,string,int,int>("Cross8","b10","R810",7,4),
             new Tuple<string,string,string,int,int>("Cross8","b11","R811",5,4),
         };
-
         #endregion
 
         /// <summary>
@@ -197,6 +196,8 @@ namespace ActionLibMyActionLib
                     Variables["地点"] = nextLocation;
                 }
                 #endregion
+
+                //break;
             }
 
             //选出任意运载车辆并核算车辆能力
@@ -207,11 +208,17 @@ namespace ActionLibMyActionLib
                 return;
             }
 
-            List<DecomposeConsume> consumesTruck = new List<DecomposeConsume>(); //对矿卡的服务消耗列表
-            if(AlgorithmOP.TryConsumes(_dsSampleCase, consumesTruck, ref currentTime, PostponeOption.后移, TimeSpan.FromMinutes(30), false, vehicle.资源代号,""))
+            List<DecomposeConsume> consumesTruck = new List<DecomposeConsume>(); //待优化，对矿卡的服务消耗列表
+            //consumesTruck.Add(new DecomposeConsume()
+            //{
+
+            //});
+            if (AlgorithmOP.TryConsumes(_dsSampleCase, consumesTruck, ref currentTime, PostponeOption.后移, TimeSpan.FromMinutes(30), false, "",""))
             {
                 _dsSampleCase.dtRemain.PerformConsumes(consumesTruck, guid);
             }
+
+            
         }
 
         private string serviceFromStation(string stationCode, string currentDirection)
@@ -267,7 +274,7 @@ namespace ActionLibMyActionLib
             return new Tuple<string, TimeSpan>(edgeCode, edgeCost);
         }
 
-        private Tuple<int, string, int, bool, bool, string, string> getStationInfo(string station, string currentDirection)
+        private Tuple<int, string, int, bool, bool, string, string, Tuple<float>> getStationInfo(string station, string currentDirection)
         {
             return this._stations.Where(i => i.Item2 == station).FirstOrDefault();
         }

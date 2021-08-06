@@ -3,15 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStar.Rules" Version="1.2.6" />
+    <PackageReference Include="BlackStar.Rules" Version="1.2.7" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.6.0-preview3.19128.7" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy /y &quot;$(TargetDir)$(TargetName).*&quot; &quot;D:\BlackStar\测试方案\ApplicationDebug\&quot;" />
+    <Exec Command="copy /y &quot;$(TargetDir)$(AssemblyName).*&quot; &quot;D:\BlackStar\测试方案\ApplicationDebug\&quot;&#xD;&#xA;copy /y &quot;$(TargetDir)$(AssemblyName).*&quot; &quot;D:\BlackStar\测试方案\Application\&quot;" />
   </Target>
 
 </Project>

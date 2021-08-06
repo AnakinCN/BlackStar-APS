@@ -26,3 +26,5 @@
 /Samples/.vs/Samples/v17
 /Samples/CustomActionCallingRule/bin/Debug/netstandard2.0
 /Samples/CustomActionCallingRule/obj
+/Samples/CustomAction/bin/Release/netstandard2.0
+/Samples/CustomActionCallingRule/bin/Release/netstandard2.0

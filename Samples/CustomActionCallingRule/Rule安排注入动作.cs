@@ -54,11 +54,15 @@ namespace CustomActionCallingRule
             BuildTempo(dt, dt+TimeSpan.FromHours(4));   //创建信号节拍
 
             //所有动作的时机，这里需要通过算法确定每个动作的顺序和起始时机，或者在迭代过程中逐个确定，不一定都如下
+            //待优化
             List<DateTime> actionTimes = new List<DateTime>();
             actionTimes.Add(dt);
-            actionTimes.Add(dt+TimeSpan.FromMinutes(10));
+            actionTimes.Add(dt);
+            actionTimes.Add(dt + TimeSpan.FromMinutes(10));
+            actionTimes.Add(dt + TimeSpan.FromMinutes(15));
+            actionTimes.Add(dt + TimeSpan.FromMinutes(15));
             actionTimes.Add(dt + TimeSpan.FromMinutes(20));
-            actionTimes.Add(dt + TimeSpan.FromMinutes(30));
+            actionTimes.Add(dt + TimeSpan.FromMinutes(25));
 
             string actionid = "";
             int no = 0;
@@ -79,7 +83,7 @@ namespace CustomActionCallingRule
         }
 
         /// <summary>
-        /// //确定信号节拍——这里最重要，是优化算法的主要决策内容，信号周期、方向，写入this.SampleCase.dsSampleCase中
+        /// 确定信号节拍——这里最重要，是优化算法的主要决策内容，信号周期、方向，写入this.SampleCase.dsSampleCase中
         /// </summary>
         private void BuildTempo(DateTime startDt, DateTime endDt)
         {
