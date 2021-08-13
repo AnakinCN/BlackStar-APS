@@ -30,7 +30,7 @@ namespace ActionLibMyActionLib
 
         private DataSetSampleCase _dsSampleCase;
 
-        public string VehicleName { get ; set; }
+        public string ActionName { get ; set; }
 
         #region 路网
         //private Dictionary<string, string> _loadStations = new Dictionary<string, string>()
@@ -62,6 +62,8 @@ namespace ActionLibMyActionLib
             new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(6,"n6",5, false, false, "Store", "Store", new Tuple<float>(0.01f)),
             new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(7,"n7",4, false, false, "Store", "Store", new Tuple<float>(0.01f)),
             new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(8,"Cross8",3, false, false, "PassUp", "PassDown", new Tuple<float>(0.01f)),
+
+
             new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(9,"b9",3, true, true, "UnloadHigh", "UnloadHigh", new Tuple<float>(1)),
             new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(10,"b10",2, true, true, "UnloadMix", "UnloadMix", new Tuple<float>(1)),
             new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(11,"b11",3, true, true,"UnloadLow", "UnloadLow", new Tuple<float>(1)),
@@ -139,7 +141,8 @@ namespace ActionLibMyActionLib
                     使用源 = "运送" + actionId,
                     服务代号 = serviceCode,
                     资源代号 = edgeInfo.Item1,
-                    消耗常值 = 0.01,
+                    消耗常值 = 0.01f,
+                    //消耗常值 = 0f,
                     消耗模型 = ConsumeTypeModels.常值,
                     开始相对时间 = TimeSpan.Zero,
                     结束相对时间 = edgeInfo.Item2
@@ -164,11 +167,14 @@ namespace ActionLibMyActionLib
                     使用源 = "运送" + actionId,
                     服务代号 = currentDirection == "上行" ? stationInfo.Item6 : stationInfo.Item7,
                     资源代号 = stationInfo.Item2,
-                    消耗常值 = 0.01,
+                    //消耗常值 = 0.01f,
+                    消耗常值 = stationInfo.Rest.Item1,
                     消耗模型 = ConsumeTypeModels.常值,
                     开始相对时间 = TimeSpan.Zero,
                     结束相对时间 = TimeSpan.FromMinutes(stationInfo.Item3)
                 });
+
+                //待优化，如果要根据资源变量进行试拍，请使用TryConsumes的变量版本
                 if (AlgorithmOP.TryConsumes(_dsSampleCase, consumesStation, ref currentTime, PostponeOption.后移, TimeSpan.FromMinutes(30), false, stationInfo.Item2, ""))
                 {
                     _dsSampleCase.dtRemain.PerformConsumes(consumesStation, guid);
@@ -208,7 +214,8 @@ namespace ActionLibMyActionLib
                 return;
             }
 
-            List<DecomposeConsume> consumesTruck = new List<DecomposeConsume>(); //待优化，对矿卡的服务消耗列表
+            List<DecomposeConsume> consumesTruck = new List<DecomposeConsume>();
+            //待优化，对矿卡的服务消耗列表
             //consumesTruck.Add(new DecomposeConsume()
             //{
 
@@ -364,9 +371,14 @@ namespace ActionLibMyActionLib
         //    return ret;
         //}
 
+        private void SetQueueLength(string resource, DateTime dt, int length, TimeSpan ts )
+        {
+            _dsSampleCase.dtFact.SetVariable(resource, "排队长度", length.ToString(), dt,ts );
+        }
+
         private int GetQueueLength(string resource, DateTime dt)
         {
-            Tuple<string,DateTime> variable = _dsSampleCase.dtFact.GetVariable(resource, "排队长度", dt);
+            Tuple<string,DateTime,DateTime> variable = _dsSampleCase.dtFact.GetVariable(resource, "排队长度", dt);
             string stringResult = variable.Item1;
             if (stringResult == "")
                 return int.MaxValue;
