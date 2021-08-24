@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30709.64
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloBlackStar", "HelloBlackStar\HelloBlackStar.csproj", "{6F59CD0D-D106-45F8-B495-35AF659DBEE9}"
 EndProject
@@ -27,6 +27,7 @@ Global
 		{6F59CD0D-D106-45F8-B495-35AF659DBEE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F59CD0D-D106-45F8-B495-35AF659DBEE9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22CE61A8-0077-4511-A832-B4F52E903775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

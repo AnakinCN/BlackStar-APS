@@ -3,6 +3,8 @@ using BlackStar.Model;
 using BlackStar.USL;
 using BlackStar.Rules;
 using BlackStar.EventAggregators;
+using System.Diagnostics;
+using System.Threading;
 
 namespace SolutionLoadRun
 {
@@ -11,6 +13,7 @@ namespace SolutionLoadRun
         static void Main(string[] args)
         {
             Console.WriteLine("Load a BlackStar solution and solve");
+
             EnvModel.InitializeEnvModel();                              //第1行，初始化型号
             Console.WriteLine(LicensingOP.LicenseInfo);                 
 
@@ -21,6 +24,8 @@ namespace SolutionLoadRun
 
             EventOP.OverAllNotifyEventAggregator.GetEvent<NotifyEvent>().Subscribe(NotifyEventHandler, true);    //第5行，监听规则执行完毕事件
             RuleOP.Execute("算例");                                     //第6行，执行规则
+
+
             while (true)
                 Console.ReadLine();
         }

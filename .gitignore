@@ -28,3 +28,6 @@
 /Samples/CustomActionCallingRule/obj
 /Samples/CustomAction/bin/Release/netstandard2.0
 /Samples/CustomActionCallingRule/bin/Release/netstandard2.0
+/Samples/HelloBlackStar/bin/Release/net6.0
+/Samples/MaxUserate/bin/Release/net6.0
+/Samples/SolutionLoadRun/bin
