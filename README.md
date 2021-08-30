@@ -14,27 +14,10 @@ Contact <a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a> for l
 <font color=#229912><b>BlackStar</b></font>是一个通用的先进计划排程APS模型和算法解决方案，支持航天任务、无人系统、车队调度、制造等诸多行业。BlackStar使用连续时间模型处理事件的精确时间，支持统一规划语言USL、规则以及甘特图下的拖拽，以简化行业应用。
 
 请联系<a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a>申请证书，之前需要检查机器的UID，请使用UID检查工具，并将显示的UID序列号在申请邮件内发送过来：<br>
-<a href="./UID Checker Linux">UID Checker Linux</a> (运行命令为 dotnet BlackStar.UIDCheckCore.dll，需要<a href="https://dotnet.microsoft.com/download/dotnet/5.0">dotnet core 5 Linux运行时环境</a>) <br>
-<a href="./UID Checker Win">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要<a href="https://dotnet.microsoft.com/download/dotnet/5.0">dotnet core 5 Windows运行时环境</a>）
+<a href="./UID Checker Linux">UID Checker Linux</a> (运行命令为 `dotnet BlackStar.UIDCheckCore.dll`，需要 <a href="https://dotnet.microsoft.com/download/dotnet/5.0">dotnet core 5 Linux运行时环境</a> ) <br>
+<a href="./UID Checker Win">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要 <a href="https://dotnet.microsoft.com/download/dotnet/5.0">dotnet core 5 Windows运行时环境</a> ）
 
 WIKI:<a href="https://github.com/AnakinCN/BlackStar-APS/wiki">https://github.com/AnakinCN/BlackStar-APS/wiki</a>
 
 <img src="./Read/shot1.png" height=80% width=80%/>
-<img src="./Read/shot3.png" height=50% width=50%/>
-
-<p><font size=2>注，如果看不见github上的图片，请增加如下内容至C:\Windows\System32\drivers\etc\hosts文件：<br>
-192.30.255.113    github.com<br>
-151.101.184.133    assets-cdn.github.com<br>
-151.101.184.133    raw.githubusercontent.com<br>
-151.101.184.133    gist.githubusercontent.com<br>
-151.101.184.133    cloud.githubusercontent.com<br>
-151.101.184.133    camo.githubusercontent.com<br>
-151.101.184.133    avatars0.githubusercontent.com<br>
-151.101.184.133    avatars1.githubusercontent.com<br>
-151.101.184.133    avatars2.githubusercontent.com<br>
-151.101.184.133    avatars3.githubusercontent.com<br>
-151.101.184.133    avatars4.githubusercontent.com<br>
-151.101.184.133    avatars5.githubusercontent.com<br>
-151.101.184.133    avatars6.githubusercontent.com<br>
-151.101.184.133    avatars7.githubusercontent.com<br>
-151.101.184.133    avatars8.githubusercontent.com<br></font>
+<img src="./Read/shot3.png" height=25% width=25%/>
