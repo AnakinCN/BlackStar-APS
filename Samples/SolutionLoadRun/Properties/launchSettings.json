@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SolutionLoadRun": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
