@@ -5,6 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <StartupObject>SolutionLoadRun.Program</StartupObject>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
