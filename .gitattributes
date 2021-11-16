@@ -1,2 +1,3 @@
 *.cs linguist-language=C#
-*.sln  linguist-language=C#
+*.sln linguist-language=C#
+*.csproj linguist-language=C#
