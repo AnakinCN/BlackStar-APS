@@ -1,21 +1,20 @@
 ﻿using BlackStar.Model;
 
-namespace RuleInjection
-{
-    public partial class RuleLibMyLib
-    {
-        private DataSetBlackStar.dtSampleCaseRow SampleCase;
-        private SampleCaseLogOP CaseLogOP
-        {
-            get
-            {
-                return this.SampleCase.CaseLogOP;
-            }
-        }
+namespace RuleInjection;
 
-        public RuleLibMyLib(DataSetBlackStar.dtSampleCaseRow samplecase)
+public partial class RuleLibMyLib
+{
+    private DataSetBlackStar.dtSampleCaseRow SampleCase;
+    private SampleCaseLogOP CaseLogOP
+    {
+        get
         {
-            this.SampleCase = samplecase;   //传递算例数据集
+            return this.SampleCase.CaseLogOP;
         }
+    }
+
+    public RuleLibMyLib(DataSetBlackStar.dtSampleCaseRow samplecase)
+    {
+        this.SampleCase = samplecase;   //传递算例数据集
     }
 }
