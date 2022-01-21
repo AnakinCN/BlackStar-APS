@@ -1,0 +1,5 @@
+*.cs linguist-language=C#
+*.sln linguist-language=C#
+*.csproj linguist-language=C#
+*.usl linguist-language=C#
+*.bs linguist-language=C#
