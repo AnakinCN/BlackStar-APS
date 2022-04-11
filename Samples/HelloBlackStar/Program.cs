@@ -13,7 +13,7 @@ class Program
         Console.WriteLine("Hello BlackStar-APS!");
 
         EnvModel.InitializeEnvModel();
-        Console.WriteLine(LicensingOP.LicenseInfo);
+        //Console.WriteLine(LicensingOP.LicenseInfo);
 
         USLManagerOP.InitializeUSLOP();             //初始化USL引擎
         USLManagerOP.dsUSL.ReadXml("dsBlackStar.usl");  //读入USL基本配置

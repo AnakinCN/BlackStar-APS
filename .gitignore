@@ -32,3 +32,7 @@
 /Samples/MaxUserate/bin/Release/net6.0
 /Samples/SolutionLoadRun/bin
 /Samples/.vs
+/Samples/HelloBlackStar/bin/Debug/net6.0
+/Samples/MaxUserate/bin/Debug/net6.0
+/Samples/USLInjection/obj
+/Samples/USLInjection/bin/Debug/netstandard2.0
