@@ -15,8 +15,8 @@ public partial class RuleLibMyLib
         newRow.事件名称 = "消息";
         newRow.事件代号 = "Message";
         newRow.明细 = para显示消息;
-        newRow.开始 = new DateTime(2020,1,1);
-        newRow.结束 = new DateTime(2020, 1, 2);
+        newRow.开始 = new(2020,1,1);
+        newRow.结束 = new(2020, 1, 2);
         newRow.来源规则ID = ruleID;
         newRow.事件ID = Guid.NewGuid();
         this.SampleCase.dsSampleCase.dtEvent.AdddtEventRow(newRow);

@@ -26,7 +26,7 @@ public partial class RuleLib踏歌
         [ParaComments("开始时间DateTime的字符串形式")]string para开始时间,
         Guid ruleID)
     {
-        DateTime dt = Func.TimeOP.DateTimeFromString(para开始时间);
+        DateTime dt = TimeOP.DateTimeFromString(para开始时间);
 
         var actionQuery = ActionLoader.Actions.Where(i => i.Key == para动作名);
         if (actionQuery.Count()==0)
@@ -36,18 +36,18 @@ public partial class RuleLib踏歌
         }
 
         //解析settings初始设置
-        Dictionary<string, object> settings = new Dictionary<string, object>();
-        foreach (var pair in Func.StringOP.StringListFromStringByDevider(paraSettings, ","))
+        Dictionary<string, object> settings = new();
+        foreach (var pair in StringOP.StringListFromStringByDevider(paraSettings, ","))
         {
-            string[] keyvalue = Func.StringOP.DivideInTwoByDivider(pair, "=");
+            string[] keyvalue = StringOP.DivideInTwoByDivider(pair, "=");
             settings.Add(keyvalue[0], keyvalue[1]);
         }
 
         //解析variables变量集合
-        Dictionary<string, object> variables = new Dictionary<string, object>();
-        foreach (var pair in Func.StringOP.StringListFromStringByDevider(paraVariables, ","))
+        Dictionary<string, object> variables = new();
+        foreach (var pair in StringOP.StringListFromStringByDevider(paraVariables, ","))
         {
-            string[] keyvalue = Func.StringOP.DivideInTwoByDivider(pair, "=");
+            string[] keyvalue = StringOP.DivideInTwoByDivider(pair, "=");
             variables.Add(keyvalue[0], keyvalue[1]);
         }
 
@@ -55,7 +55,7 @@ public partial class RuleLib踏歌
 
         //所有动作的时机，这里需要通过算法确定每个动作的顺序和起始时机，或者在迭代过程中逐个确定，不一定都如下
         //待优化
-        List<DateTime> actionTimes = new List<DateTime>();
+        List<DateTime> actionTimes = new();
         actionTimes.Add(dt);
         actionTimes.Add(dt);
         actionTimes.Add(dt + TimeSpan.FromMinutes(10));
@@ -91,18 +91,18 @@ public partial class RuleLib踏歌
         #region 道路节拍
 
         //待优化：道路的上下行节拍、相位差，上行时长、下行时长
-        List<Tuple<string, float, float, float>> roadTempos = new List<Tuple<string, float, float, float>>()
+        List<(string, float, float, float)> roadTempos = new()
         {
-            new Tuple<string, float,float, float>("R14",-2,5,3),  //路，起始时间偏移，上行时长，下行时长
-            new Tuple<string, float,float, float>("R24",-2,6,4),
-            new Tuple<string, float,float, float>("R34",-2,5,2),
-            new Tuple<string, float,float, float>("R45",-2,7,4),
-            new Tuple<string, float,float, float>("R56",-2,6,4),
-            new Tuple<string, float,float, float>("R67",-2,5,3),
-            new Tuple<string, float,float, float>("R78",-2,3,2),
-            new Tuple<string, float,float, float>("R89",-2,6,3),
-            new Tuple<string, float,float, float>("R810",-2,7,4),
-            new Tuple<string, float,float, float>("R811",-2,5,4),
+            ("R14",-2,5,3),  //路，起始时间偏移，上行时长，下行时长
+            ("R24",-2,6,4),
+            ("R34",-2,5,2),
+            ("R45",-2,7,4),
+            ("R56",-2,6,4),
+            ("R67",-2,5,3),
+            ("R78",-2,3,2),
+            ("R89",-2,6,3),
+            ("R810",-2,7,4),
+            ("R811",-2,5,4),
         };
 
         foreach(var roadTempo in roadTempos)
@@ -145,10 +145,10 @@ public partial class RuleLib踏歌
 
         #region 路口节拍
         //待优化：路口的上下行节拍、相位差，上行时长、下行时长
-        List<Tuple<string, float, float, float>> crossTempos = new List<Tuple<string, float, float, float>>()
+        List<(string Cross, float StartOffset, float UpDuration, float DownDuration)> crossTempos = new()
         {
-            new Tuple<string, float,float, float>("Cross4",-2,10,4),  //路口，起始时间偏移，上行时长，下行时长
-            new Tuple<string, float,float, float>("Cross8",-6,8,3),
+            ("Cross4",-2,10,4),  //路口，起始时间偏移，上行时长，下行时长
+            ("Cross8",-6,8,3),
         };
 
         foreach (var crossTempo in crossTempos)
@@ -190,7 +190,7 @@ public partial class RuleLib踏歌
         #endregion
 
         #region 会车区节拍
-        List<string> storeTempos =  new List<string>()
+        List<string> storeTempos =  new()
         {
             "n5","n6","n7",
         };
@@ -214,11 +214,11 @@ public partial class RuleLib踏歌
 
         #region 电铲站节拍
         //待优化，需要给出合理的矿石产生节拍
-        List<Tuple<string, string, float, float, float>> loadStationTempos = new List<Tuple<string, string, float, float, float>>()
+        List<(string, string, float, float, float)> loadStationTempos = new()
         {
-            new Tuple<string,string, float, float, float>( "s1", "LoadHigh", -1,5,3),    //工作站，服务，起始时间，服务时间，间隔
-            new Tuple<string,string, float, float, float>( "s2", "LoadMix", -1,6,3),
-            new Tuple<string,string, float, float, float>( "s3", "LoadLow", -1,7,3),
+            ( "s1", "LoadHigh", -1,5,3),    //工作站，服务，起始时间，服务时间，间隔
+            ( "s2", "LoadMix", -1,6,3),
+            ( "s3", "LoadLow", -1,7,3),
         };
 
         foreach (var station in loadStationTempos)
@@ -249,12 +249,12 @@ public partial class RuleLib踏歌
 
         #region 破碎站节拍
         //待优化，需要给出合理的矿石产生节拍
-        List<Tuple<string, string, float, float>> breakStationTempos = new List<Tuple<string, string, float, float>>()
+        List<(string Station, string Service, float Start, float Interval)> breakStationTempos = new()
         {
             //工作站，服务，起始时间，服务时间，间隔
-            new Tuple<string,string, float, float>( "b9", "UnloadHigh", -1,3),
-            new Tuple<string,string, float, float>( "b10", "UnloadMix", -1,2),
-            new Tuple<string,string, float, float>( "b11", "UnloadLow", -1,2),
+            ( "b9", "UnloadHigh", -1,3),
+            ( "b10", "UnloadMix", -1,2),
+            ( "b11", "UnloadLow", -1,2),
         };
 
         foreach (var station in breakStationTempos)

@@ -33,14 +33,14 @@ public class Action运送 : IAction
     public string ActionName { get ; set; }
 
     #region 路网
-    //private Dictionary<string, string> _loadStations = new Dictionary<string, string>()
+    //private Dictionary<string, string> _loadStations = new()
     //{
     //    { "电铲1", "高磁"},
     //    { "电铲2", "混合"},
     //    { "电铲3", "低磁"}
     //};
 
-    //private Dictionary<string, string> _unloadStations = new Dictionary<string, string>()
+    //private Dictionary<string, string> _unloadStations = new()
     //{
     //    { "破碎9", "高磁"},
     //    { "破碎10", "混合"},
@@ -51,39 +51,38 @@ public class Action运送 : IAction
     /// <summary>
     /// 每个站信息： id，站代号，站工作成本，是折返点，是完成卸载点，上行服务，下行服务，消耗容量
     /// </summary>
-    private List<Tuple<int, string, int, bool, bool, string, string, Tuple<float>>> _stations
-        = new List<Tuple<int, string, int, bool, bool, string, string, Tuple<float>>>()
+    private List<(int Id, string Station, int StationCost, bool IsReturning, bool IsFinish, string UpService, string DownService, float Consume)> _stations = new()
     {
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(1,"s1",5, true, false, "LoadHigh", "LoadHigh", new Tuple<float>(1)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(2,"s2",6, true, false, "LoadMix", "LoadMix", new Tuple<float>(1)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(3,"s3",7, true, false, "LoadLow", "LoadLow", new Tuple<float>(1)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(4,"Cross4",3, false, false, "PassUp", "PassDown", new Tuple<float>(0.01f)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(5,"n5",4, false, false, "Store", "Store", new Tuple<float>(0.01f)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(6,"n6",5, false, false, "Store", "Store", new Tuple<float>(0.01f)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(7,"n7",4, false, false, "Store", "Store", new Tuple<float>(0.01f)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(8,"Cross8",3, false, false, "PassUp", "PassDown", new Tuple<float>(0.01f)),
+        (1,"s1",5, true, false, "LoadHigh", "LoadHigh", 1),
+        (2,"s2",6, true, false, "LoadMix", "LoadMix", 1),
+        (3,"s3",7, true, false, "LoadLow", "LoadLow", 1),
+        (4,"Cross4",3, false, false, "PassUp", "PassDown", 0.01f),
+        (5,"n5",4, false, false, "Store", "Store", 0.01f),
+        (6,"n6",5, false, false, "Store", "Store", 0.01f),
+        (7,"n7",4, false, false, "Store", "Store", 0.01f),
+        (8,"Cross8",3, false, false, "PassUp", "PassDown",0.01f),
 
 
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(9,"b9",3, true, true, "UnloadHigh", "UnloadHigh", new Tuple<float>(1)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(10,"b10",2, true, true, "UnloadMix", "UnloadMix", new Tuple<float>(1)),
-        new Tuple<int, string, int, bool, bool, string, string, Tuple<float>>(11,"b11",3, true, true,"UnloadLow", "UnloadLow", new Tuple<float>(1)),
+        (9,"b9",3, true, true, "UnloadHigh", "UnloadHigh", 1),
+        (10,"b10",2, true, true, "UnloadMix", "UnloadMix", 1),
+        (11,"b11",3, true, true,"UnloadLow", "UnloadLow", 1),
     };
 
     /// <summary>
     /// 邻接表形式的弧，节点号1、节点号2、路代号、上行成本、下行成本
     /// </summary>
-    private List<Tuple<string, string, string, int, int>> _links = new List<Tuple<string, string, string, int, int>>()
+    private List<(string Node1, string Node2, string Edge, int UpCost, int DownCost)> _links = new()
     {
-        new Tuple<string,string,string,int,int>("s1","Cross4","R14",5,3),  //节点1，节点2代号，路代号，上行成本，下行成本
-        new Tuple<string,string,string,int,int>("s2","Cross4","R24",6,4),
-        new Tuple<string,string,string,int,int>("s3","Cross4","R34",5,2),
-        new Tuple<string,string,string,int,int>("Cross4","n5","R45",7,4),
-        new Tuple<string,string,string,int,int>("n5","n6","R56",6,4),
-        new Tuple<string,string,string,int,int>("n6","n7","R67",5,3),
-        new Tuple<string,string,string,int,int>("n7","Cross8","R78",3,2),
-        new Tuple<string,string,string,int,int>("Cross8","b9","R89",6,3),
-        new Tuple<string,string,string,int,int>("Cross8","b10","R810",7,4),
-        new Tuple<string,string,string,int,int>("Cross8","b11","R811",5,4),
+        ("s1","Cross4","R14",5,3),  //节点1，节点2代号，路代号，上行成本，下行成本
+        ("s2","Cross4","R24",6,4),
+        ("s3","Cross4","R34",5,2),
+        ("Cross4","n5","R45",7,4),
+        ("n5","n6","R56",6,4),
+        ("n6","n7","R67",5,3),
+        ("n7","Cross8","R78",3,2),
+        ("Cross8","b9","R89",6,3),
+        ("Cross8","b10","R810",7,4),
+        ("Cross8","b11","R811",5,4),
     };
     #endregion
 
@@ -133,10 +132,10 @@ public class Action运送 : IAction
             string nextLocation = SelectNextLocation();
 
             #region 弧上移动
-            Tuple<string,TimeSpan> edgeInfo = getEdge(currentLocation, nextLocation, currentDirection);
+            var edgeInfo = getEdge(currentLocation, nextLocation, currentDirection);
             string serviceCode = currentDirection == "上行" ? "PassUp" : "PassDown";
-            List<DecomposeConsume> consumesEdge = new List<DecomposeConsume>(); //对弧的服务消耗列表
-            consumesEdge.Add(new DecomposeConsume()
+            List<DecomposeConsume> consumesEdge = new(); //对弧的服务消耗列表
+            consumesEdge.Add(new()
             {
                 使用源 = "运送" + actionId,
                 服务代号 = serviceCode,
@@ -161,8 +160,8 @@ public class Action运送 : IAction
 
             #region 站上工作
             var stationInfo = getStationInfo(nextLocation, currentDirection);
-            List<DecomposeConsume> consumesStation = new List<DecomposeConsume>(); //对站的服务消耗列表
-            consumesStation.Add(new DecomposeConsume()
+            List<DecomposeConsume> consumesStation = new(); //对站的服务消耗列表
+            consumesStation.Add(new()
             {
                 使用源 = "运送" + actionId,
                 服务代号 = currentDirection == "上行" ? stationInfo.Item6 : stationInfo.Item7,
@@ -214,7 +213,7 @@ public class Action运送 : IAction
             return;
         }
 
-        List<DecomposeConsume> consumesTruck = new List<DecomposeConsume>();
+        List<DecomposeConsume> consumesTruck = new();
         //待优化，对矿卡的服务消耗列表
         //consumesTruck.Add(new DecomposeConsume()
         //{
@@ -248,16 +247,16 @@ public class Action运送 : IAction
         return "";
     }
 
-    private Tuple<string, TimeSpan> getEdge(string currentLocation, string nextLocation, string currentDirection)
+    private (string Edge, TimeSpan Cost) getEdge(string currentLocation, string nextLocation, string currentDirection)
     {
         string edgeCode="";
         TimeSpan edgeCost = TimeSpan.Zero;
         if (currentDirection=="上行")
         {
             var link = this._links.Where(
-                i => i.Item1 == currentLocation && i.Item2 == nextLocation
+                i => i.Node1 == currentLocation && i.Node2 == nextLocation
                 ).FirstOrDefault();
-            if (link == null)
+            if (link == ( "","","",0,0))
                 edgeCode = "";
             else
             {
@@ -270,7 +269,7 @@ public class Action运送 : IAction
             var link = this._links.Where(
                  i => i.Item2 == currentLocation && i.Item1 == nextLocation
                 ).FirstOrDefault();
-            if (link == null)
+            if (link == ("", "", "", 0, 0))
                 edgeCode = "";
             else
             {
@@ -278,10 +277,10 @@ public class Action运送 : IAction
                 edgeCost = TimeSpan.FromMinutes(link.Item5);
             }
         }
-        return new Tuple<string, TimeSpan>(edgeCode, edgeCost);
+        return (edgeCode, edgeCost);
     }
 
-    private Tuple<int, string, int, bool, bool, string, string, Tuple<float>> getStationInfo(string station, string currentDirection)
+    private (int, string, int, bool, bool, string, string, float) getStationInfo(string station, string currentDirection)
     {
         return this._stations.Where(i => i.Item2 == station).FirstOrDefault();
     }

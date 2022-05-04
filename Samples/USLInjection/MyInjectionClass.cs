@@ -12,14 +12,14 @@ public class MyInjectionClass
         Match m = Regex.Match(result.InputString, pattern, RegexOptions.IgnoreCase);
         if (m.Success)
         {
-            result.Success = true;
+            result.Success = true;     //写回匹配结果
             result.MatchContent = m.Value.Trim();
             result.MatchLengthNoSpace = m.Value.Trim().Length;
             result.MatchLengthSpace = m.Length;
         }
         else
         {
-            result.Success = false;
+            result.Success = false;     //写回匹配结果
         }
     }
 }

@@ -9,7 +9,7 @@ namespace MaxUserate;
 
 class Program
 {
-    static Stopwatch sw = new Stopwatch();
+    static Stopwatch sw = new();
     static void Main(string[] args)
     {
         Console.WriteLine("Load a BlackStar solution and solve");
