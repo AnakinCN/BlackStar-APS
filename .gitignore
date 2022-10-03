@@ -38,3 +38,7 @@
 /Samples/USLInjection/bin/Debug/netstandard2.0
 /Samples/HelloBlackStar/bin/Debug/net7.0
 /Samples/MaxUserate/bin/Debug/net7.0
+/Samples/USLInjection/bin/Debug/net7.0
+/Samples/CustomActionCallingRule/bin/Debug/net7.0
+/Samples/CustomAction/bin/Debug/net7.0
+/push.cmd
