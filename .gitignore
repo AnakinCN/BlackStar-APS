@@ -42,3 +42,7 @@
 /Samples/CustomActionCallingRule/bin/Debug/net7.0
 /Samples/CustomAction/bin/Debug/net7.0
 /push.cmd
+/Samples/CustomAction/bin/Debug/net8.0
+/Samples/CustomActionCallingRule/bin/Debug/net8.0
+/Samples/HelloBlackStar/bin/Debug/net8.0
+/Samples/USLInjection/bin/Debug/net8.0
