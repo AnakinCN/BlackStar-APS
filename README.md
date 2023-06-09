@@ -6,8 +6,8 @@ WIKI:<a href="https://github.com/AnakinCN/BlackStar-APS/wiki">https://github.com
 
 Contact <a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a> for license application, in the email you should send the UID of your machine that can be checked by:
 
-- <a href="./UID Checker Linux">UID Checker Linux</a> (the running command is: `dotnet BlackStar.UIDCheckCore.dll`，you need <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-7.0.0-rc.1-linux-x64-binaries">dotnet 7 runtime for Linux</a>)
-- <a href="./UID Checker Win">UID Checker Win</a> (directly run BlackStar.UIDCheckWin.exe, which needs <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-7.0.0-rc.1-windows-x64-installer">dotnet 7 runtime Windows Desktop</a>)
+- <a href="UIDCheckerLinux.rar">UID Checker Linux</a> (the running command is: `dotnet BlackStar.UIDCheckCore.dll`，you need dotnet 8 runtime for Linux</a>)
+- <a href="UIDCheckerWindows.rar">UID Checker Win</a> (directly run BlackStar.UIDCheckWin.exe, which needs dotnet 8 runtime Windows Desktop</a>)
 
 
 <p align=center><h1>BlackStar计划调度求解器</h1></p>
@@ -18,8 +18,8 @@ WIKI请见：<a href="https://github.com/AnakinCN/BlackStar-APS/wiki">https://githu
 
 请联系<a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a>申请证书，之前需要检查机器的UID，请使用UID检查工具，并将显示的UID序列号在申请邮件内发送过来：
 
-- <a href="./UID Checker Linux">UID Checker Linux</a> (运行命令为 `dotnet BlackStar.UIDCheckCore.dll`，需要 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-7.0.0-rc.1-linux-x64-binaries">dotnet 7 Linux运行时</a> ) 
-- <a href="./UID Checker Win">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-7.0.0-rc.1-windows-x64-installer">dotnet 7 Windows桌面运行时</a> ）
+- <a href="UIDCheckerLinux.rar">UID Checker Linux</a> (运行命令为 `dotnet BlackStar.UIDCheckCore.dll`，需要dotnet 8 Linux运行时</a> ) 
+- <a href="UIDCheckerWindows.rar">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要dotnet 8 Windows桌面运行时</a> ）
 
 <img src="./Read/shot1.png" height=80% width=80%/>
 <img src="./Read/shot3.png" height=25% width=25%/>
