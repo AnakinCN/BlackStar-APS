@@ -1,0 +1,15 @@
+﻿global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Collections.Concurrent;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using Prism.Events;
+global using System.Diagnostics;
+global using System.Text.RegularExpressions;
+global using BlackStar.GA.SortAll;
+global using BlackStar.Model;
+global using BlackStar.Strategy;
+global using BlackStar.Functions;
+global using Collections.Pooled;

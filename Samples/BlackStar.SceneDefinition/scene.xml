@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Scene>
+	<Name>Scene1</Name>
+	<Resources>
+		<Resource>
+			<Name>Machine01</Name>
+			<Type>bool</Type>
+			<States>
+				<State>
+					<Type>bool</Type>
+					<Name>Manufacture</Name>
+					<From>2023-1-1</From>
+					<To>2023-1-2</To>
+					<Value>True</Value>
+				</State>
+			</States>
+			<Variables>
+				<VariableBool>
+					<Name>VariableBool</Name>
+					<Value>True</Value>
+				</VariableBool>
+			</Variables>
+		</Resource>
+	</Resources>
+</Scene>

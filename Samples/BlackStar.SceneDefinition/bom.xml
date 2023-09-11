@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Bom>
+  <Name>成品</Name>
+	<Subs>
+		<Bom>
+			<Name>SMT半成品B</Name>
+			<Ammount>1</Ammount>
+			<Subs>
+				<Bom>
+					<Name>SMT半成品A</Name>
+					<Ammount>1</Ammount>
+				</Bom>
+			</Subs>
+		</Bom>
+		<Bom>
+			<Name>DIP半成品</Name>
+			<Ammount>1</Ammount>
+		</Bom>
+	</Subs>
+</Bom>

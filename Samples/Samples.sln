@@ -3,21 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloBlackStar", "HelloBlackStar\HelloBlackStar.csproj", "{6F59CD0D-D106-45F8-B495-35AF659DBEE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackStar.Bom", "BlackStar.Bom\BlackStar.Bom.csproj", "{4DC8E2D8-2758-44DC-B59D-34AA81E0F8C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionLoadRun", "SolutionLoadRun\SolutionLoadRun.csproj", "{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackStar.GA", "BlackStar.GA\BlackStar.GA.csproj", "{2FB8DDD6-B6D1-4A95-8386-E63583C50B80}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuleInjection.RuleLibMyLib", "RuleInjectionRule\RuleInjection.RuleLibMyLib.csproj", "{22CE61A8-0077-4511-A832-B4F52E903775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackStar.SceneDefinition", "BlackStar.SceneDefinition\BlackStar.SceneDefinition.csproj", "{E47174A8-B60A-4268-BB76-46C461E83744}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuleInjectionCall", "RuleInjectionCall\RuleInjectionCall.csproj", "{3F95870D-DF57-446C-B058-BCF8FA53B66C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxUserate", "MaxUserate\MaxUserate.csproj", "{7F226C77-4C9A-4F11-BF44-F13045F53495}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomAction", "CustomAction\CustomAction.csproj", "{74D72BF7-86C2-455F-9E0A-739EC683ABB0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomActionCallingRule.RuleLib踏歌", "CustomActionCallingRule\CustomActionCallingRule.RuleLib踏歌.csproj", "{E56297AF-1556-4880-BD02-C7DE59AD0282}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USLInjection", "USLInjection\USLInjection.csproj", "{DACAC001-3957-4866-8102-0B622809C256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackStar.View", "BlackStar.View\BlackStar.View.csproj", "{571920A7-F32C-4814-AE96-FD36AFEEF3CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,34 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6F59CD0D-D106-45F8-B495-35AF659DBEE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F59CD0D-D106-45F8-B495-35AF659DBEE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F59CD0D-D106-45F8-B495-35AF659DBEE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC57AA83-B32A-4900-A9B2-4C0A12AEB8A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22CE61A8-0077-4511-A832-B4F52E903775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22CE61A8-0077-4511-A832-B4F52E903775}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22CE61A8-0077-4511-A832-B4F52E903775}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F95870D-DF57-446C-B058-BCF8FA53B66C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F95870D-DF57-446C-B058-BCF8FA53B66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F95870D-DF57-446C-B058-BCF8FA53B66C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F226C77-4C9A-4F11-BF44-F13045F53495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F226C77-4C9A-4F11-BF44-F13045F53495}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F226C77-4C9A-4F11-BF44-F13045F53495}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74D72BF7-86C2-455F-9E0A-739EC683ABB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74D72BF7-86C2-455F-9E0A-739EC683ABB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74D72BF7-86C2-455F-9E0A-739EC683ABB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74D72BF7-86C2-455F-9E0A-739EC683ABB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E56297AF-1556-4880-BD02-C7DE59AD0282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E56297AF-1556-4880-BD02-C7DE59AD0282}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E56297AF-1556-4880-BD02-C7DE59AD0282}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E56297AF-1556-4880-BD02-C7DE59AD0282}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DACAC001-3957-4866-8102-0B622809C256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DACAC001-3957-4866-8102-0B622809C256}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DACAC001-3957-4866-8102-0B622809C256}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DACAC001-3957-4866-8102-0B622809C256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DC8E2D8-2758-44DC-B59D-34AA81E0F8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC8E2D8-2758-44DC-B59D-34AA81E0F8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC8E2D8-2758-44DC-B59D-34AA81E0F8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC8E2D8-2758-44DC-B59D-34AA81E0F8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB8DDD6-B6D1-4A95-8386-E63583C50B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB8DDD6-B6D1-4A95-8386-E63583C50B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB8DDD6-B6D1-4A95-8386-E63583C50B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB8DDD6-B6D1-4A95-8386-E63583C50B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E47174A8-B60A-4268-BB76-46C461E83744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E47174A8-B60A-4268-BB76-46C461E83744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E47174A8-B60A-4268-BB76-46C461E83744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E47174A8-B60A-4268-BB76-46C461E83744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571920A7-F32C-4814-AE96-FD36AFEEF3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571920A7-F32C-4814-AE96-FD36AFEEF3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571920A7-F32C-4814-AE96-FD36AFEEF3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571920A7-F32C-4814-AE96-FD36AFEEF3CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

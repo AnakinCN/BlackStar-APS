@@ -1,0 +1,30 @@
+{
+  "Scene": {
+    "Name": "Scene1",
+
+    "Resources": [
+      {
+        "Name": "Machine01",
+        "Type": "bool",
+
+        "States": [
+          {
+            "Type": "bool",
+            "Name": "Manufacture",
+            "From": "2023-1-1",
+            "To": "2023-1-2",
+
+            "Value": true
+          }
+        ],
+        "Variables": [
+          {
+            "Name": "VariableBool",
+            "Value": true
+          }
+        ]
+
+      }
+    ]
+  }
+}

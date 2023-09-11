@@ -1,0 +1,19 @@
+{
+  "Name": "成品",
+  "Subs": [
+    {
+      "Name": "SMT半成品B",
+      "Ammount": 1,
+      "Subs": [
+        {
+          "Name": "SMT半成品A",
+          "Ammount": 1
+        }
+      ]
+    },
+    {
+      "Name": "DIP半成品",
+      "Ammount": 1
+    }
+  ]
+}
