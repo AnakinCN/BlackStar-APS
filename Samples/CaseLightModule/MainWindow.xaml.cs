@@ -9,9 +9,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        //var scene = CaseNoBom.OptimNoBom();
-        //var scene = CaseInt.OptimNoBom();
-        //var scene = CaseBom.OptimBom();
+
         var scene = CaseLight.OptimLight();
 
         Draw(scene);
