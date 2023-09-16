@@ -1,6 +1,6 @@
 <p align=center><h1>BlackStar, the Planning & Scheduling Solver</h1></p>
 
-<font color=#0099ff>BlackStar</font> is a general APS (advanced planning & scheduling) model and algorithm solution for various industries including aerospace mission, unmanned systems and vehicle fleets. BlackStar uses a continuous time model to simplify applications in industries.
+<font color=#229912><b>BlackStar</b></font> is a general APS (advanced planning & scheduling) model and algorithm solution for various industries including aerospace mission planning, unmanned systems planning, vehicle fleet dispatching and manufactory planning. BlackStar uses a <font color=#229912><b>continuous time</b></font> model to support any time precisions.
 
 Contact <a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a> for license application, in the email you should send the UID of your machine that can be checked by:
 
@@ -8,9 +8,9 @@ Contact <a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a> for l
 - <a href="UIDCheckerWindows.rar">UID Checker Win</a> (directly run BlackStar.UIDCheckWin.exe, which needs dotnet 8 runtime Windows Desktop</a>)
 
 
-<p align=center><h1>BlackStar计划调度求解器</h1></p>
+<p align=center><h1>BlackStar计划调度排产求解器</h1></p>
 
-<font color=#229912><b>BlackStar</b></font>是一个通用的先进计划排程APS模型和算法解决方案，支持航天任务、无人系统、车队调度、制造等诸多行业。BlackStar使用连续时间模型，以简化行业应用。
+<font color=#229912><b>BlackStar</b></font>是一个通用的先进计划排程APS模型和算法解决方案，支持航天任务、无人系统、车队调度、制造排产等诸多领域。BlackStar使用<font color=#229912><b>连续时间</b></font>模型，可支持任意精度的时间。
 
 请联系<a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a>申请证书，之前需要检查机器的UID，请使用UID检查工具，并将显示的UID序列号在申请邮件内发送过来：
 
