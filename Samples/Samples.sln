@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaseNoBom", "CaseNoBom\Case
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaseIntResource", "CaseIntResource\CaseIntResource.csproj", "{48CA3C16-4C17-4D3F-BA83-819520B9183E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaseProduceRoute", "CaseProduceRoute\CaseProduceRoute.csproj", "{AF2AABA9-138B-4A23-9140-A99FEB947DEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{48CA3C16-4C17-4D3F-BA83-819520B9183E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48CA3C16-4C17-4D3F-BA83-819520B9183E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48CA3C16-4C17-4D3F-BA83-819520B9183E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF2AABA9-138B-4A23-9140-A99FEB947DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF2AABA9-138B-4A23-9140-A99FEB947DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF2AABA9-138B-4A23-9140-A99FEB947DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF2AABA9-138B-4A23-9140-A99FEB947DEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

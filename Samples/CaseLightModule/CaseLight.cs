@@ -36,8 +36,8 @@ public class CaseLight
                 States = new() { new State<bool>("治具", baseDt, to, true)},
                 Variables = new()
                 {
-                    ["Current"] = "",
-                    ["NeedSwitch"] = false
+                    ["Current"] = new(""),
+                    ["NeedSwitch"] = new(false)
                 }
             }},
             {"GY0034阴阳板2", new Resource<bool>("GY0034阴阳板2")
@@ -45,8 +45,8 @@ public class CaseLight
                 States = new() { new State<bool>("治具", baseDt, to, true)},
                 Variables = new()
                 {
-                    ["Current"] = "",
-                    ["NeedSwitch"] = false
+                    ["Current"] = new(""),
+                    ["NeedSwitch"] = new(false)
                 }
             }},
             
@@ -55,8 +55,8 @@ public class CaseLight
                 States = new() { new State<bool>("SMT01", baseDt, to, true)},
                 Variables = new()
                 {
-                    ["Current"] = "",
-                    ["NeedSwitch"] = true
+                    ["Current"] = new(""),
+                    ["NeedSwitch"] = new(true)
                 }
             }},
             {"SMT02线", new Resource<bool>("SMT02线")
@@ -64,8 +64,8 @@ public class CaseLight
                 States = new() { new State<bool>("SMT02", baseDt, to, true)},
                 Variables = new()
                 {
-                    ["Current"] = "",
-                    ["NeedSwitch"] = true
+                    ["Current"] = new(""),
+                    ["NeedSwitch"] = new(true)
                 }
             }},
             //{"SMT03线", new Resource<bool>("SMT03线") {States = new() { new State<bool>("SMT03", baseDt, to, true)}}},
@@ -75,8 +75,8 @@ public class CaseLight
                 States = new() { new State<bool>("DIP01", baseDt, to, true)},
                 Variables = new()
                 {
-                    ["Current"] = "",
-                    ["NeedSwitch"] = true
+                    ["Current"] = new(""),
+                    ["NeedSwitch"] = new(true)
                 }
             }},
             {"插件02线", new Resource<bool>("插件02线")
@@ -84,8 +84,8 @@ public class CaseLight
                 States = new() { new State<bool>("DIP02", baseDt, to, true)},
                 Variables = new()
                 {
-                    ["Current"] = "",
-                    ["NeedSwitch"] = true
+                    ["Current"] = new(""),
+                    ["NeedSwitch"] = new(true)
                 }
             }},
             
@@ -94,8 +94,8 @@ public class CaseLight
                 States = new() { new State<bool>("组装", baseDt, to, true)},
                 Variables = new()
                 {
-                    ["Current"] = "",
-                    ["NeedSwitch"] = true
+                    ["Current"] = new(""),
+                    ["NeedSwitch"] = new(true)
                 }
             }},
             //{"组装02线", new Resource<bool>("组装02线") {States = new() { new State<bool>("组装", baseDt, to, true)}}},

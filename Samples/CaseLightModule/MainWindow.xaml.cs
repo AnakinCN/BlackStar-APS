@@ -15,6 +15,9 @@ public partial class MainWindow : Window
         Draw(scene);
         DrawDescendend(scene);
         Report(scene);
+
+        if (Licensing.LicensingOP.LicenseCheckPassed)
+            nolic.Visibility = Visibility.Collapsed;
     }
 
     private void Report(Scene scene)

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStarAPS" Version="2.0.0" />
+    <PackageReference Include="BlackStarAPS" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="ScottPlot.WPF" Version="4.1.67" />
   </ItemGroup>

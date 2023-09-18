@@ -9,7 +9,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var scene = CaseNoBom.OptimNoBom();
+        var scene = CaseDig.OptimDig();
 
         Draw(scene);
         DrawDescendend(scene);
@@ -53,6 +53,13 @@ public partial class MainWindow : Window
 
     private void Draw(Scene scene)
     {
+        PooledDictionary<string, System.Drawing.Color> colors = new()
+        {
+            {"D1", Color.Yellow},
+            {"D2", Color.Blue},
+            {"D3", Color.Green},
+        };
+
         if (scene is null)
             return;
 
@@ -104,7 +111,17 @@ public partial class MainWindow : Window
             double[] xs = { x1, x2, x2, x1};
             double[] ys = { y1, y1, y2, y2};
 
-            GanttChart.Plot.AddPolygon(xs, ys);
+            System.Drawing.Color color = default;
+            foreach (var pair in colors)
+            {
+                if (task.Name.Contains("_" + pair.Key))
+                {
+                    color = pair.Value;
+                    break;
+                }
+            }
+            
+            GanttChart.Plot.AddPolygon(xs, ys, fillColor: color);
 
             if(scene.Deploys.Count <= 100)
                 GanttChart.Plot.AddText(task.Name, x1, y, size: 12, color: Color.Black);
