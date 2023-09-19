@@ -2,9 +2,9 @@
 
 public static class CaseNoBom
 {
-    const int NACT = 10;
-    const int NRESOURCE = 7;
-    const int STAGNATION = 4;
+    const int NACT = 100;
+    const int NRESOURCE = 70;
+    const int STAGNATION = 10;
     const int POP = 10;
     static DateTime baseDt = new (2023, 1, 1);
 

@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStarAPS" Version="2.0.1" />
+    <PackageReference Include="BlackStarAPS" Version="2.0.3" />
     <PackageReference Include="Collections.Pooled" Version="2.0.0-preview.27" />
   </ItemGroup>
 

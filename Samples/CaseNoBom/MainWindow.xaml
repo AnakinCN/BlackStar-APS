@@ -10,6 +10,6 @@
         Title="BlackStar APS Solver - Gantt Chart" Height="450" Width="800">
     <Grid>
         <WpfPlot x:Name="GanttChart" />
-        <Label x:Name="nolic">no license file found</Label>
+        <Label x:Name="nolic" Foreground="Red" >no license file found</Label>
     </Grid>
 </Window>
