@@ -73,32 +73,32 @@ internal class CaseDig
         var bD1G1 = new Bom("D1G1");
         var bD1G2 = new Bom("D1G2");
         var bD1G3 = new Bom("D1G3");
-        bD1G2.AddSubBOM(bD1G1);
+        bD1G2.AddSubBom(bD1G1);
         bD1G2.PreCondition = scene =>
             scene.Variables.ContainsKey("Count_D1G1") && scene.Variables["Count_D1G1"] == N1;
-        bD1G3.AddSubBOM(bD1G2);
+        bD1G3.AddSubBom(bD1G2);
         bD1G3.PreCondition = scene =>
             scene.Variables.ContainsKey("Count_D1G2") && scene.Variables["Count_D1G2"] == N1;
 
         var bD2G1 = new Bom("D2G1");
         var bD2G2 = new Bom("D2G2");
-        bD2G2.AddSubBOM(bD2G1);
+        bD2G2.AddSubBom(bD2G1);
         bD2G2.PreCondition = scene =>
             scene.Variables.ContainsKey("Count_D2G1") && scene.Variables["Count_D2G1"] == N2;
 
         var bD3G1 = new Bom("D3G1");
         var bD3G2 = new Bom("D3G2");
         var bD3G3 = new Bom("D3G3");
-        bD3G2.AddSubBOM(bD3G1);
+        bD3G2.AddSubBom(bD3G1);
         bD3G2.PreCondition = scene =>
             scene.Variables.ContainsKey("Count_D3G1") && scene.Variables["Count_D3G1"] == N3;
-        bD3G3.AddSubBOM(bD3G2);
+        bD3G3.AddSubBom(bD3G2);
         bD3G3.PreCondition = scene =>   //D3G2的数量达到要求，才能进行D3G3。 D3G2 can only be done after D3G2 is completed to fulfill required amount N3.
             scene.Variables.ContainsKey("Count_D3G2") && scene.Variables["Count_D3G2"] == N3;
 
-        bomMain.AddSubBOM(bD1G3, N1);
-        bomMain.AddSubBOM(bD2G2, N2);
-        bomMain.AddSubBOM(bD3G3, N3);
+        bomMain.AddSubBom(bD1G3, N1);
+        bomMain.AddSubBom(bD2G2, N2);
+        bomMain.AddSubBom(bD3G3, N3);
 
         IO.PrintBom(bomMain);
 

@@ -123,9 +123,9 @@ public class CaseLight
         var bomA = new Bom("SMT半成品A");
         var bomB = new Bom("SMT半成品B");
         var bomDIP = new Bom("DIP半成品");
-        bomB.AddSubBOM(bomA);
-        bomMain.AddSubBOM(bomB);
-        bomMain.AddSubBOM(bomDIP);
+        bomB.AddSubBom(bomA);
+        bomMain.AddSubBom(bomB);
+        bomMain.AddSubBom(bomDIP);
 
         IO.PrintBom(bomMain);
 

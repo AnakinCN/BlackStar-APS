@@ -67,15 +67,15 @@ static class CaseBom
         var bomBat = new Bom("Battery");
         var bomCom = new Bom("Communication");
 
-        bomMain.AddSubBOM(bomScreen);
-        bomMain.AddSubBOM(bomBat);
-        bomMain.AddSubBOM(bomCom);
+        bomMain.AddSubBom(bomScreen);
+        bomMain.AddSubBom(bomBat);
+        bomMain.AddSubBom(bomCom);
 
         var bomAntenna = new Bom("Antenna");
         var bomBaseBand = new Bom("BaseBand");
 
-        bomCom.AddSubBOM(bomAntenna);
-        bomCom.AddSubBOM(bomBaseBand);
+        bomCom.AddSubBom(bomAntenna);
+        bomCom.AddSubBom(bomBaseBand);
 
         //bomMain.Display();
         print(bomMain);
@@ -107,7 +107,7 @@ static class CaseBom
         JObject jo = new()
         {
             ["Name"] = pair.Bom.Name,
-            ["Ammount"] = pair.Ammount
+            ["Ammount"] = pair.Amount
         };
         if (pair.Bom.SubBoms.Count > 0)
         {
