@@ -10,8 +10,8 @@ internal class CaseDig
     public static Scene OptimDig()
     {
         var bom = createBom();
-        var needs = createNeeds();              //读入机器能力
-        var resources = createResources();  //读入机器排班表
+        var needs = createNeeds();              //读入机器能力, read in the machine abilities
+        var resources = createResources();  //读入机器排班表, read in the machine schedule
         var solver = new SortBomSolver();
         var scene = solver.Solve(bom, NREQUIRE, needs, resources, switches: null, pop: POP, stagnation: STAGNATION);
         return scene;
@@ -52,7 +52,7 @@ internal class CaseDig
             DateTime from = baseDt + TimeSpan.FromDays(iday);
             DateTime to = from + last;
             (resources["MachineGroup"] as Resource<bool>).States.Add(new State<bool>("批次", from, to, true));
-            (resources["MachineA"] as Resource<bool>).States.Add( new State<bool>("工序A", from, to, true));
+            (resources["MachineA"] as Resource<bool>).States.Add(new State<bool>("工序A", from, to, true));
             (resources["MachineB1"] as Resource<bool>).States.Add(new State<bool>("工序B", from, to, true));
             (resources["MachineB2"] as Resource<bool>).States.Add(new State<bool>("工序B", from, to, true));
             (resources["MachineC"] as Resource<bool>).States.Add(new State<bool>("工序C", from, to, true));
@@ -62,11 +62,15 @@ internal class CaseDig
         return resources;
     }
 
+    /// <summary>
+    /// 深度定制的场景化bom
+    /// </summary>
+    /// <returns></returns>
     private static Bom createBom()
     {
-        const int N1 = 100;
-        const int N2 = 200;
-        const int N3 = 300;
+        const int N1 = 1;
+        const int N2 = 2;
+        const int N3 = 3;
 
         var bomMain = new Bom("group");
 
@@ -74,27 +78,37 @@ internal class CaseDig
         var bD1G2 = new Bom("D1G2");
         var bD1G3 = new Bom("D1G3");
         bD1G2.AddSubBom(bD1G1);
-        bD1G2.PreCondition = scene =>
+        bD1G2.SceneCondition = scene =>
             scene.Variables.ContainsKey("Count_D1G1") && scene.Variables["Count_D1G1"] == N1;
         bD1G3.AddSubBom(bD1G2);
-        bD1G3.PreCondition = scene =>
+        bD1G3.SceneCondition = scene =>
             scene.Variables.ContainsKey("Count_D1G2") && scene.Variables["Count_D1G2"] == N1;
 
         var bD2G1 = new Bom("D2G1");
         var bD2G2 = new Bom("D2G2");
         bD2G2.AddSubBom(bD2G1);
-        bD2G2.PreCondition = scene =>
+        bD2G2.SceneCondition = scene =>
             scene.Variables.ContainsKey("Count_D2G1") && scene.Variables["Count_D2G1"] == N2;
 
         var bD3G1 = new Bom("D3G1");
         var bD3G2 = new Bom("D3G2");
         var bD3G3 = new Bom("D3G3");
         bD3G2.AddSubBom(bD3G1);
-        bD3G2.PreCondition = scene =>
+        bD3G2.SceneCondition = scene =>
             scene.Variables.ContainsKey("Count_D3G1") && scene.Variables["Count_D3G1"] == N3;
         bD3G3.AddSubBom(bD3G2);
-        bD3G3.PreCondition = scene =>   //D3G2的数量达到要求，才能进行D3G3。 D3G2 can only be done after D3G2 is completed to fulfill required amount N3.
+        bD3G3.SceneCondition = scene =>   //D3G2的数量达到要求，才能进行D3G3, only when the number of D3G2 is enough, D3G3 is ok to start
             scene.Variables.ContainsKey("Count_D3G2") && scene.Variables["Count_D3G2"] == N3;
+
+        //指定工序的满足条件
+        //assign a custom condition for bD3G3
+        bD3G3.BopCondition = bop =>
+        {
+            DateTime childReady = bop.GetChildrenReady(baseDt); //子工序完成时间，the finish time of children bops
+            TimeSpan ten = TimeSpan.FromMinutes(10);            //必要的静置间隔, necessary idle time
+            TimeSpan veryLong = TimeSpan.FromDays(1000);
+            return (childReady + ten, veryLong); //返回可开始时间和最大延迟时间, return the start time and the max delay time
+        };
 
         bomMain.AddSubBom(bD1G3, N1);
         bomMain.AddSubBom(bD2G2, N2);
