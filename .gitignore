@@ -69,3 +69,6 @@
 /Samples/CaseBom/bin/Debug/bom.rar
 /Samples/CaseNoBom/bin/Debug/no bom.rar
 *.blic
+/Samples/CaseNoBom/bin/Release/net8.0-windows
+/Samples/CaseBom/bin/Release/net8.0-windows
+/Samples/BlackStar.SceneDefinition/bin/Release/net8.0
