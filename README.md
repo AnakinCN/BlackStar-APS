@@ -10,7 +10,7 @@ Contact <a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a> for l
 
 <p align=center><h1>BlackStar计划调度排产求解器</h1></p>
 
-<font color=#229912><b>BlackStar</b></font>是一个通用的先进计划排程APS模型和算法解决方案，支持航天任务、无人系统、车队调度、制造排产等诸多领域。BlackStar使用<font color=#229912><b>连续时间</b></font>模型，可支持任意精度的时间。
+<font color=#229912><b>BlackStar</b></font>是一个通用的先进计划排程APS模型和算法解决方案，支持航天任务、无人系统、车队调度、制造排产等诸多领域。BlackStar使用<font color=#229912><b>连续时间</b></font>模型，可支持任意精度的时间。详见<a href="BlackStar2.pdf">技术白皮书</a>。
 
 请联系<a href="mailto:anakin@seeingstones.cn">anakin@seeingstones.cn</a>申请证书，之前需要检查机器的UID，请使用UID检查工具，并将显示的UID序列号在申请邮件内发送过来：
 
