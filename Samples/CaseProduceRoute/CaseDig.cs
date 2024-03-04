@@ -17,7 +17,7 @@ internal class CaseDig
         return scene;
     }
 
-    private static PooledList<IServiceAbility> createNeeds()
+    private static List<IServiceAbility> createNeeds()
     {
         return new()
         {
@@ -33,9 +33,9 @@ internal class CaseDig
         };
     }
 
-    private static PooledDictionary<string, IResource> createResources()
+    private static Dictionary<string, IResource> createResources()
     {
-        PooledDictionary<string, IResource> resources = new()
+        Dictionary<string, IResource> resources = new()
         {
             {"MachineGroup", new Resource<bool>("MachineGroup")},
             {"MachineA", new Resource<bool>("MachineA")},

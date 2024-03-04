@@ -18,24 +18,22 @@ static class CaseBom
         return scene;
     }
 
-    private static PooledDictionary<string, IResource> createResources()
+    private static Dictionary<string, IResource> createResources()
     {
-        PooledDictionary<string, IResource> resources = new();
+        Dictionary<string, IResource> resources = new();
         TimeSpan last = TimeSpan.FromHours(24);
         DateTime to = baseDt + last;
         for (int i = 0; i < NRESOURCE; i++)
         {
-            resources.AddRange(new PooledDictionary<string, IResource>()
-            {
-                {$"PhoneMachine{i}", new Resource<bool>($"PhoneMachine{i}") {States = new() { new State<bool>("BuildPhone", baseDt, to, true)}}},
-                {$"ScreenMachine{i*2+1}", new Resource<bool>($"ScreenMachine{i*2+1}") {States = new() { new State<bool>("BuildScreen", baseDt, to, true)}}},
-                {$"ScreenMachine{i*2+2}", new Resource<bool>($"ScreenMachine{i*2+2}") {States = new() { new State<bool>("BuildScreenHigh", baseDt, to, true)}}},
-                {$"BatteryMachine{i*2+1}", new Resource<bool>($"BatteryMachine{i*2+1}") {States = new() { new State<bool>("BuildBattery", baseDt, to, true)}}},
-                {$"BatteryMachine{i*2+2}", new Resource<bool>($"BatteryMachine{i*2+2}") {States = new() { new State<bool>("BuildBatteryHigh", baseDt, to, true)}}},
-                {$"CommunicationMachine{i}", new Resource<bool>($"CommunicationMachine{i}") {States = new() { new State<bool>("BuildCommunication", baseDt, to, true)}}},
-                {$"AntennaMachine{i}", new Resource<bool>($"AntennaMachine{i}") {States = new() { new State<bool>("BuildAntenna", baseDt, to, true)}}},
-                {$"BaseBandMachine{i}", new Resource<bool>($"BaseBandMachine{i}") {States = new() { new State<bool>("BuildBaseBand", baseDt, to, true)}}},
-            });
+
+            resources.Add($"PhoneMachine{i}", new Resource<bool>($"PhoneMachine{i}") { States = new() { new State<bool>("BuildPhone", baseDt, to, true) } });
+            resources.Add($"ScreenMachine{i*2+1}", new Resource<bool>($"ScreenMachine{i*2+1}") {States = new() { new State<bool>("BuildScreen", baseDt, to, true)}});
+            resources.Add($"ScreenMachine{i*2+2}", new Resource<bool>($"ScreenMachine{i*2+2}") {States = new() { new State<bool>("BuildScreenHigh", baseDt, to, true)}});
+            resources.Add($"BatteryMachine{i*2+1}", new Resource<bool>($"BatteryMachine{i*2+1}") {States = new() { new State<bool>("BuildBattery", baseDt, to, true)}});
+            resources.Add($"BatteryMachine{i*2+2}", new Resource<bool>($"BatteryMachine{i*2+2}") {States = new() { new State<bool>("BuildBatteryHigh", baseDt, to, true)}});
+            resources.Add($"CommunicationMachine{i}", new Resource<bool>($"CommunicationMachine{i}") {States = new() { new State<bool>("BuildCommunication", baseDt, to, true)}});
+            resources.Add($"AntennaMachine{i}", new Resource<bool>($"AntennaMachine{i}") {States = new() { new State<bool>("BuildAntenna", baseDt, to, true)}});
+            resources.Add($"BaseBandMachine{i}", new Resource<bool>($"BaseBandMachine{i}") {States = new() { new State<bool>("BuildBaseBand", baseDt, to, true)}});
         }
         return resources;
     }
@@ -44,7 +42,7 @@ static class CaseBom
     /// 生产零件能力，物料名-机器名
     /// </summary>
     /// <returns></returns>
-    public static PooledList<IServiceAbility> createNeeds()
+    public static List<IServiceAbility> createNeeds()
     {
         return new()
         {

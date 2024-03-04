@@ -5,7 +5,7 @@ public class CaseLight
     const int STAGNATION = 20;
     const int POP = 20;
     private static int NREQUIRE = 1000;
-    static DateTime baseDt = new (2023, 1, 1);
+    static DateTime baseDt = new(2023, 1, 1);
 
     public static Scene OptimLight()
     {
@@ -24,87 +24,86 @@ public class CaseLight
         return scene;
     }
 
-    private static PooledDictionary<string, IResource> createResources()
+    private static Dictionary<string, IResource> createResources()
     {
-        PooledDictionary<string, IResource> resources = new();
+        Dictionary<string, IResource> resources = new();
         TimeSpan last = TimeSpan.FromHours(4800);
         DateTime to = baseDt + last;
-        resources.AddRange(new PooledDictionary<string, IResource>()
+
+        resources.Add("GY0034阴阳板1", new Resource<bool>("GY0034阴阳板1")
         {
-            {"GY0034阴阳板1", new Resource<bool>("GY0034阴阳板1")
+            States = new() { new State<bool>("治具", baseDt, to, true) },
+            Variables = new()
             {
-                States = new() { new State<bool>("治具", baseDt, to, true)},
-                Variables = new()
-                {
-                    ["Current"] = new(""),
-                    ["NeedSwitch"] = new(false)
-                }
-            }},
-            {"GY0034阴阳板2", new Resource<bool>("GY0034阴阳板2")
-            {
-                States = new() { new State<bool>("治具", baseDt, to, true)},
-                Variables = new()
-                {
-                    ["Current"] = new(""),
-                    ["NeedSwitch"] = new(false)
-                }
-            }},
-            
-            {"SMT01线", new Resource<bool>("SMT01线")
-            {
-                States = new() { new State<bool>("SMT01", baseDt, to, true)},
-                Variables = new()
-                {
-                    ["Current"] = new(""),
-                    ["NeedSwitch"] = new(true)
-                }
-            }},
-            {"SMT02线", new Resource<bool>("SMT02线")
-            {
-                States = new() { new State<bool>("SMT02", baseDt, to, true)},
-                Variables = new()
-                {
-                    ["Current"] = new(""),
-                    ["NeedSwitch"] = new(true)
-                }
-            }},
-            //{"SMT03线", new Resource<bool>("SMT03线") {States = new() { new State<bool>("SMT03", baseDt, to, true)}}},
-            
-            {"插件01线", new Resource<bool>("插件01线")
-            {
-                States = new() { new State<bool>("DIP01", baseDt, to, true)},
-                Variables = new()
-                {
-                    ["Current"] = new(""),
-                    ["NeedSwitch"] = new(true)
-                }
-            }},
-            {"插件02线", new Resource<bool>("插件02线")
-            {
-                States = new() { new State<bool>("DIP02", baseDt, to, true)},
-                Variables = new()
-                {
-                    ["Current"] = new(""),
-                    ["NeedSwitch"] = new(true)
-                }
-            }},
-            
-            {"组装01线", new Resource<bool>("组装01线")
-            {
-                States = new() { new State<bool>("组装", baseDt, to, true)},
-                Variables = new()
-                {
-                    ["Current"] = new(""),
-                    ["NeedSwitch"] = new(true)
-                }
-            }},
-            //{"组装02线", new Resource<bool>("组装02线") {States = new() { new State<bool>("组装", baseDt, to, true)}}},
+                ["Current"] = new(""),
+                ["NeedSwitch"] = new(false)
+            }
         });
+        resources.Add("GY0034阴阳板2", new Resource<bool>("GY0034阴阳板2")
+        {
+            States = new() { new State<bool>("治具", baseDt, to, true) },
+            Variables = new()
+            {
+                ["Current"] = new(""),
+                ["NeedSwitch"] = new(false)
+            }
+        });
+
+        resources.Add("SMT01线", new Resource<bool>("SMT01线")
+        {
+            States = new() { new State<bool>("SMT01", baseDt, to, true) },
+            Variables = new()
+            {
+                ["Current"] = new(""),
+                ["NeedSwitch"] = new(true)
+            }
+        });
+        resources.Add("SMT02线", new Resource<bool>("SMT02线")
+        {
+            States = new() { new State<bool>("SMT02", baseDt, to, true) },
+            Variables = new()
+            {
+                ["Current"] = new(""),
+                ["NeedSwitch"] = new(true)
+            }
+        });
+        //{"SMT03线", new Resource<bool>("SMT03线") {States = new() { new State<bool>("SMT03", baseDt, to, true)}}},
+
+        resources.Add("插件01线", new Resource<bool>("插件01线")
+        {
+            States = new() { new State<bool>("DIP01", baseDt, to, true) },
+            Variables = new()
+            {
+                ["Current"] = new(""),
+                ["NeedSwitch"] = new(true)
+            }
+        });
+        resources.Add("插件02线", new Resource<bool>("插件02线")
+        {
+            States = new() { new State<bool>("DIP02", baseDt, to, true) },
+            Variables = new()
+            {
+                ["Current"] = new(""),
+                ["NeedSwitch"] = new(true)
+            }
+        });
+
+        resources.Add("组装01线", new Resource<bool>("组装01线")
+        {
+            States = new() { new State<bool>("组装", baseDt, to, true) },
+            Variables = new()
+            {
+                ["Current"] = new(""),
+                ["NeedSwitch"] = new(true)
+            }
+        });
+        //{"组装02线", new Resource<bool>("组装02线") {States = new() { new State<bool>("组装", baseDt, to, true)}}},
+
 
         return resources;
     }
 
-    private static PooledList<IServiceAbility> createNeeds()
+    private static List<IServiceAbility> createNeeds()
     {
         return new()
         {
@@ -132,9 +131,9 @@ public class CaseLight
         return bomMain;
     }
 
-    private static PooledDictionary<string, TimeSpan> createSwitches()
+    private static Dictionary<string, TimeSpan> createSwitches()
     {
-        PooledDictionary<string, TimeSpan> ret = new()
+        Dictionary<string, TimeSpan> ret = new()
         {
             ["SMT半成品A"] = TimeSpan.FromMinutes(3),
             ["SMT半成品B"] = TimeSpan.FromMinutes(3),

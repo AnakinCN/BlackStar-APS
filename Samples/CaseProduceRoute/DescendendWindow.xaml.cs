@@ -12,7 +12,7 @@ public partial class DescendendWindow : Window
         InitializeComponent();
     }
 
-    public void DrawDescendence(PooledDictionary<int, double> decendend)
+    public void DrawDescendence(Dictionary<int, double> decendend)
     {
         double[] dataX = decendend.Keys.Select(i => (double)i).ToArray();
         double[] dataY = decendend.Values.Select(i =>

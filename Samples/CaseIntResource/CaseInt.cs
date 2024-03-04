@@ -15,7 +15,7 @@ public class CaseInt
     public static Scene OptimNoBom()
     {
         // 1. Generate 1000 random ActInt
-        PooledList<ActInt> acts = new();
+        List<ActInt> acts = new();
         JArray root = new();
         for (int i = 0; i < NACT; i++)
         {
@@ -36,7 +36,7 @@ public class CaseInt
         File.WriteAllText("require.json", root.ToString());
 
         // 2. Generate 2000 Resource with State<int>
-        PooledDictionary<string, IResource> resources = new();
+        Dictionary<string, IResource> resources = new();
         root = new();
         for (int i = 0; i < NRESOURCE; i++)
         {
@@ -45,7 +45,7 @@ public class CaseInt
             var statestart = baseDt + TimeSpan.FromMinutes(20 * Random.Shared.NextDouble());
             var stateend = statestart + TimeSpan.FromMinutes(2 + 2.5 * Random.Shared.NextDouble());
             State<int> state = new State<int>("IntService", statestart, stateend, 4);
-            resource.States = new PooledList<State<int>> { state };
+            resource.States = new List<State<int>> { state };
             //Console.WriteLine($"{name} provide {state.To- state.From}");
             resources.TryAdd(name, resource);
             root.Add(new JObject

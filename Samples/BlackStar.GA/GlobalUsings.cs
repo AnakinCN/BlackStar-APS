@@ -12,4 +12,3 @@ global using BlackStar.GA.SortAll;
 global using BlackStar.Model;
 global using BlackStar.Strategy;
 global using BlackStar.Functions;
-global using Collections.Pooled;

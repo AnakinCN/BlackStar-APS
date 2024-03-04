@@ -53,7 +53,7 @@ public partial class MainWindow : Window
 
     private void Draw(Scene scene)
     {
-        PooledDictionary<string, System.Drawing.Color> colors = new()
+        Dictionary<string, System.Drawing.Color> colors = new()
         {
             {"D1", Color.Yellow},
             {"D2", Color.Blue},
