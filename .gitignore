@@ -72,3 +72,7 @@
 /Samples/CaseNoBom/bin/Release/net8.0-windows
 /Samples/CaseBom/bin/Release/net8.0-windows
 /Samples/BlackStar.SceneDefinition/bin/Release/net8.0
+/Samples/BlackStar.SceneDefinition/bin/Debug/net9.0
+/Samples/CaseBom/bin/Debug/net9.0-windows
+/Samples/CaseNoBom/bin/Debug/net9.0-windows/runtimes/win/lib/net8.0
+/Samples/CaseNoBom/bin/Debug/net9.0-windows
