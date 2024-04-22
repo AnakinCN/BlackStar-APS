@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="BlackStar.Bom\BlackStar.Bom.csproj" />
+  <Project Path="BlackStar.GA\BlackStar.GA.csproj" />
+  <Project Path="BlackStar.SceneDefinition\BlackStar.SceneDefinition.csproj" />
+  <Project Path="CaseBom\CaseBom.csproj" />
+  <Project Path="CaseIntResource\CaseIntResource.csproj" />
+  <Project Path="CaseLightModule\CaseLightModule.csproj" />
+  <Project Path="CaseNoBom\CaseNoBom.csproj" />
+  <Project Path="CaseProduceRoute\CaseProduceRoute.csproj" />
+</Solution>
