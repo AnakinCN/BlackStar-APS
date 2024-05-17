@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStarAPS" Version="2.0.8" />
+    <PackageReference Include="BlackStarAPS" Version="2.1.3" />
   </ItemGroup>
 
 </Project>
