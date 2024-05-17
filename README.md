@@ -14,6 +14,8 @@ Contact Wechat official '真知科技' for license application, you should send the 
 
 请联系微信公众号“真知科技”申请证书，之前需要检查机器的UID，请使用UID检查工具，并将显示的UID序列号发送过来：
 
+<img src="./Read/palantir.jpg">
+
 - <a href="UIDCheckCore.rar">UID Checker Linux</a> (运行命令为 `dotnet BlackStar.UIDCheckCore.dll`，需要dotnet 8 Linux运行时</a> ) 
 - <a href="UIDCheckWin.rar">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要dotnet 8 Windows桌面运行时</a> ）
 
