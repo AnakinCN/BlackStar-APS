@@ -76,3 +76,7 @@
 /Samples/CaseBom/bin/Debug/net9.0-windows
 /Samples/CaseNoBom/bin/Debug/net9.0-windows/runtimes/win/lib/net8.0
 /Samples/CaseNoBom/bin/Debug/net9.0-windows
+/Samples/Case5k/obj
+/Samples/Case5k/bin/Debug/net9.0-windows
+/Samples/CaseDig/bin/Debug/net9.0-windows
+/Samples/CaseDig/obj
