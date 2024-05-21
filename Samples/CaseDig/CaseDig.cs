@@ -1,19 +1,23 @@
-﻿namespace BlackStar.View;
-
-internal class CaseDig
+﻿internal class CaseDig
 {
     const int STAGNATION = 10;
     const int POP = 10;
     private static int NREQUIRE = 1;
     static DateTime baseDt = new(2023, 1, 1, 8, 0, 0);
 
-    public static Scene OptimDig()
+    public static async Task<Scene> OptimDig()
     {
         var bom = createBom();
         var needs = createNeeds();              //读入机器能力
         var resources = createResources();  //读入机器排班表
         var solver = new SortBomSolver();
-        var scene = solver.Solve(bom, NREQUIRE, needs, resources, switches: null, pop: POP, stagnation: STAGNATION);
+
+        Scene scene = null;
+        await Task.Run(async () =>
+        {
+            scene = await solver.Solve(bom, NREQUIRE, needs, resources, switches: null, pop: POP,
+                stagnation: STAGNATION);
+        });
         return scene;
     }
 
@@ -116,9 +120,9 @@ internal class CaseDig
         bD3G3.ResourcePreference = new Resource<bool>.ResourcePreferenceDelegate(
             (resource, bop) => resource.Name switch
             {
-                "MachineC" => -1.0f, //不使用C
-                "MachineC1" => 1.0f, //不使用C1，优先级高于C2
-                "MachineC2" => 2.0f, //使用C2，但是优先级低于C1
+                "MachineC" => -1.0f, //不使用MachineC
+                "MachineC1" => 1.0f, //使用MachineC1，优先级最高
+                "MachineC2" => 2.0f, //使用MachineC2，但是优先级低于C1
                 _ => -1.0f,
             });
 

@@ -6,15 +6,15 @@ static class CaseBom
     static int NRESOURCE = 6;
     static int STAGNATION = 10;
     static int POP = 20;
-    static DateTime baseDt = new (2023, 1, 1);
+    static DateTime baseDt = new(2023, 1, 1);
 
-    public static Scene OptimBom()
+    public async static Task<Scene> OptimBom()
     {
         var bom = createBom();
         var needs = createNeeds();
         var resources = createResources();
         var solver = new SortBomSolver();
-        var scene = solver.Solve(bom, NACT, needs, resources, pop: POP, stagnation: STAGNATION);
+        var scene = await solver.Solve(bom, NACT, needs, resources, pop: POP, stagnation: STAGNATION);
         return scene;
     }
 
@@ -27,13 +27,13 @@ static class CaseBom
         {
 
             resources.Add($"PhoneMachine{i}", new Resource<bool>($"PhoneMachine{i}") { States = new() { new State<bool>("BuildPhone", baseDt, to, true) } });
-            resources.Add($"ScreenMachine{i*2+1}", new Resource<bool>($"ScreenMachine{i*2+1}") {States = new() { new State<bool>("BuildScreen", baseDt, to, true)}});
-            resources.Add($"ScreenMachine{i*2+2}", new Resource<bool>($"ScreenMachine{i*2+2}") {States = new() { new State<bool>("BuildScreenHigh", baseDt, to, true)}});
-            resources.Add($"BatteryMachine{i*2+1}", new Resource<bool>($"BatteryMachine{i*2+1}") {States = new() { new State<bool>("BuildBattery", baseDt, to, true)}});
-            resources.Add($"BatteryMachine{i*2+2}", new Resource<bool>($"BatteryMachine{i*2+2}") {States = new() { new State<bool>("BuildBatteryHigh", baseDt, to, true)}});
-            resources.Add($"CommunicationMachine{i}", new Resource<bool>($"CommunicationMachine{i}") {States = new() { new State<bool>("BuildCommunication", baseDt, to, true)}});
-            resources.Add($"AntennaMachine{i}", new Resource<bool>($"AntennaMachine{i}") {States = new() { new State<bool>("BuildAntenna", baseDt, to, true)}});
-            resources.Add($"BaseBandMachine{i}", new Resource<bool>($"BaseBandMachine{i}") {States = new() { new State<bool>("BuildBaseBand", baseDt, to, true)}});
+            resources.Add($"ScreenMachine{i * 2 + 1}", new Resource<bool>($"ScreenMachine{i * 2 + 1}") { States = new() { new State<bool>("BuildScreen", baseDt, to, true) } });
+            resources.Add($"ScreenMachine{i * 2 + 2}", new Resource<bool>($"ScreenMachine{i * 2 + 2}") { States = new() { new State<bool>("BuildScreenHigh", baseDt, to, true) } });
+            resources.Add($"BatteryMachine{i * 2 + 1}", new Resource<bool>($"BatteryMachine{i * 2 + 1}") { States = new() { new State<bool>("BuildBattery", baseDt, to, true) } });
+            resources.Add($"BatteryMachine{i * 2 + 2}", new Resource<bool>($"BatteryMachine{i * 2 + 2}") { States = new() { new State<bool>("BuildBatteryHigh", baseDt, to, true) } });
+            resources.Add($"CommunicationMachine{i}", new Resource<bool>($"CommunicationMachine{i}") { States = new() { new State<bool>("BuildCommunication", baseDt, to, true) } });
+            resources.Add($"AntennaMachine{i}", new Resource<bool>($"AntennaMachine{i}") { States = new() { new State<bool>("BuildAntenna", baseDt, to, true) } });
+            resources.Add($"BaseBandMachine{i}", new Resource<bool>($"BaseBandMachine{i}") { States = new() { new State<bool>("BuildBaseBand", baseDt, to, true) } });
         }
         return resources;
     }
@@ -105,7 +105,7 @@ static class CaseBom
         JObject jo = new()
         {
             ["Name"] = pair.Bom.Name,
-            ["Ammount"] = pair.Amount
+            ["Amount"] = pair.Amount
         };
         if (pair.Bom.SubBoms.Count > 0)
         {
@@ -116,7 +116,7 @@ static class CaseBom
             }
             jo["Subs"] = subs;
         }
-       
+
         return jo;
     }
 }

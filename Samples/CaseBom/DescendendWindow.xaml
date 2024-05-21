@@ -8,6 +8,15 @@
         Icon="./blackstar desc.ico"
         Title="BlackStar APS Solver - Descendence Curve" Height="450" Width="800">
     <Grid>
-        <WpfPlot x:Name="WpfPlot1" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" x:Name="btFit" Width="50" Height="20" Click="BtFit_OnClick">Fit</Button>
+        <WpfPlot Grid.Row="1" x:Name="WpfPlot1" />
     </Grid>
 </Window>

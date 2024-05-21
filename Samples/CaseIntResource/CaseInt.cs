@@ -12,7 +12,7 @@ public class CaseInt
     /// 无bom
     /// </summary>
     /// <returns></returns>
-    public static Scene OptimNoBom()
+    public static async Task<Scene> OptimNoBom()
     {
         // 1. Generate 1000 random ActInt
         List<ActInt> acts = new();
@@ -62,7 +62,13 @@ public class CaseInt
         Console.WriteLine();
         File.WriteAllText("machine.json", root.ToString());
         SortAllSolver solver = new();
-        var scene = solver.Solve(acts, resources, pop: POP, stagnation: STAGNATION);
+
+        Scene scene = null;
+        await Task.Run(async () =>
+        {
+            scene = await solver.Solve(acts, resources, pop: POP, stagnation: STAGNATION);
+        });
+
 
         Debug.WriteLine($"use resources {scene.Deploys.Select(i => i.UseResource).Distinct().Count()}");
 

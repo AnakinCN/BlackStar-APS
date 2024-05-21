@@ -2,25 +2,27 @@
 
 public class CaseLight
 {
-    const int STAGNATION = 20;
-    const int POP = 20;
-    private static int NREQUIRE = 1000;
+    const int STAGNATION = 8;
+    const int POP = 8;
+    private static int NREQUIRE = 500;
     static DateTime baseDt = new(2023, 1, 1);
 
-    public static Scene OptimLight()
+    public static async Task<Scene> OptimLight()
     {
         //get the nRequire option in App.config
         var bom = createBom();
-        NREQUIRE = int.Parse(ConfigurationManager.AppSettings["nRequire"]);     //输入成品数
+        //NREQUIRE = int.Parse(ConfigurationManager.AppSettings["nRequire"]);     //输入成品数
 
-        //if (NREQUIRE > 100)     //未授权限制求解数量
-        //    NREQUIRE = 100;
-
-        var needs = createNeeds();                  //读入机器能力
+        var needs = createNeeds();                      //读入机器能力
         var resources = createResources();      //读入机器排班表
-        var switches = createSwitches();        //读入机器切换时间
+        var switches = createSwitches();        //读入物料切换时间
         var solver = new SortBomSolver();
-        var scene = solver.Solve(bom, NREQUIRE, needs, resources, switches: switches, pop: POP, stagnation: STAGNATION);    //调用求解器
+
+        Scene scene = null;
+        await Task.Run(async () =>
+        {
+            scene = await solver.Solve(bom, NREQUIRE, needs, resources, switches: switches, pop: POP, stagnation: STAGNATION);
+        });
         return scene;
     }
 
@@ -30,14 +32,33 @@ public class CaseLight
         TimeSpan last = TimeSpan.FromHours(4800);
         DateTime to = baseDt + last;
 
+        //切换行为
+        //Func<Resource<bool>, string, bool> switchAction =  (resource, next) =>
+        //{
+        //    var considerSwitch = resource.Scene.Variables["ConsiderSwitch"].GetBoolValue();
+        //    if (!considerSwitch)
+        //        return false;
+        //    //string next = resource.Variables["Next"].GetStringValue();          //下一个待加工
+        //    string current = resource.Variables["Current"].GetStringValue();    //当前加工
+        //    if (next == current)
+        //        return false;
+        //    return true;
+        //};
+
+
         resources.Add("GY0034阴阳板1", new Resource<bool>("GY0034阴阳板1")
         {
             States = new() { new State<bool>("治具", baseDt, to, true) },
             Variables = new()
             {
                 ["Current"] = new(""),
+                ["Next"] = new(""),
                 ["NeedSwitch"] = new(false)
-            }
+            },
+            Decides = new()
+            {
+                ["Switch"] = Delegates.DefaultSwitchAction
+            },
         });
         resources.Add("GY0034阴阳板2", new Resource<bool>("GY0034阴阳板2")
         {
@@ -45,8 +66,13 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["NeedSwitch"] = new(false)
-            }
+                ["Next"] = new(""),
+                ["NeedSwitch"] = new(false),
+            },
+            Decides = new()
+            {
+                ["Switch"] = Delegates.DefaultSwitchAction
+            },
         });
 
         resources.Add("SMT01线", new Resource<bool>("SMT01线")
@@ -55,8 +81,13 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
+                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
-            }
+            },
+            Decides = new()
+            {
+                ["Switch"] = Delegates.DefaultSwitchAction
+            },
         });
         resources.Add("SMT02线", new Resource<bool>("SMT02线")
         {
@@ -64,8 +95,13 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
+                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
-            }
+            },
+            Decides = new()
+            {
+                ["Switch"] = Delegates.DefaultSwitchAction
+            },
         });
         //{"SMT03线", new Resource<bool>("SMT03线") {States = new() { new State<bool>("SMT03", baseDt, to, true)}}},
 
@@ -75,8 +111,13 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
+                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
-            }
+            },
+            Decides = new()
+            {
+                ["Switch"] = Delegates.DefaultSwitchAction
+            },
         });
         resources.Add("插件02线", new Resource<bool>("插件02线")
         {
@@ -84,18 +125,28 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
+                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
-            }
+            },
+            Decides = new()
+            {
+                ["Switch"] = Delegates.DefaultSwitchAction
+            },
         });
 
         resources.Add("组装01线", new Resource<bool>("组装01线")
         {
-            States = new() { new State<bool>("组装", baseDt, to, true) },
+            States = [new State<bool>("组装", baseDt, to, true)],
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["NeedSwitch"] = new(true)
-            }
+                ["Next"] = new(""),
+                ["NeedSwitch"] = new(true),
+            },
+            Decides = new()
+            {
+                ["Switch"] = Delegates.DefaultSwitchAction
+            },
         });
         //{"组装02线", new Resource<bool>("组装02线") {States = new() { new State<bool>("组装", baseDt, to, true)}}},
 
@@ -105,15 +156,15 @@ public class CaseLight
 
     private static List<IServiceAbility> createNeeds()
     {
-        return new()
-        {
-            new ServiceAbilityCompound("SMT半成品A", ["治具","SMT01"], TimeSpan.FromSeconds(23)),       //SMTA面
-            new ServiceAbilityCompound("SMT半成品A", ["治具","SMT02"], TimeSpan.FromSeconds(30.3)),     //SMTA面
-            new ServiceAbility("SMT半成品B", "SMT01", TimeSpan.FromSeconds(64)),      //SMTB面
-            new ServiceAbility("DIP半成品", "DIP01", TimeSpan.FromSeconds(86.4)),      //插件
-            new ServiceAbility("DIP半成品", "DIP02", TimeSpan.FromSeconds(100.3)),     //插件
-            new ServiceAbility("成品", "组装", TimeSpan.FromSeconds(300)),              //组装
-        };
+        return
+        [
+            new ServiceAbilityCompound("SMT半成品A", ["治具", "SMT01"], TimeSpan.FromSeconds(23)), //SMTA面
+            new ServiceAbilityCompound("SMT半成品A", ["治具", "SMT02"], TimeSpan.FromSeconds(30.3)), //SMTA面
+            new ServiceAbility("SMT半成品B", "SMT01", TimeSpan.FromSeconds(64)), //SMTB面
+            new ServiceAbility("DIP半成品", "DIP01", TimeSpan.FromSeconds(86.4)), //插件
+            new ServiceAbility("DIP半成品", "DIP02", TimeSpan.FromSeconds(100.3)), //插件
+            new ServiceAbility("成品", "组装", TimeSpan.FromSeconds(300)) //组装
+        ];
     }
 
     private static Bom createBom()
@@ -133,13 +184,13 @@ public class CaseLight
 
     private static Dictionary<string, TimeSpan> createSwitches()
     {
-        Dictionary<string, TimeSpan> ret = new()
+        Dictionary<string, TimeSpan> switches = new()
         {
             ["SMT半成品A"] = TimeSpan.FromMinutes(3),
             ["SMT半成品B"] = TimeSpan.FromMinutes(3),
             ["DIP半成品"] = TimeSpan.FromMinutes(2),
             ["成品"] = TimeSpan.FromMinutes(3),
         };
-        return ret;
+        return switches;
     }
 }

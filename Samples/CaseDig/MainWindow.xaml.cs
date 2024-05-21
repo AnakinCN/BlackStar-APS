@@ -1,5 +1,4 @@
 ﻿using BlackStar.Event;
-using Case5k;
 using Color = System.Drawing.Color;
 
 namespace BlackStar.View;
@@ -37,9 +36,9 @@ public partial class MainWindow : Window
     private async Task RunSample()
     {
         //Scene scene = await Task.Run( () => CaseNoBom.OptimNoBom());
-        Scene scene = await Task.Run( () => CaseInt.OptimNoBom());
+        //Scene scene = await Task.Run( () => CaseInt.OptimNoBom());
         //Scene scene = await Task.Run( () => CaseBom.OptimBom());
-        //Scene scene = await Task.Run( () => CaseDig.OptimDig());
+        Scene scene = await Task.Run( () => CaseDig.OptimDig());
         //Scene scene = await Task.Run( () => CaseLight.OptimLight());
         //Scene scene = await Task.Run(() => Case5k.Optim5k());
 

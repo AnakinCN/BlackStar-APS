@@ -61,9 +61,14 @@ public static class CaseNoBom
         Console.WriteLine();
         File.WriteAllText("machine.json", root.ToString());
         SortAllSolver solver = new();
-        var scene = solver.Solve(acts, resources, pop: POP, stagnation: STAGNATION);
+        Scene scene = null;
+        Task.Run(async () =>
+        {
+            scene = await solver.Solve(acts, resources, pop: POP, stagnation: STAGNATION);
+        });
 
-        Debug.WriteLine($"use resources {scene.Deploys.Select(i => i.UseResource).Distinct().Count()}");
+        if (scene != null)
+            Debug.WriteLine($"use resources {scene.Deploys.Select(i => i.UseResource).Distinct().Count()}");
 
         return scene;
     }

@@ -1,9 +1,26 @@
-﻿using BlackStar.Event;
-using Case5k;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using BlackStar.Event;
+using BlackStar.Functions;
+using BlackStar.Model;
+using Newtonsoft.Json.Linq;
 using Color = System.Drawing.Color;
 
 namespace BlackStar.View;
 
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
 public partial class MainWindow : Window
 {
     static DateTime baseDt = new(2023, 1, 1);
@@ -37,11 +54,11 @@ public partial class MainWindow : Window
     private async Task RunSample()
     {
         //Scene scene = await Task.Run( () => CaseNoBom.OptimNoBom());
-        Scene scene = await Task.Run( () => CaseInt.OptimNoBom());
+        //Scene scene = await Task.Run( () => CaseInt.OptimNoBom());
         //Scene scene = await Task.Run( () => CaseBom.OptimBom());
         //Scene scene = await Task.Run( () => CaseDig.OptimDig());
         //Scene scene = await Task.Run( () => CaseLight.OptimLight());
-        //Scene scene = await Task.Run(() => Case5k.Optim5k());
+        Scene scene = await Task.Run(() => Case5k.Optim5k());
 
         this.Draw(scene, randomColor: true);
         Report(scene);
