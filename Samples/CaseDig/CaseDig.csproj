@@ -11,6 +11,7 @@
       <AnalysisLevel>preview-all</AnalysisLevel>
       <ApplicationIcon>blackstar desc.ico</ApplicationIcon>
       <Version>2.0.0.0</Version>
+      <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,9 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStarAPS" Version="2.1.5" />
+    <PackageReference Include="BlackStarAPS" Version="2.1.6" />
+    <PackageReference Include="Collections.Pooled" Version="2.0.0-preview.27" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="ScottPlot.WPF" Version="4.1.74" />
+    <PackageReference Include="ScottPlot.WPF" Version="5.0.36" />
   </ItemGroup>
 
   <ItemGroup>

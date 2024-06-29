@@ -1,10 +1,12 @@
-﻿namespace BlackStar.View;
+﻿using Collections.Pooled;
+
+namespace BlackStar.View;
 
 public class CaseLight
 {
     const int STAGNATION = 8;
     const int POP = 8;
-    private static int NREQUIRE = 500;
+    private static int NREQUIRE = 50;
     static DateTime baseDt = new(2023, 1, 1);
 
     public static async Task<Scene> OptimLight()
@@ -26,9 +28,9 @@ public class CaseLight
         return scene;
     }
 
-    private static Dictionary<string, IResource> createResources()
+    private static PooledDictionary<string, IResource> createResources()
     {
-        Dictionary<string, IResource> resources = new();
+        PooledDictionary<string, IResource> resources = new();
         TimeSpan last = TimeSpan.FromHours(4800);
         DateTime to = baseDt + last;
 
@@ -154,7 +156,7 @@ public class CaseLight
         return resources;
     }
 
-    private static List<IServiceAbility> createNeeds()
+    private static PooledList<IServiceAbility> createNeeds()
     {
         return
         [
@@ -182,9 +184,9 @@ public class CaseLight
         return bomMain;
     }
 
-    private static Dictionary<string, TimeSpan> createSwitches()
+    private static PooledDictionary<string, TimeSpan> createSwitches()
     {
-        Dictionary<string, TimeSpan> switches = new()
+        PooledDictionary<string, TimeSpan> switches = new()
         {
             ["SMT半成品A"] = TimeSpan.FromMinutes(3),
             ["SMT半成品B"] = TimeSpan.FromMinutes(3),

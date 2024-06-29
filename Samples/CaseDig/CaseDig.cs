@@ -1,4 +1,6 @@
-﻿internal class CaseDig
+﻿using Collections.Pooled;
+
+internal class CaseDig
 {
     const int STAGNATION = 10;
     const int POP = 10;
@@ -21,7 +23,7 @@
         return scene;
     }
 
-    private static List<IServiceAbility> createNeeds()
+    private static PooledList<IServiceAbility> createNeeds()
     {
         return new()
         {
@@ -37,9 +39,9 @@
         };
     }
 
-    private static Dictionary<string, IResource> createResources()
+    private static PooledDictionary<string, IResource> createResources()
     {
-        Dictionary<string, IResource> resources = new()
+        PooledDictionary<string, IResource> resources = new()
         {
             {"MachineGroup", new Resource<bool>("MachineGroup")},
             {"MachineA", new Resource<bool>("MachineA")},

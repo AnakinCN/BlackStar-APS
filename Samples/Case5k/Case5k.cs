@@ -1,5 +1,4 @@
-﻿using BlackStar.GA.SortBom;
-using BlackStar.Model;
+﻿using Collections.Pooled;
 
 namespace BlackStar.View;
 
@@ -29,8 +28,8 @@ internal class Case5k
         return scene;
     }
 
-    private static List<IServiceAbility> needs = new();
-    private static Dictionary<string, IResource> resources = new();
+    private static PooledList<IServiceAbility> needs = new();
+    private static PooledDictionary<string, IResource> resources = new();
     private static Random random = new();
 
     private static Bom createBom(int maxWidth, int maxDeep)
@@ -96,9 +95,9 @@ internal class Case5k
         //}
     }
 
-    private static Dictionary<string, TimeSpan> createSwitches()
+    private static PooledDictionary<string, TimeSpan> createSwitches()
     {
-        Dictionary<string, TimeSpan> switches = new()
+        PooledDictionary<string, TimeSpan> switches = new()
         {
             ["SMT半成品A"] = TimeSpan.FromMinutes(3),
             ["SMT半成品B"] = TimeSpan.FromMinutes(3),

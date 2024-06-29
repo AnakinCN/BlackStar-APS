@@ -1,4 +1,6 @@
-﻿namespace BlackStar.View;
+﻿using Collections.Pooled;
+
+namespace BlackStar.View;
 
 public static class CaseNoBom
 {
@@ -35,7 +37,7 @@ public static class CaseNoBom
         File.WriteAllText("require.json", root.ToString());
 
         // 2. Generate 2000 Resource with State<bool>
-        Dictionary<string, IResource> resources = new();
+        PooledDictionary<string, IResource> resources = new();
         root = new();
         for (int i = 0; i < NRESOURCE; i++)
         {
@@ -44,7 +46,7 @@ public static class CaseNoBom
             var statestart = baseDt + TimeSpan.FromMinutes(20 * Random.Shared.NextDouble());
             var stateend = statestart + TimeSpan.FromMinutes(2 + 2.5 * Random.Shared.NextDouble());
             State<bool> state = new State<bool>("BoolService", statestart, stateend, true);
-            resource.States = new List<State<bool>> { state };
+            resource.States = new PooledList<State<bool>> { state };
             //Console.WriteLine($"{name} provide {state.To- state.From}");
             resources.TryAdd(name, resource);
             root.Add(new JObject()

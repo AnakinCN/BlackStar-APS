@@ -1,4 +1,6 @@
-﻿namespace BlackStar.View;
+﻿using Collections.Pooled;
+
+namespace BlackStar.View;
 
 static class CaseBom
 {
@@ -18,9 +20,9 @@ static class CaseBom
         return scene;
     }
 
-    private static Dictionary<string, IResource> createResources()
+    private static PooledDictionary<string, IResource> createResources()
     {
-        Dictionary<string, IResource> resources = new();
+        PooledDictionary<string, IResource> resources = new();
         TimeSpan last = TimeSpan.FromHours(24);
         DateTime to = baseDt + last;
         for (int i = 0; i < NRESOURCE; i++)
@@ -42,7 +44,7 @@ static class CaseBom
     /// 生产零件能力，物料名-机器名
     /// </summary>
     /// <returns></returns>
-    public static List<IServiceAbility> createNeeds()
+    public static PooledList<IServiceAbility> createNeeds()
     {
         return new()
         {

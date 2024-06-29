@@ -1,18 +1,8 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using Colors = ScottPlot.Colors;
 using BlackStar.Event;
 using BlackStar.Functions;
 using BlackStar.Model;
+using Collections.Pooled;
 using Newtonsoft.Json.Linq;
 using Color = System.Drawing.Color;
 
@@ -60,7 +50,7 @@ public partial class MainWindow : Window
         //Scene scene = await Task.Run( () => CaseLight.OptimLight());
         Scene scene = await Task.Run(() => Case5k.Optim5k());
 
-        this.Draw(scene, randomColor: true);
+        this.Draw(scene);
         Report(scene);
     }
 
@@ -103,92 +93,76 @@ public partial class MainWindow : Window
         //wind.DrawDescendence(scene.Descendence);
     }
 
-    private void Draw(Scene scene, bool randomColor = true)
+    private void Draw(Scene scene)
     {
-        Dictionary<string, Color> colors = new()
-        {
-            {"D1", Color.Yellow},
-            {"D2", Color.Blue},
-            {"D3", Color.Green},
-        };
-
         if (scene is null)
             return;
 
         const double TASKHEIGHT = 10d;
         const double LINEHEIGHT = 20d;
+        const double halfHeight = TASKHEIGHT / 2;
 
-        Dictionary<string, int> rows = new();
-        Dictionary<int, string> rowLables = new();
+        PooledDictionary<string, int> rows = new();
+        PooledDictionary<int, string> rowLables = new();
         int row = 1;
         foreach (var resource in scene.Resources)
         {
-            if (rows.TryAdd(resource.Key, row))
+            if(rows.TryAdd(resource.Key, row))
             {
                 rowLables.Add(row, resource.Key);
                 row++;
             }
         }
 
-        // Configure the plot
         GanttChart.Plot.XLabel("Time");
-        GanttChart.Plot.XAxis.DateTimeFormat(true);
-        GanttChart.Plot.XAxis.Ticks(true, false);
-        GanttChart.Plot.XAxis.TickLabelFormat(StringOP.MinutesToDtLabel);
-
         GanttChart.Plot.YLabel("Resource");
-        //Add horizontal bars for each task
-        GanttChart.Plot.YTicks(
-            rows.Values.Select(i => i * LINEHEIGHT).ToArray(), rowLables.Values.ToArray()
-            );
-        //GanttChart.Plot.YAxis.TickLabelFormat(y =>
-        //    {
-        //        if (rowLables.TryGetValue((int)Math.Round(y), out string val))
-        //            return val;
-        //        return "";
-        //    }
-        //);
-        //GanttChart.Plot.YAxis.AutomaticTickPositions();
-
-        foreach (var task in scene.Deploys)
+        #region 资源轴
+        ScottPlot.TickGenerators.NumericManual yticks = new();
+        int ipair = 0;
+        foreach (var pair in rows)
+        {
+            var tick = new Tick(ipair * LINEHEIGHT, pair.Key);
+            yticks.Add(tick);
+            ipair++;
+        }
+        GanttChart.Plot.Axes.Left.TickGenerator = yticks;
+        GanttChart.Plot.Axes.Left.TickLabelStyle.FontName = "微软雅黑";
+        #endregion
+        #region 时间轴
+        // ScottPlot.TickGenerators.NumericManual xticks = new();
+        // for (int i = 0; i < (scene.Deploys.Select(i=>i.To).Max() - baseDt).TotalMinutes; i += 10)
+        // {
+        //     var tick = new Tick(i, TimeSpan.FromMinutes(i * 10d).ToString("HH:mm"));
+        //     xticks.Add(tick);
+        // }
+        // GanttChart.Plot.Axes.Bottom.TickGenerator = xticks;
+        // GanttChart.Plot.Axes.Bottom.TickLabelStyle.FontName = "微软雅黑";
+        #endregion
+        
+        foreach (var task in scene.Deploys.Span)
         {
             int line = rows[task.UseResource];
             var y = line * LINEHEIGHT;
-            var halfHeight = TASKHEIGHT / 2;
             var x1 = (task.From - baseDt).TotalMinutes;
             var x2 = (task.To - baseDt).TotalMinutes;
             var y1 = y - halfHeight;
             var y2 = y + halfHeight;
-            double[] xs = { x1, x2, x2, x1 };
-            double[] ys = { y1, y1, y2, y2 };
-
-            if (randomColor)
-                GanttChart.Plot.AddPolygon(xs, ys);
-            else
-            {
-                Color color = default;
-                foreach (var pair in colors)
-                {
-                    if (task.Name.Contains("_" + pair.Key))
-                    {
-                        color = pair.Value;
-                        break;
-                    }
-                }
-
-                GanttChart.Plot.AddPolygon(xs, ys, fillColor: color);
-            }
-
+          
+            var rect = GanttChart.Plot.Add.Rectangle(x1, x2, y1, y2);
             if (scene.Deploys.Count <= 100)
-                GanttChart.Plot.AddText(task.Name, x1, y, size: 12, color: Color.Black);
+            {
+                var text = GanttChart.Plot.Add.Text(task.Name, x1, y);
+                    text.LabelFontSize = 12;
+                        text.LabelFontColor = Colors.Black;
+            }
         }
-
-        GanttChart.Render();
+        GanttChart.Plot.Axes.AutoScale();
+        GanttChart.Refresh();
     }
 
     private void BtFit_OnClick(object sender, RoutedEventArgs e)
     {
-        GanttChart.Plot.AxisAuto();
+        GanttChart.Plot.Axes.AutoScale();
         GanttChart.Refresh();
     }
 }

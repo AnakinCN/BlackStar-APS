@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Case5k"
+        xmlns:wpf="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -18,6 +19,6 @@
             <Label x:Name="nolic" Foreground="Red" Visibility="Collapsed">no license file found</Label>
             <Button x:Name="btFit" Width="50" Height="20" Click="BtFit_OnClick">Fit</Button>
         </StackPanel>
-        <WpfPlot Grid.Row="1" x:Name="GanttChart" Margin="0" />
+        <wpf:WpfPlot Grid.Row="1" x:Name="GanttChart" Margin="0" />
     </Grid>
 </Window>

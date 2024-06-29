@@ -20,6 +20,6 @@
             <Label x:Name="nolic" Foreground="Red" Visibility="Collapsed">no license file found</Label>
             <Button x:Name="btFit" Width="50" Height="20" Click="BtFit_OnClick">Fit</Button>
         </StackPanel>
-        <WpfPlot Grid.Row="1" x:Name="GanttChart" Margin="0" />
+        <scottPlot:WpfPlot Grid.Row="1" x:Name="WpfPlot1" Margin="0" />
     </Grid>
 </Window>

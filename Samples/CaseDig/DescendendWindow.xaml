@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackStar.View"
+        xmlns:wpf="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
         mc:Ignorable="d"
         Icon="./blackstar desc.ico"
         Title="BlackStar APS Solver - Descendence Curve" Height="450" Width="800">
@@ -17,6 +18,6 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Row="0" x:Name="btFit" Width="50" Height="20" Click="BtFit_OnClick">Fit</Button>
-        <WpfPlot Grid.Row="1" x:Name="WpfPlot1" />
+        <wpf:WpfPlot Grid.Row="1" x:Name="WpfPlot1" />
     </Grid>
 </Window>

@@ -17,6 +17,6 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Row="0" x:Name="btFit" Width="50" Height="20" Click="BtFit_OnClick">Fit</Button>
-        <WpfPlot Grid.Row="1" x:Name="WpfPlot1" />
+        <wpf:WpfPlot Grid.Row="1" x:Name="WpfPlot1" />
     </Grid>
 </Window>

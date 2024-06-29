@@ -1,4 +1,6 @@
-﻿namespace BlackStar.View;
+﻿using Collections.Pooled;
+
+namespace BlackStar.View;
 
 public class CaseInt
 {
@@ -36,7 +38,7 @@ public class CaseInt
         File.WriteAllText("require.json", root.ToString());
 
         // 2. Generate 2000 Resource with State<int>
-        Dictionary<string, IResource> resources = new();
+        PooledDictionary<string, IResource> resources = new();
         root = new();
         for (int i = 0; i < NRESOURCE; i++)
         {
@@ -45,7 +47,7 @@ public class CaseInt
             var statestart = baseDt + TimeSpan.FromMinutes(20 * Random.Shared.NextDouble());
             var stateend = statestart + TimeSpan.FromMinutes(2 + 2.5 * Random.Shared.NextDouble());
             State<int> state = new State<int>("IntService", statestart, stateend, 4);
-            resource.States = new List<State<int>> { state };
+            resource.States = new PooledList<State<int>> { state };
             //Console.WriteLine($"{name} provide {state.To- state.From}");
             resources.TryAdd(name, resource);
             root.Add(new JObject
