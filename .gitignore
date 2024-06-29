@@ -80,3 +80,10 @@
 /Samples/Case5k/bin/Debug/net9.0-windows
 /Samples/CaseDig/bin/Debug/net9.0-windows
 /Samples/CaseDig/obj
+/.idea/.idea.folder.dir/.idea
+/Samples/.idea/.idea.Samples/.idea
+/Samples/BlackStar.SceneDefinition/bin/Release/net9.0
+/Samples/Case5k/bin/Release/net9.0-windows
+/Samples/CaseBom/bin/Release/net9.0-windows
+/Samples/CaseDig/bin/Release/net9.0-windows
+/Samples/CaseNoBom/bin/Release/net9.0-windows
