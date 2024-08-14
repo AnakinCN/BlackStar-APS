@@ -87,3 +87,7 @@
 /Samples/CaseBom/bin/Release/net9.0-windows
 /Samples/CaseDig/bin/Release/net9.0-windows
 /Samples/CaseNoBom/bin/Release/net9.0-windows
+/.idea/.gitignore
+/.idea/encodings.xml
+/.idea/indexLayout.xml
+/.idea/vcs.xml
