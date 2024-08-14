@@ -20,8 +20,8 @@ Contact Wechat official '真知科技' for license application, you should send 
 
 <img src="./Read/palantir.jpg">
 
-- <a href="UIDCheckCore.rar">UID Checker Linux</a> (运行命令为 `dotnet BlackStar.UIDCheckCore.dll`，需要dotnet 8 Linux运行时</a> ) 
-- <a href="UIDCheckWin.rar">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要dotnet 8 Windows桌面运行时</a> ）
+- <a href="UIDCheckCore.rar">UID Checker Linux</a> (运行命令为 `dotnet BlackStar.UIDCheckCore.dll`，需要dotnet 9 Linux运行时</a> ) 
+- <a href="UIDCheckWin.rar">UID Checker Win</a>（直接运行BlackStar.UIDCheckWin.exe文件，需要dotnet 9 Windows桌面运行时</a> ）
 
 <img src="./Read/shot.png" height=100% width=100%/>
 
