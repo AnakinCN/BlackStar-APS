@@ -1,23 +1,27 @@
+---
+charset: utf-8
+---
+
 <p align=center><h1>BlackStar, the Planning & Scheduling Solver</h1></p>
 
 <font color=#229912><b>BlackStar</b></font> is a general APS (advanced planning & scheduling) model and algorithm solution for various industries including aerospace mission planning, unmanned systems planning, vehicle fleet dispatching and manufactory planning. BlackStar uses a <font color=#229912><b>continuous time</b></font> model to support any time precisions.
 
-Contact Wechat official 'ÕæÖª¿Æ¼¼' for license application, you should send the UID of your machine that can be queried by:
+Contact Wechat official 'çœŸçŸ¥ç§‘æŠ€' for license application, you should send the UID of your machine that can be queried by:
 
-- <a href="UIDCheckerLinux.rar">UID Checker Linux</a> (the running command is: `dotnet BlackStar.UIDCheckCore.dll`£¬you need dotnet 8 runtime for Linux</a>)
+- <a href="UIDCheckerLinux.rar">UID Checker Linux</a> (the running command is: `dotnet BlackStar.UIDCheckCore.dll`ï¼Œyou need dotnet 8 runtime for Linux</a>)
 - <a href="UIDCheckerWindows.rar">UID Checker Win</a> (directly run BlackStar.UIDCheckWin.exe, which needs dotnet 8 runtime Windows Desktop</a>)
 
 
-<p align=center><h1>BlackStar¼Æ»®µ÷¶ÈÅÅ²úÇó½âÆ÷</h1></p>
+<p align=center><h1>BlackStarè®¡åˆ’è°ƒåº¦æ’äº§æ±‚è§£å™¨</h1></p>
 
-<font color=#229912><b>BlackStar</b></font>ÊÇÒ»¸öÍ¨ÓÃµÄÏÈ½ø¼Æ»®ÅÅ³ÌAPSÄ£ĞÍºÍËã·¨½â¾ö·½°¸£¬Ö§³Öº½ÌìÈÎÎñ¡¢ÎŞÈËÏµÍ³¡¢³µ¶Óµ÷¶È¡¢ÖÆÔìÅÅ²úµÈÖî¶àÁìÓò¡£BlackStarÊ¹ÓÃ<font color=#229912><b>Á¬ĞøÊ±¼ä</b></font>Ä£ĞÍ£¬¿ÉÖ§³ÖÈÎÒâ¾«¶ÈµÄÊ±¼ä¡£Ïê¼û<a href="BlackStar2.pdf">¼¼Êõ°×Æ¤Êé</a>¡£
+<font color=#229912><b>BlackStar</b></font>æ˜¯ä¸€ä¸ªé€šç”¨çš„å…ˆè¿›è®¡åˆ’æ’ç¨‹APSæ¨¡å‹å’Œç®—æ³•è§£å†³æ–¹æ¡ˆï¼Œæ”¯æŒèˆªå¤©ä»»åŠ¡ã€æ— äººç³»ç»Ÿã€è½¦é˜Ÿè°ƒåº¦ã€åˆ¶é€ æ’äº§ç­‰è¯¸å¤šé¢†åŸŸã€‚BlackStarä½¿ç”¨<font color=#229912><b>è¿ç»­æ—¶é—´</b></font>æ¨¡å‹ï¼Œå¯æ”¯æŒä»»æ„ç²¾åº¦çš„æ—¶é—´ã€‚è¯¦è§<a href="BlackStar2.pdf">æŠ€æœ¯ç™½çš®ä¹¦</a>ã€‚
 
-ÇëÁªÏµÎ¢ĞÅ¹«ÖÚºÅ¡°ÕæÖª¿Æ¼¼¡±ÉêÇëÖ¤Êé£¬Ö®Ç°ĞèÒª¼ì²é»úÆ÷µÄUID£¬ÇëÊ¹ÓÃUID¼ì²é¹¤¾ß£¬²¢½«ÏÔÊ¾µÄUIDĞòÁĞºÅ·¢ËÍ¹ıÀ´£º
+è¯·è”ç³»å¾®ä¿¡å…¬ä¼—å·â€œçœŸçŸ¥ç§‘æŠ€â€ç”³è¯·è¯ä¹¦ï¼Œä¹‹å‰éœ€è¦æ£€æŸ¥æœºå™¨çš„UIDï¼Œè¯·ä½¿ç”¨UIDæ£€æŸ¥å·¥å…·ï¼Œå¹¶å°†æ˜¾ç¤ºçš„UIDåºåˆ—å·å‘é€è¿‡æ¥ï¼š
 
 <img src="./Read/palantir.jpg">
 
-- <a href="UIDCheckCore.rar">UID Checker Linux</a> (ÔËĞĞÃüÁîÎª `dotnet BlackStar.UIDCheckCore.dll`£¬ĞèÒªdotnet 8 LinuxÔËĞĞÊ±</a> ) 
-- <a href="UIDCheckWin.rar">UID Checker Win</a>£¨Ö±½ÓÔËĞĞBlackStar.UIDCheckWin.exeÎÄ¼ş£¬ĞèÒªdotnet 8 Windows×ÀÃæÔËĞĞÊ±</a> £©
+- <a href="UIDCheckCore.rar">UID Checker Linux</a> (è¿è¡Œå‘½ä»¤ä¸º `dotnet BlackStar.UIDCheckCore.dll`ï¼Œéœ€è¦dotnet 8 Linuxè¿è¡Œæ—¶</a> ) 
+- <a href="UIDCheckWin.rar">UID Checker Win</a>ï¼ˆç›´æ¥è¿è¡ŒBlackStar.UIDCheckWin.exeæ–‡ä»¶ï¼Œéœ€è¦dotnet 8 Windowsæ¡Œé¢è¿è¡Œæ—¶</a> ï¼‰
 
 <img src="./Read/shot.png" height=100% width=100%/>
 

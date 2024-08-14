@@ -27,7 +27,7 @@
     <PackageReference Include="BlackStarAPS" Version="2.1.6" />
     <PackageReference Include="Collections.Pooled" Version="2.0.0-preview.27" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="ScottPlot.WPF" Version="5.0.36" />
+    <PackageReference Include="ScottPlot.WPF" Version="5.0.37" />
   </ItemGroup>
 
   <ItemGroup>
