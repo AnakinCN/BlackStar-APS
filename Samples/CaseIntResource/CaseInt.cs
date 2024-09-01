@@ -63,12 +63,12 @@ public class CaseInt
         Console.WriteLine($"provides  total {provideTotal}");
         Console.WriteLine();
         File.WriteAllText("machine.json", root.ToString());
-        SortAllSolver solver = new();
+        SortAllTransolution solver = new(acts, resources, pop: POP, stagnation: STAGNATION);
 
         Scene scene = null;
         await Task.Run(async () =>
         {
-            scene = await solver.Solve(acts, resources, pop: POP, stagnation: STAGNATION);
+            scene = await solver.Solve();
         });
 
 

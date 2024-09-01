@@ -12,13 +12,13 @@ internal class CaseDig
         var bom = createBom();
         var needs = createNeeds();              //读入机器能力
         var resources = createResources();  //读入机器排班表
-        var solver = new SortBomSolver();
+        var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, switches: null, population: POP,
+                stagnation: STAGNATION);
 
         Scene scene = null;
         await Task.Run(async () =>
         {
-            scene = await solver.Solve(bom, NREQUIRE, needs, resources, switches: null, pop: POP,
-                stagnation: STAGNATION);
+            scene = await solver.Solve();
         });
         return scene;
     }

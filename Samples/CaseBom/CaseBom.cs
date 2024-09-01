@@ -15,8 +15,8 @@ static class CaseBom
         var bom = createBom();
         var needs = createNeeds();
         var resources = createResources();
-        var solver = new SortBomSolver();
-        var scene = await solver.Solve(bom, NACT, needs, resources, pop: POP, stagnation: STAGNATION);
+        var solver = new SortBomTransolution(bom, NACT, needs, resources, population: POP, stagnation: STAGNATION);
+        var scene = await solver.Solve();
         return scene;
     }
 

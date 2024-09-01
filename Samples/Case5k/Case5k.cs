@@ -19,11 +19,11 @@ internal class Case5k
         var bom = createBom(2, 8);
         //NREQUIRE = int.Parse(ConfigurationManager.AppSettings["nRequire"]); //输入成品数
 
-        var solver = new SortBomSolver();
+        var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, switches: null, population: POP, stagnation: STAGNATION);
         Scene scene = null;
         await Task.Run(async () =>
         {
-            scene = await solver.Solve(bom, NREQUIRE, needs, resources, switches: null, pop: POP, stagnation: STAGNATION);
+            scene = await solver.Solve();
         });
         return scene;
     }

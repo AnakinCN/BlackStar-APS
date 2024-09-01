@@ -1,5 +1,5 @@
 ﻿using Colors = ScottPlot.Colors;
-using BlackStar.Event;
+using BlackStar.Message;
 using BlackStar.Functions;
 using BlackStar.Model;
 using Collections.Pooled;
@@ -19,17 +19,16 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        if (!EventOP.Initilized)
-            EventOP.InitializeEventOP();
-        EventOP.OneAggregator.GetEvent<IntTsEvent>().Subscribe(OnIntTsEvent);
-        EventOP.OneAggregator.GetEvent<NotifyEvent>().Subscribe(OnNotifyEvent);
+        MessageOP.Initialize();
+        MessageOP.MessageOf<IntTsEvent>().Subscribe(OnIntTsEvent);
+        MessageOP.MessageOf<NotifyMessage>().Subscribe(OnNotifyMessage);
 
         initDescendendWindow();
         RunSample();
 
     }
 
-    private void OnNotifyEvent(string message)
+    private void OnNotifyMessage(string message)
     {
         switch (message)
         {

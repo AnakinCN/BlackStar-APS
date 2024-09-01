@@ -39,7 +39,7 @@ void OptimTest1(int nAct, int nResource)
             .Sum(j => (j.To - j.From).TotalMinutes));
     Console.WriteLine($"provides  total {provideTotal}");
     Console.WriteLine();
-    SortAllSolver solver = new();
-    var scene = solver.Solve(acts, resources);
+    SortAllTransolution solver = new(acts, resources);
+    var scene = solver.Solve();
 
 }
