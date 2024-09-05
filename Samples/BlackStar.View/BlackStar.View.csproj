@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+      <Langversion>Preview</Langversion>
+      <PackageIcon>blackstar gantt.ico</PackageIcon>
+      <AnalysisLevel>preview-all</AnalysisLevel>
+      <ApplicationIcon>blackstar desc.ico</ApplicationIcon>
+      <Version>2.0.0.0</Version>
+      <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="blackstar desc.ico" />
+    <None Remove="~%24资料.xlsx" />
+    <None Update="Trace\log4net.config">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<Link>Trace\log4net.config</Link>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="blackstar desc.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlackStarAPS" Version="2.2.2" />
+    <PackageReference Include="Collections.Pooled" Version="2.0.0-preview.27" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="ScottPlot.WPF" Version="5.0.37" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="blackstar desc.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="blackstar gantt.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="blackstar gantt.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
