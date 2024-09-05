@@ -10,6 +10,7 @@ internal class Case5k
 
     public static async Task<Scene> Optim5k()
     {
+        Reset();
         TimeSpan last = TimeSpan.FromDays(365);
         to = baseDt + last;
 
@@ -24,6 +25,12 @@ internal class Case5k
             scene = await solver.Solve();
         });
         return scene;
+    }
+
+    private static void Reset()
+    {
+        needs = new();
+        resources = new();
     }
 
     private static PooledList<IServiceAbility> needs = new();
