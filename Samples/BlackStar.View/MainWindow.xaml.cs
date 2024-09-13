@@ -6,6 +6,7 @@ public partial class MainWindow
 {
     static DateTime baseDt = new (2023, 1, 1);
     private DescendendWindow decentWind;
+    public static PooledDictionary<string, ScottPlot.Color> Colors { get; set; } = new();
 
     public MainWindow()
     {
@@ -22,36 +23,32 @@ public partial class MainWindow
         menu.Show();
     }
 
+    delegate IAsyncEnumerable<Scene> Optim();
     private async void OnDualMessage((string, string) message)
     {
-        if(message.Item1!="Sample")
+        if (message.Item1 != "Sample")
             return;
         this.Clear();
-        Scene scene = null;
-        switch (message.Item2)
+        Optim optim = message.Item2 switch
         {
-            case "布尔模型无Bom":
-                scene = await Task.Run( () => CaseBoolNoBom.OptimBoolNoBom());
-                break;
-            case "整数模型无Bom":
-                scene = await Task.Run( () => CaseIntNoBom.OptimIntNoBom());
-                break;
-            case "布尔模型有Bom":
-                scene = await Task.Run( () => CaseBom.OptimBoolBom());
-                break;
-            case "DIG：资源偏好定制":
-                scene = await Task.Run( () => CaseDig.OptimDig());
-                break;
-            case "光模块工艺":
-                scene = await Task.Run( () => CaseLight.OptimLight());
-                break;
-            case "SMT工艺":
-                scene = await Task.Run( () => Case5k.Optim5k());
-                break;
-        }
-        this.Draw(scene);
-        Report(scene);
+            "布尔模型无Bom" => CaseBoolNoBom.OptimBoolNoBom,
+            "整数模型无Bom" => CaseIntNoBom.OptimIntNoBom,
+            "布尔模型有Bom" => CaseBom.OptimBoolBom,
+            "DIG：资源偏好定制" => CaseDig.OptimDig,
+            "光模块工艺" => CaseLight.OptimLight,
+            "SMT工艺" => Case5k.Optim5k,
+            "染料切换" => CaseColorSwitch.OptimColorSwitch,
+            _ => null
+        };
+
+        if (optim == null)
+            return;
         
+        await foreach (Scene scene in optim())
+        {
+            this.Draw(scene);
+            Report(scene);
+        }
         MessageOP.MessageOf<NotifyMessage>().Publish("Done");
     }
 
@@ -62,15 +59,18 @@ public partial class MainWindow
 
     private async Task RunSample()
     {
-        Scene scene = await Task.Run( () => CaseBoolNoBom.OptimBoolNoBom());
+        await foreach (Scene scene in CaseBoolNoBom.OptimBoolNoBom())
+        {
+            this.Draw(scene);
+            Report(scene);
+        }
+        
+        //Scene scene = await Task.Run( () => );
         //Scene scene = await Task.Run( () => CaseIntNoBom.OptimIntNoBom());
         //Scene scene = await Task.Run( () => CaseBom.OptimBom());
         //Scene scene = await Task.Run(() => CaseDig.OptimDig());
         //Scene scene = await Task.Run( () => CaseLight.OptimLight());
         //Scene scene = await Task.Run(() => Case5k.Optim5k());
-
-        this.Draw(scene);
-        Report(scene);
     }
 
     /// <summary>
@@ -176,11 +176,15 @@ public partial class MainWindow
             var y2 = y + halfHeight;
           
             var rect = GanttChart.Plot.Add.Rectangle(x1, x2, y1, y2);
+            string bomname = StringOP.TrimLastUnderline(task.Name);
+            if(Colors!=null && Colors.TryGetValue(bomname, out var color))
+                rect.FillColor = color;
             if (scene.Deploys.Count <= 100)
             {
                 var text = GanttChart.Plot.Add.Text(task.Name, x1, y);
-                    text.LabelFontSize = 12;
-                        text.LabelFontColor = Colors.Black;
+                text.LabelFontName = "微软雅黑";
+                text.LabelFontSize = 12;
+                text.LabelFontColor = ScottPlot.Colors.Black;
             }
         }
         GanttChart.Plot.Axes.AutoScale();
@@ -190,6 +194,7 @@ public partial class MainWindow
     private void BtFit_OnClick(object sender, RoutedEventArgs e)
     {
         // GanttChart.Plot.AxisAuto();
+        GanttChart.Plot.Axes.AutoScale();
         GanttChart.Refresh();
     }
 

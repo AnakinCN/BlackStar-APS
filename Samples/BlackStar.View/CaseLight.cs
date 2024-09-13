@@ -2,12 +2,13 @@
 
 public class CaseLight
 {
-    const int STAGNATION = 20;
-    const int POP = 20;
-    private static int NREQUIRE = 50;
+    const int STAGNATION = 10;
+    const int POP = 40;
+    const int GENERATION = 100;
+    private static int NREQUIRE = 40;
     static DateTime baseDt = new(2023, 1, 1);
 
-    public static async Task<Scene> OptimLight()
+    public static async IAsyncEnumerable<Scene> OptimLight()
     {
         //get the nRequire option in App.config
         var bom = createBom();
@@ -16,14 +17,14 @@ public class CaseLight
         var needs = createNeeds();                      //读入机器能力
         var resources = createResources();      //读入机器排班表
         var switches = createSwitches();        //读入物料切换时间
-        var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, switches: switches, population: POP, stagnation: STAGNATION);
+        var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, switches: switches, population: POP, generation: GENERATION, stagnation: STAGNATION);
 
-        Scene scene = null;
-        await Task.Run(async () =>
+        //Scene scene = null;
+        await foreach(Scene scene in solver.Solve())
         {
-            scene = await solver.Solve();
-        });
-        return scene;
+            yield return scene;
+        };
+        //yield return scene;
     }
 
     private static PooledDictionary<string, IResource> createResources()
@@ -32,26 +33,12 @@ public class CaseLight
         TimeSpan last = TimeSpan.FromHours(4800);
         DateTime to = baseDt + last;
 
-        //切换行为
-        //Func<Resource<bool>, string, bool> switchAction =  (resource, next) =>
-        //{
-        //    var considerSwitch = resource.Scene.Variables["ConsiderSwitch"].GetBoolValue();
-        //    if (!considerSwitch)
-        //        return false;
-        //    //string next = resource.Variables["Next"].GetStringValue();          //下一个待加工
-        //    string current = resource.Variables["Current"].GetStringValue();    //当前加工
-        //    if (next == current)
-        //        return false;
-        //    return true;
-        //};
-
         resources.Add("GY0034阴阳板1", new Resource<bool>("GY0034阴阳板1")
         {
             States = new() { new State<bool>("治具", baseDt, to, true) },
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["Next"] = new(""),
                 ["NeedSwitch"] = new(false)
             },
             Decides = new()
@@ -65,7 +52,6 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["Next"] = new(""),
                 ["NeedSwitch"] = new(false),
             },
             Decides = new()
@@ -80,7 +66,6 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
             },
             Decides = new()
@@ -94,7 +79,6 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
             },
             Decides = new()
@@ -110,7 +94,6 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
             },
             Decides = new()
@@ -124,7 +107,6 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true)
             },
             Decides = new()
@@ -139,7 +121,6 @@ public class CaseLight
             Variables = new()
             {
                 ["Current"] = new(""),
-                ["Next"] = new(""),
                 ["NeedSwitch"] = new(true),
             },
             Decides = new()

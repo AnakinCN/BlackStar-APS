@@ -8,7 +8,7 @@ internal class Case5k
     static DateTime baseDt = new(2023, 1, 1);
     private static DateTime to;
 
-    public static async Task<Scene> Optim5k()
+    public static async IAsyncEnumerable<Scene> Optim5k()
     {
         Reset();
         TimeSpan last = TimeSpan.FromDays(365);
@@ -19,12 +19,10 @@ internal class Case5k
         //NREQUIRE = int.Parse(ConfigurationManager.AppSettings["nRequire"]); //输入成品数
 
         var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, switches: null, population: POP, stagnation: STAGNATION);
-        Scene scene = null;
-        await Task.Run(async () =>
+        await foreach(Scene scene in solver.Solve())
         {
-            scene = await solver.Solve();
-        });
-        return scene;
+            yield return scene;
+        };
     }
 
     private static void Reset()

@@ -17,6 +17,7 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" x:Name="bt1" Content="布尔模型无Bom" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
         <Button Grid.Row="1" x:Name="bt2" Content="整数模型无Bom" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
@@ -24,5 +25,6 @@
         <Button Grid.Row="3" x:Name="bt4" Content="DIG：资源偏好定制" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
         <Button Grid.Row="4" x:Name="bt5" Content="光模块工艺" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
         <Button Grid.Row="5" x:Name="bt6" Content="SMT工艺" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
+        <Button Grid.Row="6" x:Name="bt7" Content="染料切换" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
     </Grid>
 </Window>

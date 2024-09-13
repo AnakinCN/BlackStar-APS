@@ -12,7 +12,7 @@ public class CaseIntNoBom
     /// 无bom
     /// </summary>
     /// <returns></returns>
-    public async static Task<Scene> OptimIntNoBom()
+    public async static IAsyncEnumerable<Scene> OptimIntNoBom()
     {
         // 1. Generate 1000 random ActInt
         PooledList<ActInt> acts = new();
@@ -63,15 +63,11 @@ public class CaseIntNoBom
         File.WriteAllText("machine.json", root.ToString());
         SortAllTransolution transolution = new(acts, resources, pop: POP, stagnation: STAGNATION);
 
-        Scene scene = null;
-        await Task.Run(async () =>
-        {
-            scene = await transolution.Solve();
-        });
         
-
-        Debug.WriteLine($"use resources {scene.Deploys.Select(i => i.UseResource).Distinct().Count()}");
-
-        return scene;
+        await foreach(Scene scene in transolution.Solve())
+        {
+            yield return scene;
+            Debug.WriteLine($"use resources {scene.Deploys.Select(i => i.UseResource).Distinct().Count()}");
+        };
     }
 }

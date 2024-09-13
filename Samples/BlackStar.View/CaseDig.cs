@@ -7,7 +7,7 @@ internal class CaseDig
     private static int NREQUIRE = 1;
     static DateTime baseDt = new(2023, 1, 1, 8, 0, 0);
 
-    public static async Task<Scene> OptimDig()
+    public static async IAsyncEnumerable<Scene> OptimDig()
     {
         var bom = createBom();
         var needs = createNeeds();              //读入机器能力
@@ -15,12 +15,12 @@ internal class CaseDig
         var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, switches: null, population: POP,
             stagnation: STAGNATION);
 
-        Scene scene = null;
-        await Task.Run( async () =>
+        //Scene scene = null;
+        await foreach(Scene scene in solver.Solve())
         {
-            scene = await solver.Solve();
-        });
-        return scene;
+            yield return scene;
+        };
+        //yield return scene;
     }
 
     private static PooledList<IServiceAbility> createNeeds()

@@ -36,6 +36,7 @@ namespace BlackStar.View
                 this.bt4.IsEnabled = true;
                 this.bt5.IsEnabled = true;
                 this.bt6.IsEnabled = true;
+                this.bt7.IsEnabled = true;
             }
         }
 
@@ -49,6 +50,7 @@ namespace BlackStar.View
             this.bt4.IsEnabled = false;
             this.bt5.IsEnabled = false;
             this.bt6.IsEnabled = false;
+            this.bt7.IsEnabled = false;
         }
     }
 }

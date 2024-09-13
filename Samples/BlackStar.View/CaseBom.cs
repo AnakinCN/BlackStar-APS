@@ -8,14 +8,14 @@ static class CaseBom
     static int POP = 20;
     static DateTime baseDt = new (2023, 1, 1);
 
-    public async static Task<Scene> OptimBoolBom()
+    public async static IAsyncEnumerable<Scene> OptimBoolBom()
     {
         var bom = createBom();
         var needs = createNeeds();
         var resources = createResources();
-        var solver = new SortBomTransolution(bom,NACT, needs,resources, population: POP, stagnation: STAGNATION);
-        var scene = await solver.Solve();
-        return scene;
+        var solver = new SortBomTransolution(bom, NACT, needs, resources, population: POP, stagnation: STAGNATION);
+        await foreach(Scene scene in solver.Solve())
+            yield return scene;
     }
 
     private static PooledDictionary<string, IResource> createResources()
