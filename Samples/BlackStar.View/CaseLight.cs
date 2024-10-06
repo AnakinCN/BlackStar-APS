@@ -2,9 +2,9 @@
 
 public class CaseLight
 {
-    const int STAGNATION = 10;
+    const int STAGNATION = 20;
     const int POP = 40;
-    const int GENERATION = 100;
+    const int GENERATION = 200;
     private static int NREQUIRE = 40;
     static DateTime baseDt = new(2023, 1, 1);
 

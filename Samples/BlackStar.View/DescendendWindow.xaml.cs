@@ -55,8 +55,8 @@ public partial class DescendendWindow : Window
         scatter.MarkerSize = 5;
         scatter.LinePattern = LinePattern.DenselyDashed;
         scatter.LineWidth = 1.5f;
-        scatter.Smooth = true;
-        scatter.SmoothTension = 2f;
+        //scatter.Smooth = true;
+        //scatter.SmoothTension = 2f;
         WpfPlot1.Plot.Axes.AutoScale();
         WpfPlot1.Refresh();
     }

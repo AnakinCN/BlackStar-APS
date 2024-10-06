@@ -43,34 +43,20 @@ public partial class MainWindow
 
         if (optim == null)
             return;
-        
-        await foreach (Scene scene in optim())
+        await Task.Run(async () =>
         {
-            this.Draw(scene);
-            Report(scene);
-        }
+            await foreach (Scene scene in optim())
+            {
+                this.Draw(scene);
+                Report(scene);
+            }
+        });
         MessageOP.MessageOf<NotifyMessage>().Publish("Done");
     }
 
     private void Clear()
     {
         this.GanttChart.Plot.Clear();
-    }
-
-    private async Task RunSample()
-    {
-        await foreach (Scene scene in CaseBoolNoBom.OptimBoolNoBom())
-        {
-            this.Draw(scene);
-            Report(scene);
-        }
-        
-        //Scene scene = await Task.Run( () => );
-        //Scene scene = await Task.Run( () => CaseIntNoBom.OptimIntNoBom());
-        //Scene scene = await Task.Run( () => CaseBom.OptimBom());
-        //Scene scene = await Task.Run(() => CaseDig.OptimDig());
-        //Scene scene = await Task.Run( () => CaseLight.OptimLight());
-        //Scene scene = await Task.Run(() => Case5k.Optim5k());
     }
 
     /// <summary>
@@ -91,7 +77,6 @@ public partial class MainWindow
                 break;
         }
     }
-
 
     private void Report(Scene scene)
     {
