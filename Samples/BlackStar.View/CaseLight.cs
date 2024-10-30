@@ -157,7 +157,7 @@ public class CaseLight
         bomMain.AddSubBom(bomB);
         bomMain.AddSubBom(bomDIP);
 
-        IO.PrintBom(bomMain);
+        IO.PrintBom(bomMain, "bom.json");
 
         return bomMain;
     }

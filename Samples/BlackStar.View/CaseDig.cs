@@ -132,7 +132,7 @@ internal class CaseDig
         bomMain.AddSubBom(bD2G2, N2);
         bomMain.AddSubBom(bD3G3, N3);
 
-        IO.PrintBom(bomMain);
+        IO.PrintBom(bomMain, "bom.json");
        
         return bomMain;
     }

@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlackStarAPS" Version="2.2.5" />
+    <PackageReference Include="BlackStarAPS" Version="2.2.8" />
     <PackageReference Include="Collections.Pooled" Version="2.0.0-preview.27" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
   </ItemGroup>

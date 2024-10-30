@@ -10,5 +10,4 @@ global using System.Diagnostics;
 global using System.Text.RegularExpressions;
 global using BlackStar.Transolution.SortAll;
 global using BlackStar.Model;
-global using BlackStar.Strategy;
 global using BlackStar.Functions;
