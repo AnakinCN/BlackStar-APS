@@ -6,7 +6,7 @@ public static class CaseBoolNoBom
     const int NRESOURCE = 700;
     const int STAGNATION = 10;
     const int POP = 20;
-    static DateTime baseDt = new (2023, 1, 1);
+    static DateTime baseDt = TimeOP.BaseDateTime;
 
     /// <summary>
     /// 无bom

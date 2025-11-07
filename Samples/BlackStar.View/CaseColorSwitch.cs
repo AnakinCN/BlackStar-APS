@@ -4,11 +4,11 @@ namespace BlackStar.View;
 
 internal class CaseColorSwitch
 {
-    const int STAGNATION = 40;
-    const int POP = 4;
-    const int GENERATION = 100;
+    const int STAGNATION = 20;
+    const int POP = 10;
+    const int GENERATION = 200;
     private static int NREQUIRE = 1;
-    static DateTime baseDt = new(2023, 1, 1);
+    static DateTime baseDt = TimeOP.BaseDateTime;
 
     public static async IAsyncEnumerable<Scene> OptimColorSwitch()
     {
@@ -156,8 +156,8 @@ internal class CaseColorSwitch
         bom白绿2.AddSubBom(bom白绿1);
         bomWhiteGreen.AddSubBom(bom白绿2);
       
-        batch.AddSubBom(bomBlueGreen, 10);
-        batch.AddSubBom(bomWhiteGreen, 30);
+        batch.AddSubBom(bomBlueGreen, 100);
+        batch.AddSubBom(bomWhiteGreen, 400);
         return batch;
     }
 

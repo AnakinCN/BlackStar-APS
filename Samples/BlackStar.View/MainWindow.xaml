@@ -7,6 +7,7 @@
         xmlns:scottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
         mc:Ignorable="d"
         Icon="./blackstar gantt.ico"
+        Closed="Window_Closed"
         Title="BlackStar APS Solver - Gantt Chart" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>

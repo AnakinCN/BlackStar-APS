@@ -1,4 +1,18 @@
-﻿namespace BlackStar.View
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace BlackStar.View
 {
     /// <summary>
     /// Menu.xaml 的交互逻辑
@@ -23,6 +37,7 @@
                 this.bt5.IsEnabled = true;
                 this.bt6.IsEnabled = true;
                 this.bt7.IsEnabled = true;
+                this.bt8.IsEnabled = true;
             }
         }
 
@@ -37,6 +52,12 @@
             this.bt5.IsEnabled = false;
             this.bt6.IsEnabled = false;
             this.bt7.IsEnabled = false;
+            this.bt8.IsEnabled = false;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

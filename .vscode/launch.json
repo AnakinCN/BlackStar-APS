@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "C#: Blackstar.View",
+            "type": "dotnet",
+            "request": "launch",
+            "program":"${workspaceFolder}/BlackStar.View/bin/Debug/net9.0-windows/BlackStar.View.dll"
+        }
+    ]
+}

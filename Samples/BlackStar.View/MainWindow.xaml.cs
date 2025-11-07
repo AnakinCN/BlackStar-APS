@@ -1,35 +1,31 @@
-﻿using Colors = ScottPlot.Colors;
-
-namespace BlackStar.View;
+﻿namespace BlackStar.View;
 
 public partial class MainWindow
 {
-    static DateTime baseDt = new (2023, 1, 1);
+    static DateTime baseDt = TimeOP.BaseDateTime;
     private DescendendWindow decentWind;
     public static PooledDictionary<string, ScottPlot.Color> Colors { get; set; } = new();
 
     public MainWindow()
     {
         InitializeComponent();
-
-        MessageOP.Initialize();
+        BlackStarLicense.GetLicense();
         MessageOP.MessageOf<IntTsEvent>().Subscribe(OnIntTsEvent);
         MessageOP.MessageOf<NotifyMessage>().Subscribe(OnNotifyEvent);
         MessageOP.MessageOf<DualMessage>().Subscribe(OnDualMessage);
         initDescendendWindow();
         //RunSample();
-      
         BlackStar.View.Menu menu = new();
         menu.Show();
     }
 
     delegate IAsyncEnumerable<Scene> Optim();
-    private async void OnDualMessage((string, string) message)
+    private async void OnDualMessage((string Chanel, string Case) message)
     {
-        if (message.Item1 != "Sample")
+        if (message.Chanel != "Sample")
             return;
         this.Clear();
-        Optim optim = message.Item2 switch
+        Optim optim = message.Case switch
         {
             "布尔模型无Bom" => CaseBoolNoBom.OptimBoolNoBom,
             "整数模型无Bom" => CaseIntNoBom.OptimIntNoBom,
@@ -37,7 +33,8 @@ public partial class MainWindow
             "DIG：资源偏好定制" => CaseDig.OptimDig,
             "光模块工艺" => CaseLight.OptimLight,
             "SMT工艺" => Case5k.Optim5k,
-            "染料切换" => CaseColorSwitch.OptimColorSwitch,
+            "染料切换" => CaseColorSwitch.OptimColorSwitch, 
+            "机务" => CaseDrone.OptimDrone, 
             _ => null
         };
 
@@ -47,8 +44,8 @@ public partial class MainWindow
         {
             await foreach (Scene scene in optim())
             {
-                this.Draw(scene);
-                Report(scene);
+                this.Dispatcher.Invoke(() => this.Draw(scene));
+                await Report(scene);
             }
         });
         MessageOP.MessageOf<NotifyMessage>().Publish("Done");
@@ -70,17 +67,24 @@ public partial class MainWindow
 
     private void OnNotifyEvent(string message)
     {
-        switch (message)
+        Application.Current.Dispatcher.Invoke(() =>
         {
-            case "nolic":
-                this.nolic.Visibility = Visibility.Visible;
-                break;
+            switch (message)
+            {
+                case "nolic":
+                    this.nolic.Visibility = Visibility.Visible;
+                    break;
+            }
         }
+        );
     }
 
-    private void Report(Scene scene)
+    private async Task Report(Scene scene)
     {
         if (scene is null)
+            return;
+
+        if (scene.Deploys.Count == 0)
             return;
 
         JArray root = new();
@@ -89,14 +93,23 @@ public partial class MainWindow
         {
             root.Add(new JObject
             {
-                ["需求名称"] = deploy.Name,
-                ["承担机器"] = deploy.UseResource,
-                ["加工开始"] = deploy.From,
-                ["加工结束"] = deploy.To,
-                ["加工时长"] = deploy.To - deploy.From,
+                ["任务名称"] = deploy.Name,
+                ["承担资源"] = deploy.UseResource,
+                ["任务开始"] = deploy.From,
+                ["任务结束"] = deploy.To,
+                ["任务时长"] = deploy.To - deploy.From,
             });
         }
-        File.WriteAllText("plan.json", root.ToString());
+
+        try
+        {
+            JsonWriter jsonWriter = new JsonTextWriter(new StreamWriter($"plan.json"));
+            await root.WriteToAsync(jsonWriter);
+        }
+        catch (Exception)
+        {
+
+        }
     }
 
     private void initDescendendWindow()
@@ -150,7 +163,9 @@ public partial class MainWindow
         // GanttChart.Plot.Axes.Bottom.TickGenerator = xticks;
         // GanttChart.Plot.Axes.Bottom.TickLabelStyle.FontName = "微软雅黑";
         #endregion
-        
+
+        int deployCount = scene.Deploys.Count;
+
         foreach (var task in scene.Deploys.Span)
         {
             int line = rows[task.UseResource];
@@ -159,14 +174,19 @@ public partial class MainWindow
             var x2 = (task.To - baseDt).TotalMinutes;
             var y1 = y - halfHeight;
             var y2 = y + halfHeight;
+
+            //if (task.UseResource == "飞机1")
+            //{
+            //    Debug.WriteLine($"飞机1：{task.Name} {task.From} - {task.To}");
+            //}
           
             var rect = GanttChart.Plot.Add.Rectangle(x1, x2, y1, y2);
             string bomname = StringOP.TrimLastUnderline(task.Name);
-            if(Colors!=null && Colors.TryGetValue(bomname, out var color))
+            if(Colors != null && Colors.TryGetValue(bomname, out var color))
                 rect.FillColor = color;
-            if (scene.Deploys.Count <= 100)
+            if (deployCount <= 100)
             {
-                var text = GanttChart.Plot.Add.Text(task.Name, x1, y);
+                var text = GanttChart.Plot.Add.Text(task.ShortName, x1, y);
                 text.LabelFontName = "微软雅黑";
                 text.LabelFontSize = 12;
                 text.LabelFontColor = ScottPlot.Colors.Black;
@@ -187,5 +207,10 @@ public partial class MainWindow
     {
         string folder = System.IO.Path.Join(".", "Log", "Trace");
         Process.Start("explorer", folder);
+    }
+
+    private void Window_Closed(object sender, EventArgs e)
+    {
+        Application.Current.Shutdown();
     }
 }

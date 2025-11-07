@@ -1,30 +1,26 @@
 ﻿namespace BlackStar.View;
 
-public class CaseLight
+public sealed class CaseLight
 {
     const int STAGNATION = 20;
     const int POP = 40;
     const int GENERATION = 200;
     private static int NREQUIRE = 40;
-    static DateTime baseDt = new(2023, 1, 1);
+    static DateTime baseDt = TimeOP.BaseDateTime;
 
     public static async IAsyncEnumerable<Scene> OptimLight()
     {
-        //get the nRequire option in App.config
         var bom = createBom();
-        //NREQUIRE = int.Parse(ConfigurationManager.AppSettings["nRequire"]);     //输入成品数
 
         var needs = createNeeds();                      //读入机器能力
         var resources = createResources();      //读入机器排班表
         var switches = createSwitches();        //读入物料切换时间
         var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, switches: switches, population: POP, generation: GENERATION, stagnation: STAGNATION);
 
-        //Scene scene = null;
         await foreach(Scene scene in solver.Solve())
         {
             yield return scene;
         };
-        //yield return scene;
     }
 
     private static PooledDictionary<string, IResource> createResources()
@@ -129,7 +125,6 @@ public class CaseLight
             },
         });
         //{"组装02线", new Resource<bool>("组装02线") {States = new() { new State<bool>("组装", baseDt, to, true)}}},
-
 
         return resources;
     }

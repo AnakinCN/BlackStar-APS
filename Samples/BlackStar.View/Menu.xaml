@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackStar.View"
         mc:Ignorable="d"
-        Title="Menu" Height="450" Width="300">
+        Closed ="Window_Closed"
+        Title="Menu" Height="500" Width="300">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
@@ -26,5 +28,6 @@
         <Button Grid.Row="4" x:Name="bt5" Content="光模块工艺" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
         <Button Grid.Row="5" x:Name="bt6" Content="SMT工艺" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
         <Button Grid.Row="6" x:Name="bt7" Content="染料切换" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
+        <Button Grid.Row="7" x:Name="bt8" Content="机务" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="50" Click="Bt_Click"/>
     </Grid>
 </Window>

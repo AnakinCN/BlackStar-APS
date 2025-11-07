@@ -5,7 +5,7 @@ internal class Case5k
     const int STAGNATION = 20;
     const int POP = 2;
     private static int NREQUIRE = 50;
-    static DateTime baseDt = new(2023, 1, 1);
+    static DateTime baseDt = TimeOP.BaseDateTime;
     private static DateTime to;
 
     public static async IAsyncEnumerable<Scene> Optim5k()

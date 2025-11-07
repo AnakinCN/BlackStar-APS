@@ -5,7 +5,7 @@ internal class CaseDig
     const int STAGNATION = 10;
     const int POP = 10;
     private static int NREQUIRE = 1;
-    static DateTime baseDt = new(2023, 1, 1, 8, 0, 0);
+    static DateTime baseDt = TimeOP.BaseDateTime + TimeSpan.FromHours(8);
 
     public static async IAsyncEnumerable<Scene> OptimDig()
     {
@@ -112,7 +112,7 @@ internal class CaseDig
         //指定工序的满足条件
         bD3G3.BopCondition = bop =>
         {
-            DateTime childReady = bop.GetChildrenReady(baseDt); //子工序完成时间
+            DateTime childReady = bop.GetSubsReady(baseDt); //子工序完成时间
             TimeSpan ten = TimeSpan.FromMinutes(10);            //必要的静置间隔
             TimeSpan veryLong = TimeSpan.FromDays(1000);
             return (childReady + ten, veryLong); //返回可开始时间和最大延迟时间

@@ -6,7 +6,7 @@ static class CaseBom
     static int NRESOURCE = 6;
     static int STAGNATION = 10;
     static int POP = 20;
-    static DateTime baseDt = new (2023, 1, 1);
+    static DateTime baseDt = TimeOP.BaseDateTime;
 
     public async static IAsyncEnumerable<Scene> OptimBoolBom()
     {
