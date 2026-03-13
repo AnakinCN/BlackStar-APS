@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:BlackStar.View"
         xmlns:wpf="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
         mc:Ignorable="d"
+        Closed="Window_Closed"
         Icon="./blackstar desc.ico"
         Title="BlackStar APS Solver - Descendence Curve" Height="450" Width="800">
     <Grid>

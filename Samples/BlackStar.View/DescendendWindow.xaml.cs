@@ -44,6 +44,9 @@ public partial class DescendendWindow : Window
     private Scatter scatter;
     public void AddDraw(int x, TimeSpan y)
     {
+        if(y == TimeSpan.FromDays(30))
+            return;
+
         xList.Add(x);
         yList.Add(y.TotalMinutes);
         double[] xs = xList.ToArray();
@@ -65,5 +68,10 @@ public partial class DescendendWindow : Window
     {
         WpfPlot1.Plot.Axes.AutoScale();
         WpfPlot1.Refresh();
+    }
+
+    private void Window_Closed(object sender, EventArgs e)
+    {
+        Application.Current.Shutdown();
     }
 }

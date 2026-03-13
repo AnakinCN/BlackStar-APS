@@ -10,13 +10,43 @@ public sealed class CaseDrone
 
     public static async IAsyncEnumerable<Scene> OptimDrone()
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
         var bom = createBom();
         var needs = createNeeds();          //读入机场能力
         var resources = createResources();  //读入机场排班表
         MainWindow.Colors = null;
         var solver = new SortBomTransolution(bom, NREQUIRE, needs, resources, population: POP, generation: GENERATION, stagnation: STAGNATION);
-        await foreach(Scene scene in solver.Solve())
-            yield return scene;
+        SortBomTransolution.EvaluatorName = "侦查覆盖率";
+        SortBomTransolution.EvaluatorValueFormat = v => (v == double.MaxValue) ? "0%" : $"{-v * 100:0.##}%";
+        
+        SortBomTransolution.Evaluator = scene =>
+        {
+            if (scene.Deploys == null || scene.Deploys.Count == 0)
+                return double.MaxValue;
+
+            DateTime latestDt = scene.Deploys.Max(d => d.To);
+            double totalDuration = (latestDt - baseDt).TotalMinutes;
+            if (totalDuration <= 0) return double.MaxValue;
+
+            double reconTime = scene.Deploys
+                .Where(d => d.ServeAct != null && d.ServeAct.Contains("侦查"))
+                .Sum(d => (d.To - d.From).TotalMinutes);
+
+            double coverageRatio = reconTime / totalDuration;
+            return -coverageRatio;
+        };
+        
+        try 
+        {
+            await foreach(Scene scene in solver.Solve())
+                yield return scene;
+        }
+        finally
+        {
+            SortBomTransolution.Evaluator = null;
+            SortBomTransolution.EvaluatorName = "耗时";
+            SortBomTransolution.EvaluatorValueFormat = v => (v == double.MaxValue) ? "无穷大" : v.ToString("0.##");
+        }
     }
     
     private static Bom createBom()
