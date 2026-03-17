@@ -93,3 +93,4 @@
 /.idea/vcs.xml
 /Samples/Samples.sln.DotSettings.user
 /Samples/BlackStar.SceneDefinition/bin/Debug/net10.0
+.vscode/launch.json

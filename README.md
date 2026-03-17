@@ -4,7 +4,7 @@ charset: utf-8
 
 <p align=center><h1>BlackStar, the Planning & Scheduling Solver</h1></p>
 
-<font color=#229912><b>BlackStar</b></font> is a general APS (advanced planning & scheduling) model and algorithm solution for various industries including aerospace mission planning, unmanned systems planning, vehicle fleet dispatching and manufactory planning. BlackStar uses a <font color=#229912><b>continuous time</b></font> model to support any time precisions.
+<font color=#229912><b>BlackStar</b></font> is a general APS (advanced planning & scheduling) model and algorithm solution for various industries including aerospace mission planning, unmanned systems planning, vehicle fleet dispatching and manufactory planning. BlackStar uses an <font color=#229912><b>any-time</b></font> model to support any time precisions. Supports both discrete and continuous BOM in manufacturing. see the <a href="BlackStar2.pdf">white paper </a> for detail。
 
 Contact Wechat official '真知科技' for license application, you should send the UID of your machine that can be queried by:
 
@@ -14,7 +14,7 @@ Contact Wechat official '真知科技' for license application, you should send 
 
 <p align=center><h1>BlackStar计划调度排产求解器</h1></p>
 
-<font color=#229912><b>BlackStar</b></font>是一个通用的先进计划排程APS模型和算法解决方案，支持航天任务、无人系统、车队调度、制造排产等诸多领域。BlackStar使用<font color=#229912><b>连续时间</b></font>模型，可支持任意精度的时间。详见<a href="BlackStar2.pdf">技术白皮书</a>。
+<font color=#229912><b>BlackStar</b></font>是一个通用的先进计划排程APS模型和算法解决方案，支持航空航天飞行、无人系统、车队调度、制造排产等诸多领域。BlackStar使用<font color=#229912><b>任意时间</b></font>模型，可支持任意精度的时间。支持连续、离散双模式的排产Bom。详见<a href="BlackStar2.pdf">技术白皮书</a>。
 
 请联系微信公众号“真知科技”申请证书，之前需要检查机器的UID，请使用UID检查工具，并将显示的UID序列号发送过来：
 
