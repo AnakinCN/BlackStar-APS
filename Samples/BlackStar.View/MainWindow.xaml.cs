@@ -45,7 +45,7 @@ public partial class MainWindow
             await foreach (Scene scene in optim())
             {
                 this.Dispatcher.Invoke(() => this.Draw(scene));
-                await Report(scene);
+                //await Report(scene);
             }
         });
         MessageOP.MessageOf<NotifyMessage>().Publish("Done");
